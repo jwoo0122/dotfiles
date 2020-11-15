@@ -1,0 +1,11 @@
+[user]
+	email = thinkratomos@gmail.com
+	name = Jinwoo Jeong
+[alias]
+	lg = log --graph --pretty
+	st = status
+	ad = add .
+	cm = commit -m
+	ck = checkout
+	dif = diff
+	br = branch -vv
