@@ -1,0 +1,22 @@
+set encoding=utf-8
+set number	
+set shiftwidth=2
+set ts=2
+set hlsearch
+set cursorline
+set signcolumn=yes
+
+call plug#begin('~/.vim/plugged')
+	Plug 'joshdick/onedark.vim'
+	Plug 'vim-airline/vim-airline'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+	Plug 'bling/vim-bufferline'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'airblade/vim-gitgutter'
+call plug#end()
+
+syntax on
+colorscheme onedark
+
+let g:airline_powerline_fonts = 1
