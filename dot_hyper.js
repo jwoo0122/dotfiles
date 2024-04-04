@@ -4,13 +4,63 @@
 // See https://hyper.is#cfg for all currently supported options.
 module.exports = {
   config: {
+		css: `
+			.splitpane_divider {
+				background-color: rgba(255, 255, 255, .12) !important;
+			}
+			header {
+			  border-bottom: 1px solid rgba(255, 255, 255, .12) !important;
+			}
+			.tab_tab {
+        color: rgba(157, 157, 157, 0.6) !important;	
+        background-color: #1A1A1A !important;
+        border-left: 1px solid rgba(255, 255, 255, .12) !important;
+      }
+      .tab_tab.tab_active {
+        font-weight: 500;
+        background-color: transparent !important;
+      }
+      .tab_tab.tab_active::before {
+        border-bottom-color: transparent;
+      }
+      .tab_tab::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+        z-index: 2;
+        bottom: -1px;
+        width: 100%;
+				height: 1px;
+        border-radius: 0;
+        background-color: #f5d951;
+        opacity: 0;
+        transition: opacity .16s;
+      }
+      .tab_tab.tab_active::after {
+        opacity: 1;
+        transition-duration: .16s;
+      }
+      .tabs_title, .tab_icon, .tab_tab.tab_active {
+        color: #d7dae0 !important;
+      }
+
+			.term_term {
+				opacity: 0.3;
+				will-change: opacity;
+			}
+			.term_active .term_term {
+				opacity: 1;
+				transition: opacity 0.12s ease-in-out;
+			}
+		`,
+		scrollBack: 2000,
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
     updateChannel: "stable",
     // default font size in pixels for all tabs
     fontSize: 14,
     // font family with optional fallbacks
-    fontFamily: "Hack Nerd Font Mono",
+    fontFamily: "Hack Nerd Font Mono FC Ligatured",
     // default font weight: 'normal' or 'bold'
     fontWeight: "normal",
     // font weight for bold characters: 'normal' or 'bold'
@@ -36,8 +86,6 @@ module.exports = {
     selectionColor: "rgba(248,28,229,0.3)",
     // border color (window, tabs)
     borderColor: "#262626",
-    // custom CSS to embed in the main window
-    css: "",
     // custom CSS to embed in the terminal window
     termCSS: "",
     // set custom startup directory (must be an absolute path)
@@ -56,10 +104,10 @@ module.exports = {
     // an array here instead of a color map object
     colors: {
       black: "#000000",
-      red: "#C51E14",
-      green: "#1DC121",
+      red: "#e02f26",
+      green: "#36d160",
       yellow: "#C7C329",
-      blue: "#0A2FC4",
+      blue: "#476cff",
       magenta: "#C839C5",
       cyan: "#20C5C6",
       white: "#C7C7C7",
