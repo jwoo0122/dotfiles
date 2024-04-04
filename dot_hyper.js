@@ -45,7 +45,7 @@ module.exports = {
       }
 
 			.term_term {
-				opacity: 0.3;
+				opacity: 0.5;
 				will-change: opacity;
 			}
 			.term_active .term_term {
