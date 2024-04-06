@@ -5,6 +5,7 @@ set ts=2
 set hlsearch
 set cursorline
 set signcolumn=yes
+set re=0
 
 call plug#begin('~/.vim/plugged')
 	Plug 'joshdick/onedark.vim'
