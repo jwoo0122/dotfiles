@@ -9,7 +9,7 @@ function open_app(name)
 end
 
 --- quick open applications
-hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["h"], open_app("iTerm"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["h"], open_app("kitty"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["w"], open_app("Safari"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["s"], open_app("Slack"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["f"], open_app("Finder"))
