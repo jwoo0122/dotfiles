@@ -17,7 +17,7 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["t"], open_app("Telegram")
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["l"], open_app("Linear"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["c"], open_app("Google Chrome"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["n"], open_app("Notion"))
---- end quick open applications
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["x"], open_app("Perplexity"))
 
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["o"], function()
 	local clicked, query = hs.dialog.textPrompt("Google Search", "", "", "Search", "Cancel")
