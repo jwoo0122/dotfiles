@@ -1,5 +1,5 @@
 --- start quick open applications
-function open_app(name)
+local function open_app(name)
 	return function()
 		hs.application.launchOrFocus(name)
 		if name == "Finder" then
