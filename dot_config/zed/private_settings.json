@@ -18,6 +18,5 @@
       ]
     }
   },
-  "vim_mode": true,
-  "relative-line-number": true
+  "vim_mode": true
 }
