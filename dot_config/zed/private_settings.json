@@ -1,0 +1,22 @@
+{
+  "theme": "VSCode Dark Modern",
+  "buffer_font_size": 13,
+  "format_on_save": "on",
+  "formatter": "language_server",
+  "tab_size": 2,
+  "buffer_font_family": "Hack",
+  "confirm_quit": true,
+  "show_whitespaces": "all",
+  "terminal": {
+    "font_family": "MesloLGS NF",
+    "font_size": 13
+  },
+  "languages": {
+    "TypeScript": {
+      "language_servers": [
+        "typescript-language-server"
+      ]
+    }
+  },
+  "vim_mode": true
+}
