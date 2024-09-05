@@ -1,15 +1,16 @@
-eval "$(starship init zsh)"
+
+# git branch show
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+PROMPT='%~ ${vcs_info_msg_0_} $ '
+zstyle ':vcs_info:git:*' formats '%b'
 
 # zoxide
 eval "$(zoxide init zsh)"
 
-# fzf
-eval "$(fzf --zsh)"
-
 export PATH="$HOME/.cargo/bin:$PATH"
-
-export VISUAL=nvim
-export EDITOR=nvim
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -44,5 +45,5 @@ alias "nvimrc"="nvim ~/.config/nvim/init.lua"
 
 alias "ls"="eza"
 alias "l"="eza -l --classify=auto --group-directories-first"
-alias "nv"="nvim"
 alias "python"="python3"
+alias "gcurrent"="git branch --show-current"
