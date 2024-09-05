@@ -6,16 +6,18 @@ precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 
 PROMPT='
-%~ ${vcs_info_msg_0_}
-$ '
+%~ br:${vcs_info_msg_0_}
+> '
 
 zstyle ':vcs_info:git:*' formats '%b'
 
 # zoxide
 eval "$(zoxide init zsh)"
 
+# Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
