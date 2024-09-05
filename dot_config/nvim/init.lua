@@ -1,6 +1,21 @@
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.bo.softtabstop = 2
+vim.opt.list = true
+
+vim.opt.listchars:append {
+  tab = "|-",
+  multispace = "·",
+  lead = "·",
+  trail = "·",
+  nbsp = "·",
+  space = "·"
+}
+
 vim.g.mapleader = " "
 
 -- [[ Install `lazy.nvim` plugin manager ]]
@@ -13,7 +28,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{
+  {
 		'nanotee/zoxide.vim',
 		config = function()
 			vim.g.zoxide_use_select = 1
