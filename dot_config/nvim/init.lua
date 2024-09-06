@@ -18,6 +18,30 @@ vim.opt.listchars:append {
 
 vim.g.mapleader = " "
 
+vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'CmdlineLeave', 'WinEnter' }, {
+  pattern = '*',
+  group = augroup,
+  callback = function()
+    vim.opt.cursorline = true
+    vim.opt.cursorcolumn = true
+    if vim.o.nu and vim.api.nvim_get_mode().mode ~= 'i' then
+      vim.opt.relativenumber = true
+    end
+  end,
+})
+vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'CmdlineEnter', 'WinLeave' }, {
+  pattern = '*',
+  group = augroup,
+  callback = function()
+    vim.opt.cursorline = false
+    vim.opt.cursorcolumn = false
+    if vim.o.nu then
+      vim.opt.relativenumber = false
+      vim.cmd 'redraw'
+    end
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -54,6 +78,7 @@ require("lazy").setup({
 			local builtin = require('telescope.builtin')
 			vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 			vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
+			vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 			vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
 		end
 	},
@@ -93,5 +118,17 @@ require("lazy").setup({
 				}
 			})
 		end
-	}
+	},
+  {
+    'akinsho/toggleterm.nvim', version = "*", config = function()
+      require('toggleterm').setup {
+        size = 20,
+        open_mapping = [[<c-`>]]
+      }
+    end
+  },
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+  }
 })
