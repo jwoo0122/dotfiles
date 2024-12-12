@@ -23,7 +23,6 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'Cmdline
   group = augroup,
   callback = function()
     vim.opt.cursorline = true
-    vim.opt.cursorcolumn = true
     if vim.o.nu and vim.api.nvim_get_mode().mode ~= 'i' then
       vim.opt.relativenumber = true
     end
@@ -34,7 +33,6 @@ vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'CmdlineEn
   group = augroup,
   callback = function()
     vim.opt.cursorline = false
-    vim.opt.cursorcolumn = false
     if vim.o.nu then
       vim.opt.relativenumber = false
       vim.cmd 'redraw'
