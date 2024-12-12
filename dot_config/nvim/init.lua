@@ -168,9 +168,14 @@ require("lazy").setup({
         }
       })
     end
-  }
+  },
+  {'windwp/nvim-autopairs',
+  event = 'InsertEnter',
+  config = true,
+}
 })
 
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 vim.keymap.set('n', 'fr', vim.lsp.buf.references)
 vim.keymap.set('n', 'rn', vim.lsp.buf.rename)
+vim.keymap.set('n', 'fm', vim.lsp.buf.format)
