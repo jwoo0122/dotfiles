@@ -51,73 +51,75 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-		'nanotee/zoxide.vim',
-		config = function()
-			vim.g.zoxide_use_select = 1
-		end
-	},
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require('tokyonight').setup()
-			vim.cmd("colorscheme tokyonight-night")
-		end,
-	},
-	{
-		'nvim-telescope/telescope.nvim',
-		event = 'VimEnter',
-		dependencies = { 'nvim-lua/plenary.nvim' },
-		config = function()
-			require('telescope').setup({})
-			local builtin = require('telescope.builtin')
-			vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-			vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
-			vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-			vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
-		end
-	},
-	{
-		'folke/flash.nvim',
-		event = 'VeryLazy',
-		keys = {
-			{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end }
-		}
-	},
-	{
-		'neovim/nvim-lspconfig',
-		dependencies = {
-			{ 'williamboman/mason.nvim', config = true },
-			'williamboman/mason-lspconfig.nvim',
-			'WhoIsSethDaniel/mason-tool-installer.nvim',
-		},
-		config = function()
-			local servers = {
-				rust_analyzer = {},
-				jsonls = {},
-				astro = {},
-				eslint = { version = 'v4.8.0' },
-				lua_ls = {},
-        ts_ls = {}
-			}
-
-			require('mason').setup()
-
-			local ensure_installed = vim.tbl_keys(servers)
-			require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
-			require('mason-lspconfig').setup({
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						require('lspconfig')[server_name].setup(server)
-					end
-				}
-			})
-		end
-	},
+    'nanotee/zoxide.vim',
+    config = function()
+      vim.g.zoxide_use_select = 1
+    end
+  },
   {
-    'akinsho/toggleterm.nvim', version = "*", config = function()
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('tokyonight').setup()
+      vim.cmd("colorscheme tokyonight-night")
+    end,
+  },
+  {
+    'nvim-telescope/telescope.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('telescope').setup({})
+      local builtin = require('telescope.builtin')
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+      vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
+      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+      vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
+    end
+  },
+  {
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end }
+    }
+  },
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      { 'williamboman/mason.nvim', config = true },
+      'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+    },
+    config = function()
+      local servers = {
+        rust_analyzer = {},
+        jsonls = {},
+        astro = {},
+        eslint = { version = 'v4.8.0' },
+        lua_ls = {},
+        ts_ls = {}
+      }
+
+      require('mason').setup()
+
+      local ensure_installed = vim.tbl_keys(servers)
+      require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
+      require('mason-lspconfig').setup({
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            require('lspconfig')[server_name].setup(server)
+          end
+        }
+      })
+    end
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    config = function()
       require('toggleterm').setup {
         size = 20,
         open_mapping = [[<c-`>]]
@@ -169,10 +171,12 @@ require("lazy").setup({
       })
     end
   },
-  {'windwp/nvim-autopairs',
-  event = 'InsertEnter',
-  config = true,
-}
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true,
+  },
+  { 'echasnovski/mini.statusline', version = false, config = true },
 })
 
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
