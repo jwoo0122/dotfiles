@@ -100,7 +100,8 @@ require("lazy").setup({
 				jsonls = {},
 				astro = {},
 				eslint = { version = 'v4.8.0' },
-				lua_ls = {}
+				lua_ls = {},
+        ts_ls = {}
 			}
 
 			require('mason').setup()
@@ -134,3 +135,7 @@ require("lazy").setup({
     },
   }
 })
+
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+vim.keymap.set('n', 'fr', vim.lsp.buf.references)
+vim.keymap.set('n', 'rn', vim.lsp.buf.rename)
