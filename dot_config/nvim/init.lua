@@ -16,6 +16,16 @@ vim.opt.listchars:append {
   space = "·"
 }
 
+-- Diagnostic
+vim.keymap.set('n', 'ge', vim.diagnostic.open_float)
+vim.diagnostic.config({
+  float = {
+    source = true,
+    border = 'single',
+  }
+})
+
+-- Keymap
 vim.g.mapleader = " "
 
 vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'CmdlineLeave', 'WinEnter' }, {
@@ -82,8 +92,8 @@ require("lazy").setup({
     'folke/flash.nvim',
     event = 'VeryLazy',
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end }
-    }
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end },
+    },
   },
   {
     'neovim/nvim-lspconfig',
@@ -191,7 +201,7 @@ require("lazy").setup({
         auto_install = true,
         highlight = {
           enable = true
-        }
+        },
       })
     end
   }
