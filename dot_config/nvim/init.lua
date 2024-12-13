@@ -210,4 +210,10 @@ require("lazy").setup({
   },
   { 'echasnovski/mini.statusline', version = false, config = true },
   { 'nvim-tree/nvim-web-devicons', config = true },
+  {
+    'nanotee/zoxide.vim',
+    config = function()
+      vim.g.zoxide_use_select = 1
+    end
+  }
 })
