@@ -97,7 +97,7 @@ require("lazy").setup({
         rust_analyzer = {},
         jsonls = {},
         astro = {},
-        eslint = { version = 'v4.8.0' },
+        eslint = {},
         lua_ls = {},
         ts_ls = {}
       }
@@ -114,6 +114,11 @@ require("lazy").setup({
           end
         }
       })
+
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+      vim.keymap.set('n', 'fr', vim.lsp.buf.references)
+      vim.keymap.set('n', 'rn', vim.lsp.buf.rename)
+      vim.keymap.set('n', 'fm', vim.lsp.buf.format)
     end
   },
   {
@@ -177,9 +182,17 @@ require("lazy").setup({
     config = true,
   },
   { 'echasnovski/mini.statusline', version = false, config = true },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('nvim-treesitter.configs').setup({
+        ensure_installed = { "javascript", "astro", "typescript", "dockerfile", "bash", "go", "json", "lua", "yaml" },
+        sync_install = true,
+        auto_install = true,
+        highlight = {
+          enable = true
+        }
+      })
+    end
+  }
 })
-
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
-vim.keymap.set('n', 'fr', vim.lsp.buf.references)
-vim.keymap.set('n', 'rn', vim.lsp.buf.rename)
-vim.keymap.set('n', 'fm', vim.lsp.buf.format)
