@@ -111,7 +111,8 @@ require("lazy").setup({
         astro = {},
         eslint = {},
         lua_ls = {},
-        ts_ls = {}
+        ts_ls = {},
+        yamlls = {},
       }
 
       require('mason').setup()
