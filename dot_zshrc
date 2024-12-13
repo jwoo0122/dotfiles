@@ -66,11 +66,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # zsh-syntax-highlighting
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-alias "nvimrc"="nvim ~/.config/nvim/init.lua"
-
 alias "ls"="eza"
 alias "l"="eza -l --classify=auto --group-directories-first"
 alias "python"="python3"
-alias "gcurrent"="git branch --show-current"
 
-export NODE_EXTRA_CA_CERTS="/Users/Shared/allCAbundle.pem"

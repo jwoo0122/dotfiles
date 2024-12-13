@@ -1,5 +1,6 @@
 vim.wo.number = true
 vim.wo.relativenumber = true
+vim.o.signcolumn = 'no'
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -60,12 +61,6 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  {
-    'nanotee/zoxide.vim',
-    config = function()
-      vim.g.zoxide_use_select = 1
-    end
-  },
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -136,7 +131,8 @@ require("lazy").setup({
     version = "*",
     config = function()
       require('toggleterm').setup {
-        size = 20,
+        size = 30,
+        direction = "float",
         open_mapping = [[<c-`>]]
       }
     end
@@ -191,7 +187,6 @@ require("lazy").setup({
     event = 'InsertEnter',
     config = true,
   },
-  { 'echasnovski/mini.statusline', version = false, config = true },
   {
     'nvim-treesitter/nvim-treesitter',
     config = function()
@@ -204,5 +199,6 @@ require("lazy").setup({
         },
       })
     end
-  }
+  },
+  { 'echasnovski/mini.statusline', version = false, config = true },
 })
