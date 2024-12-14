@@ -62,13 +62,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
+    'rebelot/kanagawa.nvim',
     config = function()
-      require('tokyonight').setup()
-      vim.cmd("colorscheme tokyonight-night")
-    end,
+      vim.cmd("colorscheme kanagawa")
+    end
   },
   {
     'nvim-telescope/telescope.nvim',
@@ -209,12 +206,25 @@ require("lazy").setup({
       })
     end
   },
-  { 'echasnovski/mini.statusline', version = false, config = true },
+  {
+    'echasnovski/mini.indentscope',
+    version = false,
+    config = function()
+      local indentscope = require('mini.indentscope')
+      indentscope.setup({
+        draw = {
+          animation = function() return 0 end,
+        },
+        symbol = '│'
+      })
+    end
+  },
+  { 'nvim-lualine/lualine.nvim',   config = true },
   { 'nvim-tree/nvim-web-devicons', config = true },
   {
     'nanotee/zoxide.vim',
     config = function()
       vim.g.zoxide_use_select = 1
     end
-  }
+  },
 })
