@@ -220,7 +220,7 @@ require("lazy").setup({
       })
     end
   },
-  { 'nvim-lualine/lualine.nvim',   config = true },
+  { 'nvim-lualine/lualine.nvim', config = true },
   {
     'nanotee/zoxide.vim',
     config = function()
@@ -277,5 +277,9 @@ require("lazy").setup({
         end
       })
     end
-  }
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    config = true,
+  },
 })
