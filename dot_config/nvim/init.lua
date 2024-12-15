@@ -1,6 +1,6 @@
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.o.signcolumn = 'no'
+vim.o.signcolumn = 'yes'
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -111,6 +111,7 @@ require("lazy").setup({
         lua_ls = {},
         ts_ls = {},
         yamlls = {},
+        tailwindcss = {},
       }
 
       require('mason').setup()
@@ -227,4 +228,55 @@ require("lazy").setup({
       vim.g.zoxide_use_select = 1
     end
   },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    opts = {},
+    event = "VeryLazy",
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require('gitsigns').setup({
+        current_line_blame = true,
+        auto_attach = true,
+        max_file_length = 40000,
+        signcolumn = true,
+
+        on_attach = function(bufnr)
+          local gitsigns = require('gitsigns')
+          local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
+          end
+
+          map('n', ']c', function()
+            if vim.wo.diff then
+              vim.cmd.normal({ ']c', bang = true })
+            else
+              gitsigns.nav_hunk('next')
+            end
+          end)
+
+          map('n', '[c', function()
+            if vim.wo.diff then
+              vim.cmd.normal({ '[c', bang = true })
+            else
+              gitsigns.nav_hunk('prev')
+            end
+          end)
+
+          map('n', '<leader>hd', gitsigns.diffthis)
+          map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
+          map('n', '<leader>hp', gitsigns.preview_hunk)
+          map('n', '<leader>hs', gitsigns.stage_hunk)
+          map('n', '<leader>hS', gitsigns.stage_buffer)
+          map('n', '<leader>hr', gitsigns.reset_hunk)
+          map('n', '<leader>hR', gitsigns.reset_buffer)
+        end
+      })
+    end
+  }
 })
