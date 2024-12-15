@@ -221,7 +221,6 @@ require("lazy").setup({
     end
   },
   { 'nvim-lualine/lualine.nvim',   config = true },
-  { 'nvim-tree/nvim-web-devicons', config = true },
   {
     'nanotee/zoxide.vim',
     config = function()
