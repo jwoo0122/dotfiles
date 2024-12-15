@@ -1,34 +1,14 @@
 # git branch show
 autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-
-PROMPT='
-%~ %F{green}${vcs_info_msg_0_}%f
-%F{magenta}$%f '
-
-zstyle ':vcs_info:git:*' formats '%b'
-zstyle ':vcs_info:git*+set-message:*' hooks git-st
-function +vi-git-st() {
-    local ahead behind
-    local -a gitstatus
-
-    # Exit early in case the worktree is on a detached HEAD
-    git rev-parse ${hook_com[branch]}@{upstream} >/dev/null 2>&1 || return 0
-
-    local -a ahead_and_behind=(
-        $(git rev-list --left-right --count HEAD...${hook_com[branch]}@{upstream} 2>/dev/null)
-    )
-
-    ahead=${ahead_and_behind[1]}
-    behind=${ahead_and_behind[2]}
-
-    (( $ahead )) && gitstatus+=( "+${ahead}" )
-    (( $behind )) && gitstatus+=( "-${behind}" )
-
-    hook_com[misc]+=${(j:/:)gitstatus}
+autoload -U colors && colors
+zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:git*' formats "%{$fg[blue]%}%b%{$reset_color%}"
+precmd () {
+  vcs_info
 }
+setopt prompt_subst
+PROMPT='%~ ${vcs_info_msg_0_}
+%F{magenta}>%f '
 
 # zoxide
 eval "$(zoxide init zsh)"
