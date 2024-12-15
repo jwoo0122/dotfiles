@@ -232,7 +232,7 @@ require("lazy").setup({
     name = "tailwind-tools",
     build = ":UpdateRemotePlugins",
     opts = {},
-    event = "VeryLazy",
+    event = "UIEnter",
   },
   {
     "lewis6991/gitsigns.nvim",
