@@ -7,6 +7,7 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.bo.softtabstop = 2
 vim.opt.list = true
+vim.opt.cursorline = true
 
 vim.opt.listchars:append {
   tab = "|-",
@@ -29,28 +30,6 @@ vim.diagnostic.config({
 -- Keymap
 vim.g.mapleader = " "
 
-vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'CmdlineLeave', 'WinEnter' }, {
-  pattern = '*',
-  group = augroup,
-  callback = function()
-    vim.opt.cursorline = true
-    if vim.o.nu and vim.api.nvim_get_mode().mode ~= 'i' then
-      vim.opt.relativenumber = true
-    end
-  end,
-})
-vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'CmdlineEnter', 'WinLeave' }, {
-  pattern = '*',
-  group = augroup,
-  callback = function()
-    vim.opt.cursorline = false
-    if vim.o.nu then
-      vim.opt.relativenumber = false
-      vim.cmd 'redraw'
-    end
-  end,
-})
-
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -62,28 +41,35 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    'rebelot/kanagawa.nvim',
+    "projekt0n/github-nvim-theme",
     config = function()
-      vim.cmd("colorscheme kanagawa")
+      require('github-theme').setup()
+      vim.cmd('colorscheme github_dark_dimmed')
     end
   },
   {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+      'jvgrootveld/telescope-zoxide'},
     config = function()
-      require('telescope').setup({
+      local telescope = require('telescope')
+      telescope.setup({
         pickers = {
           find_files = {
             hidden = true
           }
         }
       })
+      telescope.load_extension('zoxide');
+
       local builtin = require('telescope.builtin')
       vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
       vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+      vim.keymap.set('n', '<leader>cd', telescope.extensions.zoxide.list, {})
       vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
     end
   },
@@ -110,8 +96,8 @@ require("lazy").setup({
         eslint = {},
         lua_ls = {},
         ts_ls = {},
-        yamlls = {},
-        tailwindcss = {},
+        -- yamlls = {},
+        -- tailwindcss = {},
       }
 
       require('mason').setup()
@@ -222,12 +208,6 @@ require("lazy").setup({
   },
   { 'nvim-lualine/lualine.nvim', config = true },
   {
-    'nanotee/zoxide.vim',
-    config = function()
-      vim.g.zoxide_use_select = 1
-    end
-  },
-  {
     "luckasRanarison/tailwind-tools.nvim",
     name = "tailwind-tools",
     build = ":UpdateRemotePlugins",
@@ -235,51 +215,11 @@ require("lazy").setup({
     event = "UIEnter",
   },
   {
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require('gitsigns').setup({
-        current_line_blame = true,
-        auto_attach = true,
-        max_file_length = 40000,
-        signcolumn = true,
-
-        on_attach = function(bufnr)
-          local gitsigns = require('gitsigns')
-          local function map(mode, l, r, opts)
-            opts = opts or {}
-            opts.buffer = bufnr
-            vim.keymap.set(mode, l, r, opts)
-          end
-
-          map('n', ']c', function()
-            if vim.wo.diff then
-              vim.cmd.normal({ ']c', bang = true })
-            else
-              gitsigns.nav_hunk('next')
-            end
-          end)
-
-          map('n', '[c', function()
-            if vim.wo.diff then
-              vim.cmd.normal({ '[c', bang = true })
-            else
-              gitsigns.nav_hunk('prev')
-            end
-          end)
-
-          map('n', '<leader>hd', gitsigns.diffthis)
-          map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
-          map('n', '<leader>hp', gitsigns.preview_hunk)
-          map('n', '<leader>hs', gitsigns.stage_hunk)
-          map('n', '<leader>hS', gitsigns.stage_buffer)
-          map('n', '<leader>hr', gitsigns.reset_hunk)
-          map('n', '<leader>hR', gitsigns.reset_buffer)
-        end
-      })
-    end
-  },
-  {
     "windwp/nvim-ts-autotag",
     config = true,
   },
+  {
+    'nvim-tree/nvim-web-devicons',
+    config = true
+  }
 })
