@@ -1,3 +1,7 @@
+-- Neovide setting
+vim.o.guifont = "Hack Nerd Font:h13"
+
+
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.o.signcolumn = 'yes'
@@ -40,7 +44,15 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { dir = '~/oss/minimalism.nvim' },
+  {
+    "sainnhe/sonokai",
+    config = function()
+      vim.g.sonokai_enable_italic = true
+      vim.g.sonokai_style = 'shusia'
+      vim.cmd.colorscheme('sonokai')
+    end,
+    priority = 1000
+  },
   -- {
   --   "projekt0n/github-nvim-theme",
   --   config = function()
@@ -52,8 +64,8 @@ require("lazy").setup({
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     dependencies = {
-        'nvim-lua/plenary.nvim',
-      'jvgrootveld/telescope-zoxide'},
+      'nvim-lua/plenary.nvim',
+      'jvgrootveld/telescope-zoxide' },
     config = function()
       local telescope = require('telescope')
       telescope.setup({
@@ -207,7 +219,18 @@ require("lazy").setup({
       })
     end
   },
-  { 'nvim-lualine/lualine.nvim', config = true },
+  {
+    'nvim-lualine/lualine.nvim',
+    config = function()
+      require('lualine').setup({
+        options = {
+          theme = 'sonokai',
+          component_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
+        }
+      })
+    end
+  },
   {
     "luckasRanarison/tailwind-tools.nvim",
     name = "tailwind-tools",
