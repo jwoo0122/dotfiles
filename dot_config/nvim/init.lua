@@ -40,13 +40,14 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  {
-    "projekt0n/github-nvim-theme",
-    config = function()
-      require('github-theme').setup()
-      vim.cmd('colorscheme github_dark_dimmed')
-    end
-  },
+  { dir = '~/oss/minimalism.nvim' },
+  -- {
+  --   "projekt0n/github-nvim-theme",
+  --   config = function()
+  --     require('github-theme').setup()
+  --     vim.cmd('colorscheme github_dark_default')
+  --   end
+  -- },
   {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
