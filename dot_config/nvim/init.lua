@@ -53,22 +53,28 @@ require("lazy").setup({
     end,
     priority = 1000
   },
-  -- {
-  --   "projekt0n/github-nvim-theme",
-  --   config = function()
-  --     require('github-theme').setup()
-  --     vim.cmd('colorscheme github_dark_default')
-  --   end
-  -- },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'jvgrootveld/telescope-zoxide' },
+      'jvgrootveld/telescope-zoxide',
+    },
     config = function()
       local telescope = require('telescope')
       telescope.setup({
+        defaults = {
+          layout_strategy = 'vertical',
+        },
+        extensions = {
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",
+          }
+        },
         pickers = {
           find_files = {
             hidden = true
@@ -77,8 +83,25 @@ require("lazy").setup({
       })
       telescope.load_extension('zoxide');
 
+      function project_files()
+        local is_inside_work_tree = {}
+        local opts = {} -- define here if you want to define something
+
+        local cwd = vim.fn.getcwd()
+        if is_inside_work_tree[cwd] == nil then
+          vim.fn.system("git rev-parse --is-inside-work-tree")
+          is_inside_work_tree[cwd] = vim.v.shell_error == 0
+        end
+
+        if is_inside_work_tree[cwd] then
+          require("telescope.builtin").git_files(opts)
+        else
+          require("telescope.builtin").find_files(opts)
+        end
+      end
+
       local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+      vim.keymap.set('n', '<leader>ff', project_files, {})
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
       vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
@@ -133,23 +156,12 @@ require("lazy").setup({
     end
   },
   {
-    'akinsho/toggleterm.nvim',
-    version = "*",
-    config = function()
-      require('toggleterm').setup {
-        size = 30,
-        direction = "float",
-        open_mapping = [[<c-`>]]
-      }
-    end
-  },
-  {
     'stevearc/oil.nvim',
     opts = {
       view_options = {
         show_hidden = true
-      }
-    },
+      },
+    }
   },
   {
     'hrsh7th/nvim-cmp',
