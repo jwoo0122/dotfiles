@@ -22,10 +22,10 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["x"], open_app("xcode"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["m"], open_app("sunsama"))
 
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["o"], function()
-	local clicked, query = hs.dialog.textPrompt("Google Search", "", "", "Search", "Cancel")
+	local clicked, query = hs.dialog.textPrompt("Search on web", "", "", "Search", "Cancel")
 	if clicked == "Cancel" then
 		return
 	end
 	local query_encoded = hs.http.encodeForQuery(query)
-	hs.execute("open " .. "https://google.com/search?q=" .. query_encoded)
+	hs.execute("open " .. "https://duckduckgo.com/?q=" .. query_encoded)
 end)
