@@ -22,6 +22,9 @@ vim.opt.listchars:append {
   space = "·"
 }
 
+-- Terminal
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
+
 -- Diagnostic
 vim.keymap.set('n', 'ge', vim.diagnostic.open_float)
 vim.diagnostic.config({
@@ -30,6 +33,13 @@ vim.diagnostic.config({
     border = 'single',
   }
 })
+
+
+-- Window
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>')
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>')
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
 
 -- Keymap
 vim.g.mapleader = " "
