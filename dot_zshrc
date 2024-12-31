@@ -8,7 +8,7 @@ precmd () {
 }
 setopt prompt_subst
 PROMPT='%~ ${vcs_info_msg_0_}
-%F{blue}[%(1j.%j.)]%f %F{magenta}$%f '
+%F{magenta}>%f '
 
 # zoxide
 eval "$(zoxide init zsh)"

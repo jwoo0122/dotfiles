@@ -19,7 +19,7 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["l"], open_app("Linear"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["c"], open_app("Google Chrome"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["n"], open_app("Notion"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["x"], open_app("xcode"))
-hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["m"], open_app("sunsama"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["m"], open_app("Mail"))
 
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["o"], function()
 	local clicked, query = hs.dialog.textPrompt("Search on web", "", "", "Search", "Cancel")
