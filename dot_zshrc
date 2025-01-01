@@ -10,6 +10,9 @@ setopt prompt_subst
 PROMPT='%~ ${vcs_info_msg_0_}
 %F{magenta}>%f '
 
+# editor setting
+EDITOR="nvim"
+
 # zoxide
 eval "$(zoxide init zsh)"
 

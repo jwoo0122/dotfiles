@@ -1,6 +1,7 @@
 -- Neovide setting
 vim.o.guifont = "Hack Nerd Font:h13"
 
+vim.o.scrolloff = 999
 
 vim.wo.number = true
 vim.wo.relativenumber = true
@@ -70,14 +71,22 @@ require("lazy").setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
       'jvgrootveld/telescope-zoxide',
+      "nvim-telescope/telescope-file-browser.nvim",
     },
     config = function()
       local telescope = require('telescope')
       telescope.setup({
         defaults = {
-          layout_strategy = 'vertical',
+          layout_strategy = 'horizontal',
         },
         extensions = {
+          file_browser = {
+            hidden = {
+              file_browser = true,
+              folder_browser = true,
+              follow_symlinks = true,
+            }
+          },
           fzf = {
             fuzzy = true,
             override_generic_sorter = true, -- override the generic sorter
@@ -92,6 +101,7 @@ require("lazy").setup({
         }
       })
       telescope.load_extension('zoxide');
+      telescope.load_extension('file_browser');
 
       function project_files()
         local is_inside_work_tree = {}
@@ -116,6 +126,7 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
       vim.keymap.set('n', '<leader>cd', telescope.extensions.zoxide.list, {})
+      vim.keymap.set('n', '<leader>fe', telescope.extensions.file_browser.file_browser, {});
       vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
     end
   },
@@ -164,14 +175,6 @@ require("lazy").setup({
       vim.keymap.set('n', 'rn', vim.lsp.buf.rename)
       vim.keymap.set('n', 'fm', vim.lsp.buf.format)
     end
-  },
-  {
-    'stevearc/oil.nvim',
-    opts = {
-      view_options = {
-        show_hidden = true
-      },
-    }
   },
   {
     'hrsh7th/nvim-cmp',
@@ -267,5 +270,5 @@ require("lazy").setup({
   {
     'nvim-tree/nvim-web-devicons',
     config = true
-  }
+  },
 })
