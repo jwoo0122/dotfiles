@@ -56,11 +56,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "sainnhe/sonokai",
+    "nyoom-engineering/oxocarbon.nvim",
     config = function()
-      vim.g.sonokai_enable_italic = true
-      vim.g.sonokai_style = 'shusia'
-      vim.cmd.colorscheme('sonokai')
+      vim.cmd.colorscheme('oxocarbon')
     end,
     priority = 1000
   },
