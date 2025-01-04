@@ -1,6 +1,3 @@
--- Neovide setting
-vim.o.guifont = "Hack Nerd Font:h13"
-
 vim.o.scrolloff = 999
 
 vim.wo.number = true
@@ -23,8 +20,17 @@ vim.opt.listchars:append {
   space = "·"
 }
 
+-- Filetype
+vim.filetype.add({
+  extension = {
+    mdx = 'markdown.mdx',
+    md = 'markdown',
+  }
+})
+
 -- Terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
+vim.keymap.set('n', 'mm', function() vim.cmd('sp +term') end, {})
 
 -- Diagnostic
 vim.keymap.set('n', 'ge', vim.diagnostic.open_float)
@@ -45,13 +51,14 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
 -- Keymap
 vim.g.mapleader = " "
 
--- [[ Install `lazy.nvim` plugin manager ]]
---    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+-- Plugins
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+
 if not vim.loop.fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
   vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
 end ---@diagnostic disable-next-line: undefined-field
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
@@ -69,7 +76,6 @@ require("lazy").setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
       'jvgrootveld/telescope-zoxide',
-      "nvim-telescope/telescope-file-browser.nvim",
     },
     config = function()
       local telescope = require('telescope')
@@ -78,13 +84,6 @@ require("lazy").setup({
           layout_strategy = 'horizontal',
         },
         extensions = {
-          file_browser = {
-            hidden = {
-              file_browser = true,
-              folder_browser = true,
-              follow_symlinks = true,
-            }
-          },
           fzf = {
             fuzzy = true,
             override_generic_sorter = true, -- override the generic sorter
@@ -99,7 +98,6 @@ require("lazy").setup({
         }
       })
       telescope.load_extension('zoxide');
-      telescope.load_extension('file_browser');
 
       function project_files()
         local is_inside_work_tree = {}
@@ -124,7 +122,6 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
       vim.keymap.set('n', '<leader>cd', telescope.extensions.zoxide.list, {})
-      vim.keymap.set('n', '<leader>fe', telescope.extensions.file_browser.file_browser, {});
       vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
     end
   },
@@ -151,8 +148,9 @@ require("lazy").setup({
         eslint = {},
         lua_ls = {},
         ts_ls = {},
-        -- yamlls = {},
-        -- tailwindcss = {},
+        marksman = {},
+        tailwindcss = {},
+        yamlls = {},
       }
 
       require('mason').setup()
@@ -235,9 +233,6 @@ require("lazy").setup({
     config = function()
       local indentscope = require('mini.indentscope')
       indentscope.setup({
-        draw = {
-          animation = function() return 0 end,
-        },
         symbol = '│'
       })
     end
@@ -269,4 +264,8 @@ require("lazy").setup({
     'nvim-tree/nvim-web-devicons',
     config = true
   },
+  {
+    'stevearc/oil.nvim',
+    opts = {}
+  }
 })
