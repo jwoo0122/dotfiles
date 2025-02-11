@@ -51,5 +51,8 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 alias "ls"="eza"
 alias "l"="eza -l --classify=auto --group-directories-first"
+
 alias "python"="python3"
-alias "nv"="nvim"
+alias "gitbranch"="git branch --show-current"
+alias "y"="yarn"
+alias "pn"="pnpm"
