@@ -56,3 +56,6 @@ alias "python"="python3"
 alias "gitbranch"="git branch --show-current"
 alias "y"="yarn"
 alias "pn"="pnpm"
+alias "nv"="nvim"
+
+eval $(opam env)
