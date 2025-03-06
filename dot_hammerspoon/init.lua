@@ -9,7 +9,7 @@ local function open_app(name)
 end
 
 --- quick open applications
-hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["t"], open_app("Ghostty"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["h"], open_app("Ghostty"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["v"], open_app("Cursor"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["w"], open_app("Safari"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["s"], open_app("Slack"))
