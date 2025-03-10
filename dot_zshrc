@@ -62,3 +62,4 @@ eval $(opam env)
 
 alias "cs348"="ssh student@172.10.9.152"
 alias "colortest"="~/.config/colortest"
+alias "pip"="pip3"
