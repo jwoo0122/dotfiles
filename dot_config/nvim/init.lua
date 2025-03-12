@@ -151,9 +151,13 @@ require("lazy").setup({
         astro = {},
         eslint = {},
         lua_ls = {
-          diagnostics = {
-            globals = {
-              'vim'
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = {
+                  'vim'
+                }
+              }
             }
           }
         },
