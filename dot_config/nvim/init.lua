@@ -117,9 +117,12 @@ require("lazy").setup({
     }
   },
   {
-    "nyoom-engineering/oxocarbon.nvim",
+    "projekt0n/github-nvim-theme",
+    name = 'github-theme',
+    lazy = false,
     config = function()
-      vim.cmd.colorscheme('oxocarbon')
+      require('github-theme').setup {}
+      vim.cmd.colorscheme('github_dark')
     end,
     priority = 1000
   },
