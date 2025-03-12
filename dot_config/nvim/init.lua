@@ -172,6 +172,7 @@ require("lazy").setup({
 
       local builtin = require('telescope.builtin')
       local neogit = require('neogit')
+      local toggleterm = require('toggleterm')
       vim.keymap.set('n', '<leader>ff', project_files, {})
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
       vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
@@ -181,6 +182,9 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>gg', function()
         neogit.open({ kind = "auto" })
       end, {})
+      vim.keymap.set('n', '<leader>tm', function()
+        toggleterm.open()
+      end)
     end
   },
   {
@@ -337,6 +341,8 @@ require("lazy").setup({
     opts = {}
   },
   {
-    'akinsho/toggleterm.nvim', version = "*", config = true
+    'akinsho/toggleterm.nvim', version = "*", config = function()
+      require('toggleterm').setup {}
+    end
   }
 })
