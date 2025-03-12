@@ -38,8 +38,8 @@ add-zsh-hook precmd _vbe_vcs_precmd
 
 # add-zsh-hook precmd vcs_info
 PROMPT='
-%F{gray}%n@%m%f %F{red}%?%f %~ ${vcs_info_msg_0_}
-%F{yello}[%D %*]%f %F{magenta}$ %f'
+%F{gray}%n@%m%f %F{red}%?%f %~ $%F{yello}[%D %*]%f {vcs_info_msg_0_}
+%F{magenta}$ %f'
 TMOUT=1
 TRAPALRM () {
   zle reset-prompt
