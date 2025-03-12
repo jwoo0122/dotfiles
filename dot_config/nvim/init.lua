@@ -1,4 +1,4 @@
-require "./anysphere-dark"
+require "anysphere-dark"
 
 vim.o.scrolloff = 999
 
