@@ -186,7 +186,7 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>gg', function()
         neogit.open({ kind = "auto" })
       end, {})
-      vim.keymap.set({'n', 'x'}, '<C-`>', function()
+      vim.keymap.set({'n', 't'}, '<C-`>', function()
         integratedTerm:toggle()
       end)
     end
