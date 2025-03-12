@@ -172,8 +172,7 @@ require("lazy").setup({
 
       local builtin = require('telescope.builtin')
       local neogit = require('neogit')
-      local toggleterm = require('toggleterm')
-      local integratedTerm = toggleterm.Terminal:new({
+      local integratedTerm = require('toggleterm.terminal').Terminal:new({
         direction = 'horizontal',
         dir = 'git_dir',
         hidden = true,
