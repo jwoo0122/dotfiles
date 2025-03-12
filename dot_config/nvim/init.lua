@@ -122,7 +122,9 @@ require("lazy").setup({
     lazy = false,
     config = function()
       require('github-theme').setup {
-        transparent = true
+        options = {
+          transparent = true
+        }
       }
       vim.cmd.colorscheme('github_dark_default')
     end,
