@@ -9,7 +9,6 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.bo.softtabstop = 2
 vim.opt.list = true
-vim.opt.cursorline = true
 
 vim.opt.listchars:append {
   tab = "|-",
