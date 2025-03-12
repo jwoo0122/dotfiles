@@ -121,7 +121,9 @@ require("lazy").setup({
     name = 'github-theme',
     lazy = false,
     config = function()
-      require('github-theme').setup {}
+      require('github-theme').setup {
+        transparent = true
+      }
       vim.cmd.colorscheme('github_dark_default')
     end,
     priority = 1000
