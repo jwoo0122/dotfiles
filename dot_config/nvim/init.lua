@@ -171,12 +171,14 @@ require("lazy").setup({
       end
 
       local builtin = require('telescope.builtin')
+      local neogit = require('neogit')
       vim.keymap.set('n', '<leader>ff', project_files, {})
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
       vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
       vim.keymap.set('n', '<leader>cd', telescope.extensions.zoxide.list, {})
       vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
+      vim.keymap.set('n', '<leader>gg', neogit.open, {})
     end
   },
   {
