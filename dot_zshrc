@@ -38,7 +38,7 @@ add-zsh-hook precmd _vbe_vcs_precmd
 
 # add-zsh-hook precmd vcs_info
 PROMPT='
-%F{black}%n@%m%f %(?.."%F{red}%?%f ") %~ %F{cyan}%*%f ${vcs_info_msg_0_}
+%F{black}%n@%m%f %(?..%F{red}%?%f )%~ %F{cyan}%*%f ${vcs_info_msg_0_}
 %F{magenta}$ %f'
 TMOUT=1
 TRAPALRM () {
