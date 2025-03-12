@@ -1,3 +1,5 @@
+require "./anysphere-dark"
+
 vim.o.scrolloff = 999
 
 vim.wo.number = true
@@ -116,13 +118,13 @@ require("lazy").setup({
       -- },
     }
   },
-  {
-    "nyoom-engineering/oxocarbon.nvim",
-    config = function()
-      vim.cmd.colorscheme('oxocarbon')
-    end,
-    priority = 1000
-  },
+  -- {
+  --   "nyoom-engineering/oxocarbon.nvim",
+  --   config = function()
+  --     vim.cmd.colorscheme('oxocarbon')
+  --   end,
+  --   priority = 1000
+  -- },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   {
     'nvim-telescope/telescope.nvim',
