@@ -89,9 +89,6 @@ alias "l"="eza -l --classify=auto --group-directories-first"
 
 alias "python"="python3"
 alias "gitbranch"="git branch --show-current"
-alias "y"="yarn"
-alias "pn"="pnpm"
-alias "nv"="nvim"
 
 alias "cs348"="ssh student@172.10.9.152"
 alias "colortest"="~/.config/colortest"
