@@ -63,6 +63,15 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "sindrets/diffview.nvim"
+    },
+    config = function()
+      require('neogit').setup {}
+    end
+  },
+  {
     "yetone/avante.nvim",
     event = "VeryLazy",
     version = "*",
@@ -79,7 +88,6 @@ require("lazy").setup({
     build = 'make',
     dependencies = {
       "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       -- {
       --   -- support for image pasting
