@@ -150,7 +150,13 @@ require("lazy").setup({
         jsonls = {},
         astro = {},
         eslint = {},
-        lua_ls = {},
+        lua_ls = {
+          diagnostics = {
+            globals = {
+              'vim'
+            }
+          }
+        },
         ts_ls = {},
         marksman = {},
         tailwindcss = {},
