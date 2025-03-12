@@ -335,5 +335,8 @@ require("lazy").setup({
   {
     'stevearc/oil.nvim',
     opts = {}
+  },
+  {
+    'akinsho/toggleterm.nvim', version = "*", config = true
   }
 })
