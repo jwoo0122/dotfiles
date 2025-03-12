@@ -63,19 +63,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "olimorris/codecompanion.nvim",
-    config = function()
-      require('codecompanion').setup({
-        strategies = {
-          chat = {
-            adapter = 'anthropic'
-          },
-          inline = {
-            adapter = 'anthropic'
-          },
-        }
-      })
-    end
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    version = "*",
+    opts = {
+      provider = "claude"
+    }
   },
   {
     "nyoom-engineering/oxocarbon.nvim",
