@@ -1,14 +1,21 @@
 # git branch show
-autoload -Uz vcs_info
+autoload -Uz vcs_info add-zsh-hook
 autoload -U colors && colors
-zstyle ':vcs_info:*' enable git svn
-zstyle ':vcs_info:git*' formats "%{$fg[blue]%}%b%{$reset_color%}"
-precmd () {
-  vcs_info
-}
 setopt prompt_subst
-PROMPT='%~ ${vcs_info_msg_0_}
-%F{magenta}$%f'
+zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr ' *'
+zstyle ':vcs_info:*' stagedstr ' +'
+zstyle ':vcs_info:git*' formats "%{$fg[blue]%}%b%u%c%{$reset_color%}"
+zstyle ':vcs_info:git*' actionformats "%{$fg[blue]%}%b|%a%u%c%{$reset_color%}"
+add-zsh-hook precmd vcs_info
+PROMPT='
+%F{gray}%n@%m%f %F{red}%?%f %~ ${vcs_info_msg_0_}
+%F{yello}[%D %*]%f %F{magenta}$ %f'
+TMOUT=1
+TRAPALRM () {
+  zle reset-prompt
+}
 
 # editor setting
 EDITOR="nvim"
@@ -57,8 +64,6 @@ alias "gitbranch"="git branch --show-current"
 alias "y"="yarn"
 alias "pn"="pnpm"
 alias "nv"="nvim"
-
-eval $(opam env)
 
 alias "cs348"="ssh student@172.10.9.152"
 alias "colortest"="~/.config/colortest"
