@@ -183,10 +183,10 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
       vim.keymap.set('n', '<leader>cd', telescope.extensions.zoxide.list, {})
       vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
-      vim.keymap.set('n', '<C-`>', function()
+      vim.keymap.set('n', '<leader>gg', function()
         neogit.open({ kind = "auto" })
       end, {})
-      vim.keymap.set('n', '<leader>tm', function()
+      vim.keymap.set('n', '<C-`>', function()
         integratedTerm:toggle()
       end)
     end
