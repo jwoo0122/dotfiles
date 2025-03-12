@@ -1,7 +1,6 @@
 # git branch show
 autoload -Uz vcs_info add-zsh-hook
 autoload -U colors && colors
-autoload -Uz async && async
 
 setopt prompt_subst
 zstyle ':vcs_info:*' enable git svn
@@ -18,6 +17,7 @@ _vbe_vcs_info() {
   print ${vcs_info_msg_0_}
 }
 
+source ~/.config/async.zsh
 async_init
 async_start_worker vcs_info
 async_register_callback vcs_info _vbe_vcs_info_done
