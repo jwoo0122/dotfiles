@@ -63,6 +63,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
+    "olimorris/codecompanion.nvim",
+    config = true
+  },
+  {
     "nyoom-engineering/oxocarbon.nvim",
     config = function()
       vim.cmd.colorscheme('oxocarbon')
