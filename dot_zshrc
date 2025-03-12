@@ -8,7 +8,33 @@ zstyle ':vcs_info:*' unstagedstr ' *'
 zstyle ':vcs_info:*' stagedstr ' +'
 zstyle ':vcs_info:git*' formats "%{$fg[blue]%}%b%u%c%{$reset_color%}"
 zstyle ':vcs_info:git*' actionformats "%{$fg[blue]%}%b|%a%u%c%{$reset_color%}"
-add-zsh-hook precmd vcs_info
+
+# https://vincent.bernat.ch/en/blog/2019-zsh-async-vcs-info
+_vbe_vcs_info() {
+  cd -q $1
+  vcs_info
+  print ${vcs_info_msg_0_}
+}
+
+source $ZSH/.../async.zsh
+async_init
+async_start_worker vcs_info
+async_register_callback vcs_info _vbe_vcs_info_done
+
+_vbe_vcs_info_done() {
+  local stdout=$3
+  vcs_info_msg_0_=$stdout
+  zle reset-prompt
+}
+
+_vbe_vcs_precmd() {
+  async_flush_jobs vcs_info
+  async_job vcs_info _vbe_vcs_info $PWD
+}
+
+add-zsh-hook precmd _vbe_vcs_precmd
+
+# add-zsh-hook precmd vcs_info
 PROMPT='
 %F{gray}%n@%m%f %F{red}%?%f %~ ${vcs_info_msg_0_}
 %F{yello}[%D %*]%f %F{magenta}$ %f'
