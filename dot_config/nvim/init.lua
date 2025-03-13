@@ -298,7 +298,7 @@ require("lazy").setup({
     config = true,
   },
   {
-    'floke/flash.nvim',
+    'folke/flash.nvim',
     config = true,
   },
   {
