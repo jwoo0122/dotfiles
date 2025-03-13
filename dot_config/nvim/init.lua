@@ -244,12 +244,12 @@ require("lazy").setup({
       })
     end
   },
-  {
-    'nvim-lualine/lualine.nvim',
-    config = function()
-      require('lualine').setup({})
-    end
-  },
+  -- {
+  --   'nvim-lualine/lualine.nvim',
+  --   config = function()
+  --     require('lualine').setup({})
+  --   end
+  -- },
   {
     "luckasRanarison/tailwind-tools.nvim",
     name = "tailwind-tools",
