@@ -141,7 +141,7 @@ require("lazy").setup({
       local telescope = require('telescope')
       telescope.setup({
         defaults = {
-          layout_strategy = 'cursor',
+          layout_strategy = 'center',
         },
         extensions = {
           fzf = {
@@ -159,7 +159,7 @@ require("lazy").setup({
       })
       telescope.load_extension('zoxide');
 
-      function project_files()
+      local function project_files()
         local is_inside_work_tree = {}
         local opts = {} -- define here if you want to define something
 
