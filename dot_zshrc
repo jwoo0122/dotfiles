@@ -84,6 +84,9 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # zsh-syntax-highlighting
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Private env
+[ -f ~/.env ] && source ~/.env
+
 alias "ls"="eza"
 alias "l"="eza -l --classify=auto --group-directories-first"
 
