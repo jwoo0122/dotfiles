@@ -116,16 +116,15 @@ require("lazy").setup({
     }
   },
   {
-    "projekt0n/github-nvim-theme",
-    name = 'github-theme',
+    "folke/tokyonight.nvim",
     lazy = false,
     config = function()
-      require('github-theme').setup {
+      require('tokyonight').setup {
         options = {
           transparent = true
         }
       }
-      vim.cmd.colorscheme('github_dark_default')
+      vim.cmd.colorscheme('tokyonight')
     end,
     priority = 1000
   },
