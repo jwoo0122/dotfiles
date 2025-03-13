@@ -321,14 +321,8 @@ require("lazy").setup({
     config = function()
       require('lualine').setup {
         options = {
-          sections = {
-            lualine_a = {'mode'},
-            lualine_b = {},
-            lualine_c = {},
-            lualine_x = {'fileformat'},
-            lualine_y = {'progress'},
-            lualine_z = {'location'},
-          }
+          component_separators = { left = ' ', right = ' '},
+          section_separators = { left = ' ', right = ' '},
         }
       }
     end
