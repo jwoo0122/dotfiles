@@ -131,81 +131,6 @@ require("lazy").setup({
   },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   {
-    'nvim-telescope/telescope.nvim',
-    event = 'VimEnter',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'jvgrootveld/telescope-zoxide',
-    },
-    config = function()
-      local telescope = require('telescope')
-      telescope.setup({
-        defaults = {
-          layout_strategy = 'center',
-        },
-        extensions = {
-          fzf = {
-            fuzzy = true,
-            override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true,    -- override the file sorter
-            case_mode = "smart_case",
-          }
-        },
-        pickers = {
-          find_files = {
-            hidden = true
-          }
-        }
-      })
-      telescope.load_extension('zoxide');
-
-      local function project_files()
-        local is_inside_work_tree = {}
-        local opts = {} -- define here if you want to define something
-
-        local cwd = vim.fn.getcwd()
-        if is_inside_work_tree[cwd] == nil then
-          vim.fn.system("git rev-parse --is-inside-work-tree")
-          is_inside_work_tree[cwd] = vim.v.shell_error == 0
-        end
-
-        if is_inside_work_tree[cwd] then
-          require("telescope.builtin").git_files(opts)
-        else
-          require("telescope.builtin").find_files(opts)
-        end
-      end
-
-      local builtin = require('telescope.builtin')
-      local neogit = require('neogit')
-      local integratedTerm = require('toggleterm.terminal').Terminal:new({
-        direction = 'horizontal',
-        dir = 'git_dir',
-        hidden = true,
-      })
-      vim.keymap.set('n', '<leader>ff', project_files, {})
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-      vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
-      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>cd', telescope.extensions.zoxide.list, {})
-      vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
-      vim.keymap.set('n', '<leader>gg', function()
-        neogit.open({ kind = "auto" })
-      end, {})
-      vim.keymap.set({'n', 't'}, '<C-`>', function()
-        integratedTerm:toggle()
-      end)
-    end
-  },
-  {
-    'folke/flash.nvim',
-    event = 'VeryLazy',
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end },
-    },
-  },
-  {
     'neovim/nvim-lspconfig',
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
@@ -214,6 +139,9 @@ require("lazy").setup({
     },
     config = function()
       local servers = {
+        fsharp_language_server = {},
+        pylsp = {},
+        ocamlls = {},
         rust_analyzer = {},
         jsonls = {},
         astro = {},
@@ -300,7 +228,7 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require('nvim-treesitter.configs').setup({
-        ensure_installed = { "javascript", "astro", "typescript", "dockerfile", "bash", "go", "json", "lua", "yaml" },
+        ensure_installed = { "javascript", "astro", "typescript", "dockerfile", "bash", "go", "json", "lua", "yaml", "ocaml", "fsharp", "python" },
         sync_install = true,
         auto_install = true,
         highlight = {
@@ -354,5 +282,72 @@ require("lazy").setup({
     'akinsho/toggleterm.nvim', version = "*", config = function()
       require('toggleterm').setup {}
     end
-  }
+  },
+  {
+    'nvim-telescope/telescope.nvim',
+    event = 'VimEnter',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'jvgrootveld/telescope-zoxide',
+    },
+    config = function()
+      local telescope = require('telescope')
+      telescope.setup({
+        defaults = {
+          layout_strategy = 'center',
+        },
+        extensions = {
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",
+          }
+        },
+        pickers = {
+          find_files = {
+            hidden = true
+          }
+        }
+      })
+      telescope.load_extension('zoxide');
+
+      local function project_files()
+        local is_inside_work_tree = {}
+        local opts = {} -- define here if you want to define something
+
+        local cwd = vim.fn.getcwd()
+        if is_inside_work_tree[cwd] == nil then
+          vim.fn.system("git rev-parse --is-inside-work-tree")
+          is_inside_work_tree[cwd] = vim.v.shell_error == 0
+        end
+
+        if is_inside_work_tree[cwd] then
+          require("telescope.builtin").git_files(opts)
+        else
+          require("telescope.builtin").find_files(opts)
+        end
+      end
+
+      local builtin = require('telescope.builtin')
+      local neogit = require('neogit')
+      local integratedTerm = require('toggleterm.terminal').Terminal:new({
+        direction = 'horizontal',
+        dir = 'git_dir',
+        hidden = true,
+      })
+      vim.keymap.set('n', '<leader>ff', project_files, {})
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+      vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
+      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+      vim.keymap.set('n', '<leader>cd', telescope.extensions.zoxide.list, {})
+      vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
+      vim.keymap.set('n', '<leader>gg', function()
+        neogit.open({ kind = "auto" })
+      end, {})
+      vim.keymap.set({'n', 't'}, '<C-`>', function()
+        integratedTerm:toggle()
+      end)
+    end
+  },
 })
