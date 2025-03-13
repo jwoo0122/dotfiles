@@ -120,9 +120,7 @@ require("lazy").setup({
     lazy = false,
     config = function()
       require('tokyonight').setup {
-        options = {
-          transparent = true
-        }
+        transparent = true
       }
       vim.cmd.colorscheme('tokyonight')
     end,
