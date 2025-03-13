@@ -2,5 +2,6 @@ theme = GitHub-Dark-Default
 
 font-family = JetBrains Mono
 font-family = Apple SD Gothic Neo
+font-size = 15
 
 cursor-style = block
