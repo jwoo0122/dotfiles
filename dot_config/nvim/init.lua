@@ -140,7 +140,6 @@ require("lazy").setup({
     config = function()
       local servers = {
         pylsp = {},
-        ocamllsp = {},
         rust_analyzer = {},
         jsonls = {},
         astro = {},
@@ -278,7 +277,9 @@ require("lazy").setup({
     opts = {}
   },
   {
-    'akinsho/toggleterm.nvim', version = "*", config = function()
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    config = function()
       require('toggleterm').setup {}
     end
   },
@@ -344,7 +345,7 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>gg', function()
         neogit.open({ kind = "auto" })
       end, {})
-      vim.keymap.set({'n', 't'}, '<C-`>', function()
+      vim.keymap.set({ 'n', 't' }, '<C-`>', function()
         integratedTerm:toggle()
       end)
     end
