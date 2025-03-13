@@ -294,7 +294,7 @@ require("lazy").setup({
     end
   },
   {
-    'nvim-pack/nvim-specter',
+    'nvim-pack/nvim-spectre',
     config = true,
   },
   {
