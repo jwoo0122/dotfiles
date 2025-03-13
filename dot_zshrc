@@ -72,7 +72,7 @@ case ":$PATH:" in
 esac
 
 # theme for bat
-export BAT_THEME="Monokai Extended"
+export BAT_THEME="TwoDark"
 
 # deno
 export DENO_INSTALL="$HOME/.deno"
