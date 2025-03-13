@@ -32,7 +32,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
 vim.keymap.set('n', 'mm', function() vim.cmd('sp +term') end, {})
 
 -- Diagnostic
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', 'ge', vim.diagnostic.open_float)
 vim.diagnostic.config({
   float = {
     source = true,
