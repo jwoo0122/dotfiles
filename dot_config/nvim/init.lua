@@ -351,11 +351,11 @@ require("lazy").setup({
         dir = 'git_dir',
         hidden = true,
       })
-      vim.keymap.set('n', '<leader>ff', project_files, {})
-      vim.keymap.set('n', '<leader>fg', spectre.toggle, {})
+      vim.keymap.set('n', '<leader>p', project_files, {})
+      vim.keymap.set('n', '<leader>ss', spectre.toggle, {})
       vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
-      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>cd', telescope.extensions.zoxide.list, {})
+      vim.keymap.set('n', '<leader>b', builtin.buffers, {})
+      vim.keymap.set('n', '<leader>z', telescope.extensions.zoxide.list, {})
       vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
       vim.keymap.set('n', '<leader>gg', function()
         neogit.open({ kind = "auto" })
