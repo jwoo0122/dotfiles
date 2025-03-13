@@ -140,7 +140,7 @@ require("lazy").setup({
     config = function()
       local servers = {
         pylsp = {},
-        ocamlls = {},
+        ocamllsp = {},
         rust_analyzer = {},
         jsonls = {},
         astro = {},
