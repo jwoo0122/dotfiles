@@ -120,14 +120,15 @@ require("lazy").setup({
     }
   },
   {
-    "catppuccin/nvim",
+    "projekt0n/github-nvim-theme",
     lazy = false,
     config = function()
-      require('catppuccin').setup {
-        flavour = "mocha",
-        transparent_background = true,
+      require('github-theme').setup {
+        options = {
+          transparent = true
+        }
       }
-      vim.cmd.colorscheme('catppuccin')
+      vim.cmd.colorscheme('github_dark')
     end,
     priority = 1000
   },
