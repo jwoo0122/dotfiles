@@ -128,7 +128,7 @@ require("lazy").setup({
           transparent = true
         }
       }
-      vim.cmd.colorscheme('github_dark')
+      vim.cmd.colorscheme('github_dark_default')
     end,
     priority = 1000
   },
