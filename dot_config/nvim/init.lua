@@ -67,7 +67,11 @@ require("lazy").setup({
       "sindrets/diffview.nvim"
     },
     config = function()
-      require('neogit').setup {}
+      local neogit = require('neogit')
+      neogit.setup {}
+      vim.keymap.set('n', '<leader>g', function()
+        neogit.open({ kind = "auto" })
+      end, {})
     end
   },
   {
@@ -278,7 +282,17 @@ require("lazy").setup({
     'akinsho/toggleterm.nvim',
     version = "*",
     config = function()
-      require('toggleterm').setup {}
+      local toggleterm = require('toggleterm')
+      toggleterm.setup {}
+
+      local integratedTerm = require('toggleterm.terminal').Terminal:new({
+        direction = 'horizontal',
+        dir = 'git_dir',
+        hidden = true,
+      })
+      vim.keymap.set({ 'n', 't' }, '<C-`>', function()
+        integratedTerm:toggle()
+      end)
     end
   },
   {
@@ -293,7 +307,11 @@ require("lazy").setup({
   },
   {
     'nvim-pack/nvim-spectre',
-    config = true,
+    config = function()
+      local spectre = require('spectre')
+      spectre.setup {}
+      vim.keymap.set('n', '<leader>s', spectre.toggle, {})
+    end,
   },
   {
     'folke/flash.nvim',
@@ -306,6 +324,15 @@ require("lazy").setup({
       { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
+  },
+  {
+    'Bekaboo/dropbar.nvim',
+    config = function()
+      local dropbar_api = require('dropbar.api')
+      vim.keymap.set('n', '<leader>;', dropbar_api.pick)
+      vim.keymap.set('n', '[;', dropbar_api.goto_context_start)
+      vim.keymap.set('n', '];', dropbar_api.select_next_context)
+    end
   },
   {
     'nvim-telescope/telescope.nvim',
@@ -354,25 +381,11 @@ require("lazy").setup({
       end
 
       local builtin = require('telescope.builtin')
-      local neogit = require('neogit')
-      local spectre = require('spectre')
-      local integratedTerm = require('toggleterm.terminal').Terminal:new({
-        direction = 'horizontal',
-        dir = 'git_dir',
-        hidden = true,
-      })
       vim.keymap.set('n', '<leader>p', project_files, {})
-      vim.keymap.set('n', '<leader>s', spectre.toggle, {})
       vim.keymap.set('n', '<leader>d', builtin.lsp_document_symbols, {})
       vim.keymap.set('n', '<leader>b', builtin.buffers, {})
       vim.keymap.set('n', '<leader>z', telescope.extensions.zoxide.list, {})
       vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
-      vim.keymap.set('n', '<leader>g', function()
-        neogit.open({ kind = "auto" })
-      end, {})
-      vim.keymap.set({ 'n', 't' }, '<C-`>', function()
-        integratedTerm:toggle()
-      end)
     end
   },
 })
