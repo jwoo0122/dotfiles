@@ -2,6 +2,6 @@ theme = catppuccin-mocha
 
 font-family = JetBrains Mono NL
 font-family = Apple SD Gothic Neo
-font-size = 16
+font-size = 15
 
 cursor-style = block
