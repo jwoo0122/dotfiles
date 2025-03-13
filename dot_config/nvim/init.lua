@@ -284,6 +284,20 @@ require("lazy").setup({
     end
   },
   {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
+  {
+    'nvim-pack/nvim-specter',
+    config = true,
+  },
+  {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     dependencies = {
@@ -331,13 +345,14 @@ require("lazy").setup({
 
       local builtin = require('telescope.builtin')
       local neogit = require('neogit')
+      local spectre = require('spectre')
       local integratedTerm = require('toggleterm.terminal').Terminal:new({
         direction = 'horizontal',
         dir = 'git_dir',
         hidden = true,
       })
       vim.keymap.set('n', '<leader>ff', project_files, {})
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+      vim.keymap.set('n', '<leader>fg', spectre.toggle, {})
       vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
       vim.keymap.set('n', '<leader>cd', telescope.extensions.zoxide.list, {})
