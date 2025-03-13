@@ -294,6 +294,7 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>s', spectre.toggle, {})
     end,
   },
+  { "nvim-tree/nvim-web-devicons", opts = {} },
   {
     'folke/flash.nvim',
     event = "VeryLazy",
