@@ -141,7 +141,7 @@ require("lazy").setup({
       local telescope = require('telescope')
       telescope.setup({
         defaults = {
-          layout_strategy = 'horizontal',
+          layout_strategy = 'cursor',
         },
         extensions = {
           fzf = {
