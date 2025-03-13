@@ -116,13 +116,14 @@ require("lazy").setup({
     }
   },
   {
-    "folke/tokyonight.nvim",
+    "catppuccin/nvim",
     lazy = false,
     config = function()
       require('tokyonight').setup {
-        transparent = true
+        flavour = "mocha",
+        transparent_background = true,
       }
-      vim.cmd.colorscheme('tokyonight')
+      vim.cmd.colorscheme('catppuccin')
     end,
     priority = 1000
   },
