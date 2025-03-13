@@ -139,7 +139,6 @@ require("lazy").setup({
     },
     config = function()
       local servers = {
-        fsharp_language_server = {},
         pylsp = {},
         ocamlls = {},
         rust_analyzer = {},
