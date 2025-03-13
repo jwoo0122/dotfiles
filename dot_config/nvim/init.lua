@@ -119,7 +119,7 @@ require("lazy").setup({
     "catppuccin/nvim",
     lazy = false,
     config = function()
-      require('tokyonight').setup {
+      require('catppuccin').setup {
         flavour = "mocha",
         transparent_background = true,
       }
