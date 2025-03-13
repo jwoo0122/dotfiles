@@ -262,10 +262,6 @@ require("lazy").setup({
     config = true,
   },
   {
-    'nvim-tree/nvim-web-devicons',
-    config = true
-  },
-  {
     'stevearc/oil.nvim',
     opts = {}
   },
