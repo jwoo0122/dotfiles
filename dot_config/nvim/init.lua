@@ -241,7 +241,7 @@ require("lazy").setup({
     config = function()
       local indentscope = require('mini.indentscope')
       indentscope.setup({
-        symbol = '│'
+        symbol = '┆'
       })
     end
   },
