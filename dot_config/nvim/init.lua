@@ -298,6 +298,10 @@ require("lazy").setup({
     config = true,
   },
   {
+    'floke/flash.nvim',
+    config = true,
+  },
+  {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     dependencies = {
