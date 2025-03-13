@@ -352,8 +352,8 @@ require("lazy").setup({
         hidden = true,
       })
       vim.keymap.set('n', '<leader>p', project_files, {})
-      vim.keymap.set('n', '<leader>ss', spectre.toggle, {})
-      vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
+      vim.keymap.set('n', '<leader>s', spectre.toggle, {})
+      vim.keymap.set('n', '<leader>d', builtin.lsp_document_symbols, {})
       vim.keymap.set('n', '<leader>b', builtin.buffers, {})
       vim.keymap.set('n', '<leader>z', telescope.extensions.zoxide.list, {})
       vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
