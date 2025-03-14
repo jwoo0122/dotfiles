@@ -328,6 +328,12 @@ require("lazy").setup({
     end
   },
   {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup{}
+    end
+  },
+  {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     dependencies = {
