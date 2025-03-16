@@ -310,12 +310,13 @@ require("lazy").setup({
       }
     end
   },
-  -- {
-  --   'lewis6991/gitsigns.nvim',
-  --   config = function()
-  --     require('gitsigns').setup{}
-  --   end
-  -- },
+  {
+    "declancm/cinnamon.nvim",
+    version = "*", -- use latest release
+    opts = {
+      -- change default options here
+    },
+  },
   {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
