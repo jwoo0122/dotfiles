@@ -311,13 +311,8 @@ require("lazy").setup({
     end
   },
   {
-    "declancm/cinnamon.nvim",
-    version = "*", -- use latest release
-    config = function()
-      require('cinnamon').setup {
-        disabled = false,
-      }
-    end
+    "karb94/neoscroll.nvim",
+    opts = {}
   },
   {
     'nvim-telescope/telescope.nvim',
