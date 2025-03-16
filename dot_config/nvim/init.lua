@@ -20,6 +20,7 @@ vim.opt.listchars:append {
 }
 
 vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Filetype
 vim.filetype.add({
