@@ -28,8 +28,7 @@ vim.filetype.add({
 })
 
 -- Terminal
--- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
--- vim.keymap.set('n', 'mm', function() vim.cmd('sp +term') end, {})
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
 
 -- Diagnostic
 vim.keymap.set('n', 'ge', vim.diagnostic.open_float)
@@ -92,31 +91,6 @@ require("lazy").setup({
     dependencies = {
       "stevearc/dressing.nvim",
       "MunifTanjim/nui.nvim",
-      -- {
-      --   -- support for image pasting
-      --   "HakonHarnes/img-clip.nvim",
-      --   event = "VeryLazy",
-      --   opts = {
-      --     -- recommended settings
-      --     default = {
-      --       embed_image_as_base64 = false,
-      --       prompt_for_file_name = false,
-      --       drag_and_drop = {
-      --         insert_mode = true,
-      --       },
-      --       -- required for Windows users
-      --       use_absolute_path = true,
-      --     },
-      --   },
-      -- },
-      -- {
-      --   -- Make sure to set this up properly if you have lazy=true
-      --   'MeanderingProgrammer/render-markdown.nvim',
-      --   opts = {
-      --     file_types = { "markdown", "Avante" },
-      --   },
-      --   ft = { "markdown", "Avante" },
-      -- },
     }
   },
   {
@@ -327,12 +301,12 @@ require("lazy").setup({
       }
     end
   },
-  {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup{}
-    end
-  },
+  -- {
+  --   'lewis6991/gitsigns.nvim',
+  --   config = function()
+  --     require('gitsigns').setup{}
+  --   end
+  -- },
   {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
