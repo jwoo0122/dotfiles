@@ -19,6 +19,8 @@ vim.opt.listchars:append {
   space = "·"
 }
 
+vim.opt.splitright = true
+
 -- Filetype
 vim.filetype.add({
   extension = {
