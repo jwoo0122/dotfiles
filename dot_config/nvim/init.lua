@@ -28,8 +28,8 @@ vim.filetype.add({
 })
 
 -- Terminal
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
-vim.keymap.set('n', 'mm', function() vim.cmd('sp +term') end, {})
+-- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
+-- vim.keymap.set('n', 'mm', function() vim.cmd('sp +term') end, {})
 
 -- Diagnostic
 vim.keymap.set('n', 'ge', vim.diagnostic.open_float)
