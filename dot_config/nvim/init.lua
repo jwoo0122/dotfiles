@@ -80,11 +80,6 @@ require("lazy").setup({
     end,
   },
   {
-    'arnamak/stay-centered.nvim',
-    lazy = false,
-    opts = {}
-  },
-  {
     "NeogitOrg/neogit",
     dependencies = {
       "sindrets/diffview.nvim"
