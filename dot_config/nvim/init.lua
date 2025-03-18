@@ -52,6 +52,11 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
 -- Keymap
 vim.g.mapleader = " "
 
+---Folding
+vim.opt.foldmethod = 'indent'
+vim.opt.nofoldenable = true
+vim.opt.foldlevel = 99
+
 -- Plugins
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 
