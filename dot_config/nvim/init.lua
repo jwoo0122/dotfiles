@@ -1,6 +1,6 @@
 ---Scroll
 vim.o.scrolloff = 999
-vim.o.scroll = 8
+vim.o.scroll = 5
 
 ---Line Number
 vim.wo.number = true
