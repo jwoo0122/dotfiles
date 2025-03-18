@@ -325,6 +325,10 @@ require("lazy").setup({
     opts = {}
   },
   {
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {},
+  },
+  {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     dependencies = {
