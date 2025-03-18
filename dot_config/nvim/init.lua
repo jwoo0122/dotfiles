@@ -54,8 +54,8 @@ vim.g.mapleader = " "
 
 ---Folding
 vim.opt.foldmethod = 'indent'
-vim.opt.nofoldenable = true
 vim.opt.foldlevel = 99
+vim.opt.foldenable = false
 
 -- Plugins
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
