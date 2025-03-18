@@ -342,6 +342,7 @@ require("lazy").setup({
       telescope.setup({
         defaults = {
           layout_strategy = 'vertical',
+          preview = false,
         },
         extensions = {
           fzf = {
