@@ -72,10 +72,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "folke/twilight.nvim",
-    opts = {},
-  },
-  {
     'arnamak/stay-centered.nvim',
     lazy = false,
     opts = {}
