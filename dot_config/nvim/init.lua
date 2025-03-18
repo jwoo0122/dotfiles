@@ -188,6 +188,10 @@ require("lazy").setup({
             vim.fn["vsnip#anonymous"](args.body)
           end
         },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
         mapping = {
           ['<Tab>'] = function(fallback)
             if cmp.visible() then
@@ -205,6 +209,23 @@ require("lazy").setup({
           { name = 'buffer' },
           { name = 'emoji'}
         }),
+      })
+
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+          { name = 'cmdline' }
+        }),
+        matching = { disallow_symbol_nonprefix_matching = false }
       })
     end
   },
