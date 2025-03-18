@@ -77,6 +77,9 @@ export BAT_THEME="TwoDark"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+# llvm
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
 # zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
