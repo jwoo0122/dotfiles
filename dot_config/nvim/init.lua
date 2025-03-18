@@ -73,6 +73,13 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
+    "allaman/emoji.nvim",
+    config = function(_, opts)
+      require("emoji").setup(opts)
+      -- optional for telescope integration
+    end,
+  },
+  {
     'arnamak/stay-centered.nvim',
     lazy = false,
     opts = {}
@@ -202,7 +209,8 @@ require("lazy").setup({
           { name = 'vsnip' },
         }),
         {
-          { name = 'buffer' }
+          { name = 'buffer' },
+          { name = 'emoji'}
         }
       })
     end
