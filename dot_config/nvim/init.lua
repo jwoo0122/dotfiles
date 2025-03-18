@@ -83,7 +83,8 @@ require("lazy").setup({
           ["core.dirman"] = {
             config = {
               workspaces = {
-                notes = "~/notes",
+                notes = "~/notes/default",
+                school = "~/notes/school"
               },
               default_workspace = "notes",
             },
