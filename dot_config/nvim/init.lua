@@ -72,6 +72,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
+    "tris203/precognition.nvim",
+    opts = {},
+  },
+  {
     'arnamak/stay-centered.nvim',
     lazy = false,
     opts = {}
@@ -290,13 +294,13 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>s', spectre.toggle, {})
     end,
   },
-  { "nvim-tree/nvim-web-devicons", opts = {} },
+  { "nvim-tree/nvim-web-devicons",              opts = {} },
   {
     'folke/flash.nvim',
     event = "VeryLazy",
     opts = {},
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
       { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
     },
   },
@@ -314,8 +318,8 @@ require("lazy").setup({
     config = function()
       require('lualine').setup {
         options = {
-          component_separators = { left = ' ', right = ' '},
-          section_separators = { left = ' ', right = ' '},
+          component_separators = { left = ' ', right = ' ' },
+          section_separators = { left = ' ', right = ' ' },
         }
       }
     end
