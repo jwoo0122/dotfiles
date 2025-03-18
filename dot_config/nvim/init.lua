@@ -316,10 +316,6 @@ require("lazy").setup({
     end
   },
   {
-    "karb94/neoscroll.nvim",
-    opts = {}
-  },
-  {
     "j-hui/fidget.nvim",
     opts = {
       -- options
