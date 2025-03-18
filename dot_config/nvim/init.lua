@@ -1,9 +1,11 @@
+---Scroll
 vim.o.scrolloff = 999
 
+---Line Number
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.o.signcolumn = 'yes'
 
+---Indentation
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
@@ -19,6 +21,7 @@ vim.opt.listchars:append {
   space = "·"
 }
 
+---Split direction
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
