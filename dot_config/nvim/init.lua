@@ -72,28 +72,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "nvim-neorg/neorg",
-    lazy = false,
-    version = "*",
-    config = function()
-      require("neorg").setup {
-        load = {
-          ["core.defaults"] = {},
-          ["core.concealer"] = {},
-          ["core.dirman"] = {
-            config = {
-              workspaces = {
-                notes = "~/notes/default",
-                school = "~/notes/school"
-              },
-              default_workspace = "notes",
-            },
-          },
-        },
-      }
-    end,
-  },
-  {
     "NeogitOrg/neogit",
     dependencies = {
       "sindrets/diffview.nvim"
@@ -315,9 +293,6 @@ require("lazy").setup({
     keys = {
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
       { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
   {
