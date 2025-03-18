@@ -321,6 +321,10 @@ require("lazy").setup({
     },
   },
   {
+    "3rd/image.nvim",
+    opts = {}
+  },
+  {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
     dependencies = {
