@@ -4,6 +4,7 @@ vim.o.scrolloff = 999
 ---Line Number
 vim.wo.number = true
 vim.wo.relativenumber = true
+vim.wo.signcolumn = true
 
 ---Indentation
 vim.opt.tabstop = 2
