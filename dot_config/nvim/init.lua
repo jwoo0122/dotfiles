@@ -72,7 +72,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "tris203/precognition.nvim",
+    "folke/twilight.nvim",
     opts = {},
   },
   {
