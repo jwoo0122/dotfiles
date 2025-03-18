@@ -72,6 +72,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
+    'arnamak/stay-centered.nvim',
+    lazy = false,
+    opts = {}
+  },
+  {
     "NeogitOrg/neogit",
     dependencies = {
       "sindrets/diffview.nvim"
