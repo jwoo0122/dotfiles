@@ -305,6 +305,11 @@ require("lazy").setup({
   {
     'Bekaboo/dropbar.nvim',
     config = function()
+      require('dropbar').setup({
+        menu = {
+          preview = false
+        }
+      })
       local dropbar_api = require('dropbar.api')
       vim.keymap.set('n', '<leader>;', dropbar_api.pick)
       vim.keymap.set('n', '[;', dropbar_api.goto_context_start)
