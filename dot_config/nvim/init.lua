@@ -307,7 +307,10 @@ require("lazy").setup({
     config = function()
       require('dropbar').setup({
         menu = {
-          preview = false
+          preview = false,
+          win_configs = {
+            border = 'single'
+          }
         }
       })
       local dropbar_api = require('dropbar.api')
