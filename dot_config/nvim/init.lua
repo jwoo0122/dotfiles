@@ -309,7 +309,7 @@ require("lazy").setup({
         menu = {
           preview = false,
           win_configs = {
-            border = 'single'
+            border = 'rounded'
           }
         }
       })
