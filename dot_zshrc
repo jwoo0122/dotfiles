@@ -50,6 +50,9 @@ EDITOR="nvim"
 # zoxide
 eval "$(zoxide init zsh)"
 
+# mise
+eval "$(mise activate zsh)"
+
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
