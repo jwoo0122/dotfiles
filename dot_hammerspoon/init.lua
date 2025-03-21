@@ -39,3 +39,15 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["p"], function()
   local query_encoded = hs.http.encodeForQuery(query)
   hs.execute("open " .. "https://www.perplexity.ai/search?q=" .. query_encoded)
 end)
+
+-- Window management
+-- half of screen
+-- https://martinlwx.github.io/en/how-to-manage-windows-using-hammerspoon/
+hs.hotkey.bind({'ctrl', 'option'}, 'left', function() hs.window.focusedWindow():moveToUnit({0, 0, 0.5, 1}) end)
+hs.hotkey.bind({'ctrl', 'option'}, 'right', function() hs.window.focusedWindow():moveToUnit({0.5, 0, 0.5, 1}) end)
+hs.hotkey.bind({'ctrl', 'option'}, 'up', function() hs.window.focusedWindow():moveToUnit({0, 0, 1, 0.5}) end)
+hs.hotkey.bind({'ctrl', 'option'}, 'down', function() hs.window.focusedWindow():moveToUnit({0, 0.5, 1, 0.5}) end)
+
+-- full screen
+hs.hotkey.bind({'ctrl', 'option'}, 'return', function() hs.window.focusedWindow():moveToUnit({0, 0, 1, 1}) end)
+hs.hotkey.bind({'ctrl', 'option'}, 'c', function() hs.window.focusedWindow():centerOnScreen() end)
