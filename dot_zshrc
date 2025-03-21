@@ -81,10 +81,10 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 # zsh-autosuggestions
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-syntax-highlighting
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Private env
 [ -f ~/.env ] && source ~/.env
