@@ -84,7 +84,7 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-syntax-highlighting
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Private env
 [ -f ~/.env ] && source ~/.env
