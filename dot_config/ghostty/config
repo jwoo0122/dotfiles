@@ -2,7 +2,7 @@ theme = tokyonight_night
 
 font-family = Hack Nerd Font Mono
 font-family = Apple SD Gothic Neo
-font-size = 15
+font-size = 13
 adjust-cell-width = -7%
 
 cursor-style = block
