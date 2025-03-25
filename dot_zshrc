@@ -1,3 +1,5 @@
+export GPG_TTY=$(tty)
+
 # git branch show
 autoload -Uz vcs_info add-zsh-hook
 autoload -U colors && colors
