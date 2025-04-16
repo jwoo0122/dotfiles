@@ -85,6 +85,9 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # llvm
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
+# mysql
+export PATH="/usr/local/mysql/bin:$PATH"
+
 # zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
