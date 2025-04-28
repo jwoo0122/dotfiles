@@ -22,7 +22,7 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["x"], open_app("xcode"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["m"], open_app("Mail"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["d"], open_app("Claude"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["p"], open_app("Perplexity"))
-hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["b"], open_app("IntelliJ IDEA CE"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["j"], open_app("IntelliJ IDEA CE"))
 
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["o"], function()
 	local clicked, query = hs.dialog.textPrompt("Search on web", "", "", "Search", "Cancel")
