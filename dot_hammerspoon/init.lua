@@ -20,6 +20,7 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["c"], open_app("Google Chr
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["n"], open_app("Notes"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["x"], open_app("xcode"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["m"], open_app("Mail"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["z"], open_app("zed"))
 -- hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["p"], open_app("Perplexity"))
 
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["o"], function()
