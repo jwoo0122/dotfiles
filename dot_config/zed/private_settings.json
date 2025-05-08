@@ -1,30 +1,33 @@
 {
-	"icon_theme": "Material Icon Theme",
-	"agent": {
-		"default_model": {
-			"provider": "zed.dev",
-			"model": "claude-3-5-sonnet-latest"
-		},
-		"model_parameters": [],
-		"always_allow_tool_actions": true,
-		"version": "2"
-	},
-	"theme": "GitHub Dark Default",
-	"buffer_font_size": 13,
-	"format_on_save": "on",
-	"formatter": "language_server",
-	"tab_size": 2,
-	"buffer_font_family": "Hack",
-	"confirm_quit": true,
-	"show_whitespaces": "all",
-	"terminal": {
-		"font_family": "Hack",
-		"font_size": 13
-	},
-	"languages": {
-		"TypeScript": {
-			"language_servers": ["typescript-language-server"]
-		}
-	},
-	"vim_mode": false
+  "icon_theme": "Material Icon Theme",
+  "agent": {
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-thinking-latest"
+    },
+    "model_parameters": [],
+    "always_allow_tool_actions": true,
+    "version": "2"
+  },
+  "theme": "Tokyo Night",
+  "buffer_font_size": 13,
+  "format_on_save": "on",
+  "formatter": "language_server",
+  "tab_size": 2,
+  "buffer_font_family": "Hack",
+  "confirm_quit": true,
+  "show_whitespaces": "all",
+  "terminal": {
+    "font_family": "Hack",
+    "font_size": 13
+  },
+  "languages": {
+    "TypeScript": {
+      "language_servers": [
+        "typescript-language-server"
+      ]
+    }
+  },
+  "vim_mode": true
 }
