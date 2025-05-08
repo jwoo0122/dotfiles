@@ -11,7 +11,7 @@
     "version": "2"
   },
   "relative_line_numbers": true,
-  "theme": "Tokyo Night",
+  "theme": "Catppuccin Mocha",
   "buffer_font_size": 13,
   "format_on_save": "on",
   "formatter": "language_server",
