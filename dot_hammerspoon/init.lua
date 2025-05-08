@@ -22,6 +22,9 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["x"], open_app("xcode"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["m"], open_app("Mail"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["z"], open_app("zed"))
 -- hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["p"], open_app("Perplexity"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["d"], open_app("Claude"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["p"], open_app("Perplexity"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["j"], open_app("IntelliJ IDEA CE"))
 
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["o"], function()
 	local clicked, query = hs.dialog.textPrompt("Search on web", "", "", "Search", "Cancel")
@@ -31,15 +34,6 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["o"], function()
 	local query_encoded = hs.http.encodeForQuery(query)
 	hs.execute("open " .. "https://duckduckgo.com/?q=" .. query_encoded)
 end)
-
--- hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["p"], function()
---   local clicked, query = hs.dialog.textPrompt("Search on Perplexity", "", "", "Search", "Cancel")
---   if clicked == "Cancel" then
---     return
---   end
---   local query_encoded = hs.http.encodeForQuery(query)
---   hs.execute("open " .. "https://www.perplexity.ai/search?q=" .. query_encoded)
--- end)
 
 -- Window management
 -- half of screen
