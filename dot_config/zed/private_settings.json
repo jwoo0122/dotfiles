@@ -1,10 +1,28 @@
 {
+  "ssh_connections": [
+    {
+      "host": "172.10.7.151",
+      "username": "root",
+      "projects": [
+        {
+          "paths": [
+            "/"
+          ]
+        },
+        {
+          "paths": [
+            "/root"
+          ]
+        }
+      ]
+    }
+  ],
   "icon_theme": "Material Icon Theme",
   "agent": {
-    "default_profile": "ask",
+    "default_profile": "write",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-thinking-latest"
+      "provider": "google",
+      "model": "gemini-2.5-pro-exp-03-25"
     },
     "model_parameters": [],
     "always_allow_tool_actions": true,
@@ -12,15 +30,15 @@
   },
   "relative_line_numbers": true,
   "theme": "Catppuccin Mocha",
-  "buffer_font_size": 13,
+  "buffer_font_size": 14,
   "format_on_save": "on",
   "formatter": "language_server",
   "tab_size": 2,
-  "buffer_font_family": "Hack",
+  "buffer_font_family": "JetBrains Mono",
   "confirm_quit": true,
   "show_whitespaces": "all",
   "terminal": {
-    "font_family": "Hack",
+    "font_family": "JetBrains Mono",
     "font_size": 13
   },
   "languages": {
