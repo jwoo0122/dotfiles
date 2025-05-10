@@ -97,6 +97,9 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Private env
 [ -f ~/.env ] && source ~/.env
 
+# Work-specific zshrc
+[ -f ~/.zshrc-work ] && source ~/.zshrc-work
+
 alias "ls"="eza"
 alias "l"="eza -l --classify=auto --group-directories-first"
 
