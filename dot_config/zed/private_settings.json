@@ -40,7 +40,7 @@
     "version": "2"
   },
   "relative_line_numbers": true,
-  "theme": "Catppuccin Mocha",
+  "theme": "Tokyo Night",
   "buffer_font_size": 14,
   "format_on_save": "on",
   "formatter": "language_server",
