@@ -28,7 +28,6 @@
     "always_allow_tool_actions": true,
     "version": "2"
   },
-  "relative_line_numbers": true,
   "theme": "Fleet Dark",
   "buffer_font_size": 14,
   "format_on_save": "on",
