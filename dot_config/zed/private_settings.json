@@ -17,6 +17,7 @@
       ]
     }
   ],
+  "relative_line_numbers": true,
   "icon_theme": "VSCode Great Icons Theme",
   "agent": {
     "default_profile": "write",
@@ -40,6 +41,5 @@
     "font_family": "JetBrains Mono",
     "font_size": 14
   },
-  "vim_mode": false,
-  "cursor_shape": "block"
+  "vim_mode": true,
 }
