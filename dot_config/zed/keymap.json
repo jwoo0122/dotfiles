@@ -7,16 +7,10 @@
 // from the command palette.
 [
   {
-    "context": "Workspace",
     "bindings": {
-      "cmd-shift-g": "git_panel::ToggleFocus"
+      "cmd-shift-g": "git_panel::ToggleFocus",
+      "cmd-/": "agent::ToggleFocus"
       // "shift shift": "file_finder::Toggle"
-    }
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      // "j k": ["workspace::SendKeystrokes", "escape"]
     }
   }
 ]
