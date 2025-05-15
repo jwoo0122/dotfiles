@@ -18,7 +18,7 @@
     }
   ],
   "relative_line_numbers": true,
-  "icon_theme": "VSCode Great Icons Theme",
+  "icon_theme": "Material Icon Theme",
   "agent": {
     "default_profile": "write",
     "default_model": {
