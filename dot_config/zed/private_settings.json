@@ -41,5 +41,14 @@
     "font_family": "JetBrains Mono",
     "font_size": 14
   },
-  "vim_mode": true,
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy"
+        }
+      }
+    }
+  },
+  "vim_mode": true
 }
