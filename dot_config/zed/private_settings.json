@@ -15,6 +15,17 @@
           ]
         }
       ]
+    },
+    {
+      "host": "172.10.9.152",
+      "username": "student",
+      "projects": [
+        {
+          "paths": [
+            "/home/student"
+          ]
+        }
+      ]
     }
   ],
   "relative_line_numbers": true,
@@ -35,6 +46,9 @@
   "formatter": "language_server",
   "tab_size": 2,
   "buffer_font_family": "JetBrains Mono",
+  "buffer_font_features": {
+    "calt": false
+  },
   "confirm_quit": true,
   "show_whitespaces": "all",
   "terminal": {
