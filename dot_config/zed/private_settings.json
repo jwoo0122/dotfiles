@@ -24,6 +24,11 @@
           "paths": [
             "/home/student"
           ]
+        },
+        {
+          "paths": [
+            "/home/student/cs348-2025-spring-hw7-jwoo0122"
+          ]
         }
       ]
     }
@@ -40,7 +45,7 @@
     "always_allow_tool_actions": true,
     "version": "2"
   },
-  "theme": "Ayu Mirage",
+  "theme": "Fleet Dark",
   "buffer_font_size": 14,
   "format_on_save": "on",
   "formatter": "language_server",
