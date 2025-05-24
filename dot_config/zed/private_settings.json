@@ -70,8 +70,8 @@
     }
   },
   "vim_mode": true,
-  "minimap": {
-    "show": "auto"
-  },
-  "ui_font_size": 15
+  "ui_font_size": 15,
+  "tabs": {
+    "file_icons": true
+  }
 }
