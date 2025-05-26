@@ -113,11 +113,11 @@ require("lazy").setup({
     }
   },
   {
-    "folke/tokyonight.nvim",
+    "catppuccin/nvim",
     lazy = false,
     config = function()
-      require('tokyonight').setup {}
-      vim.cmd.colorscheme('tokyonight-night')
+      require('catppuccin').setup {}
+      vim.cmd.colorscheme('catppuccin-mocha')
     end,
     priority = 1000
   },
@@ -207,7 +207,7 @@ require("lazy").setup({
           { name = 'nvim_lsp' },
           { name = 'vsnip' },
           { name = 'buffer' },
-          { name = 'emoji'}
+          { name = 'emoji' }
         }),
       })
     end
