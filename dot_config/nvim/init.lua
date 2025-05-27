@@ -283,4 +283,10 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
     end
   },
+  {
+    "nvim-tree/nvim-tree.lua",
+    config = function ()
+      require('nvim-tree').setup {}
+    end
+  }
 })
