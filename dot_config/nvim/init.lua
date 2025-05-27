@@ -202,5 +202,6 @@ require("lazy").setup({
     opts = {
       -- fill any relevant options here
     },
-  }
+  },
+
 })
