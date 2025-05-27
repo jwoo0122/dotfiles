@@ -72,46 +72,6 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- {
-  --   "allaman/emoji.nvim",
-  --   config = function(_, opts)
-  --     require("emoji").setup(opts)
-  --     -- optional for telescope integration
-  --   end,
-  -- },
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "sindrets/diffview.nvim"
-    },
-    config = function()
-      local neogit = require('neogit')
-      neogit.setup {}
-      vim.keymap.set('n', '<leader>g', function()
-        neogit.open({ kind = "auto" })
-      end, {})
-    end
-  },
-  -- {
-  --   "yetone/avante.nvim",
-  --   event = "VeryLazy",
-  --   version = "*",
-  --   opts = {
-  --     provider = "claude",
-  --     auto_suggestions_provider = "claude",
-  --     claude = {
-  --       endpoint = "https://api.anthropic.com",
-  --       model = "claude-3-7-sonnet-latest",
-  --       temperature = 0,
-  --       max_tokens = 8192
-  --     }
-  --   },
-  --   build = 'make',
-  --   dependencies = {
-  --     "stevearc/dressing.nvim",
-  --     "MunifTanjim/nui.nvim",
-  --   }
-  -- },
   {
     "catppuccin/nvim",
     lazy = false,
@@ -241,17 +201,6 @@ require("lazy").setup({
     end
   },
   {
-    "luckasRanarison/tailwind-tools.nvim",
-    name = "tailwind-tools",
-    build = ":UpdateRemotePlugins",
-    opts = {},
-    event = "UIEnter",
-  },
-  {
-    "windwp/nvim-ts-autotag",
-    config = true,
-  },
-  {
     'stevearc/oil.nvim',
     config = function()
       require('oil').setup {
@@ -259,23 +208,6 @@ require("lazy").setup({
           show_hidden = true,
         }
       }
-    end
-  },
-  {
-    'akinsho/toggleterm.nvim',
-    version = "*",
-    config = function()
-      local toggleterm = require('toggleterm')
-      toggleterm.setup {}
-
-      local integratedTerm = require('toggleterm.terminal').Terminal:new({
-        direction = 'horizontal',
-        dir = 'git_dir',
-        hidden = true,
-      })
-      vim.keymap.set({ 'n', 't' }, '<C-`>', function()
-        integratedTerm:toggle()
-      end)
     end
   },
   {
@@ -295,16 +227,6 @@ require("lazy").setup({
       spectre.setup {}
       vim.keymap.set('n', '<leader>s', spectre.toggle, {})
     end,
-  },
-  { "nvim-tree/nvim-web-devicons",              opts = {} },
-  {
-    'folke/flash.nvim',
-    event = "VeryLazy",
-    opts = {},
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-    },
   },
   {
     'Bekaboo/dropbar.nvim',
@@ -340,10 +262,6 @@ require("lazy").setup({
       -- options
     },
   },
-  -- {
-  --   'MeanderingProgrammer/render-markdown.nvim',
-  --   opts = {},
-  -- },
   {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
