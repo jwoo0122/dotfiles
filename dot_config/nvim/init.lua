@@ -181,7 +181,7 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require('nvim-treesitter.configs').setup({
-        ensure_installed = { "javascript", "astro", "typescript", "dockerfile", "bash", "go", "json", "lua", "yaml", "ocaml", "fsharp", "python" },
+        ensure_installed = { "javascript", "astro", "typescript", "dockerfile", "bash", "go", "json", "lua", "yaml", "ocaml", "fsharp", "python", "rust" },
         sync_install = true,
         auto_install = true,
         highlight = {
