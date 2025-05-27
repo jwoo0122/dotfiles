@@ -91,26 +91,26 @@ require("lazy").setup({
     },
     config = function()
       local servers = {
-        -- pylsp = {},
-        -- rust_analyzer = {},
-        -- jsonls = {},
-        -- astro = {},
-        -- eslint = {},
-        -- lua_ls = {
-        --   settings = {
-        --     Lua = {
-        --       diagnostics = {
-        --         globals = {
-        --           'vim'
-        --         }
-        --       }
-        --     }
-        --   }
-        -- },
-        -- ts_ls = {},
-        -- marksman = {},
-        -- tailwindcss = {},
-        -- yamlls = {},
+        pylsp = {},
+        rust_analyzer = {},
+        jsonls = {},
+        astro = {},
+        eslint = {},
+        lua_ls = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = {
+                  'vim'
+                }
+              }
+            }
+          }
+        },
+        ts_ls = {},
+        marksman = {},
+        tailwindcss = {},
+        yamlls = {},
       }
 
       require('mason').setup()
