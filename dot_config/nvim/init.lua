@@ -81,7 +81,6 @@ require("lazy").setup({
     end,
     priority = 1000
   },
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -178,46 +177,6 @@ require("lazy").setup({
     config = true,
   },
   {
-    'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('nvim-treesitter.configs').setup({
-        ensure_installed = { "javascript", "astro", "typescript", "dockerfile", "bash", "go", "json", "lua", "yaml", "ocaml", "fsharp", "python", "rust" },
-        sync_install = true,
-        auto_install = true,
-        highlight = {
-          enable = true
-        },
-      })
-    end
-  },
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
-    end
-  },
-  {
-    'Bekaboo/dropbar.nvim',
-    config = function()
-      require('dropbar').setup({
-        menu = {
-          preview = false,
-          win_configs = {
-            border = 'rounded'
-          }
-        }
-      })
-      local dropbar_api = require('dropbar.api')
-      vim.keymap.set('n', '<leader>;', dropbar_api.pick)
-      vim.keymap.set('n', '[;', dropbar_api.goto_context_start)
-      vim.keymap.set('n', '];', dropbar_api.select_next_context)
-    end
-  },
-  {
     'nvim-lualine/lualine.nvim',
     config = function()
       require('lualine').setup {
@@ -226,61 +185,6 @@ require("lazy").setup({
           section_separators = { left = ' ', right = ' ' },
         }
       }
-    end
-  },
-  {
-    'nvim-telescope/telescope.nvim',
-    event = 'VimEnter',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'jvgrootveld/telescope-zoxide',
-    },
-    config = function()
-      local telescope = require('telescope')
-      telescope.setup({
-        defaults = {
-          layout_strategy = 'vertical',
-          preview = false,
-        },
-        extensions = {
-          fzf = {
-            fuzzy = true,
-            override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true,    -- override the file sorter
-            case_mode = "smart_case",
-          }
-        },
-        pickers = {
-          find_files = {
-            hidden = true
-          }
-        }
-      })
-      telescope.load_extension('zoxide');
-
-      local function project_files()
-        local is_inside_work_tree = {}
-        local opts = {} -- define here if you want to define something
-
-        local cwd = vim.fn.getcwd()
-        if is_inside_work_tree[cwd] == nil then
-          vim.fn.system("git rev-parse --is-inside-work-tree")
-          is_inside_work_tree[cwd] = vim.v.shell_error == 0
-        end
-
-        if is_inside_work_tree[cwd] then
-          require("telescope.builtin").git_files(opts)
-        else
-          require("telescope.builtin").find_files(opts)
-        end
-      end
-
-      local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>p', project_files, {})
-      vim.keymap.set('n', '<leader>d', builtin.lsp_document_symbols, {})
-      vim.keymap.set('n', '<leader>b', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>z', telescope.extensions.zoxide.list, {})
-      vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
     end
   },
 })
