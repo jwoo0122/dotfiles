@@ -201,14 +201,6 @@ require("lazy").setup({
     end
   },
   {
-    'nvim-pack/nvim-spectre',
-    config = function()
-      local spectre = require('spectre')
-      spectre.setup {}
-      vim.keymap.set('n', '<leader>s', spectre.toggle, {})
-    end,
-  },
-  {
     'Bekaboo/dropbar.nvim',
     config = function()
       require('dropbar').setup({
@@ -235,12 +227,6 @@ require("lazy").setup({
         }
       }
     end
-  },
-  {
-    "j-hui/fidget.nvim",
-    opts = {
-      -- options
-    },
   },
   {
     'nvim-telescope/telescope.nvim',
