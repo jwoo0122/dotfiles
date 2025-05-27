@@ -191,26 +191,6 @@ require("lazy").setup({
     end
   },
   {
-    'echasnovski/mini.indentscope',
-    version = false,
-    config = function()
-      local indentscope = require('mini.indentscope')
-      indentscope.setup({
-        symbol = '┆'
-      })
-    end
-  },
-  {
-    'stevearc/oil.nvim',
-    config = function()
-      require('oil').setup {
-        view_options = {
-          show_hidden = true,
-        }
-      }
-    end
-  },
-  {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
