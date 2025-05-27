@@ -82,56 +82,56 @@ require("lazy").setup({
     priority = 1000
   },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-  {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      { 'williamboman/mason.nvim', config = true },
-      'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-    },
-    config = function()
-      local servers = {
-        pylsp = {},
-        rust_analyzer = {},
-        jsonls = {},
-        astro = {},
-        eslint = {},
-        lua_ls = {
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = {
-                  'vim'
-                }
-              }
-            }
-          }
-        },
-        ts_ls = {},
-        marksman = {},
-        tailwindcss = {},
-        yamlls = {},
-      }
-
-      require('mason').setup()
-
-      local ensure_installed = vim.tbl_keys(servers)
-      require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
-      require('mason-lspconfig').setup({
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            require('lspconfig')[server_name].setup(server)
-          end
-        }
-      })
-
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
-      vim.keymap.set('n', 'fr', vim.lsp.buf.references)
-      vim.keymap.set('n', 'rn', vim.lsp.buf.rename)
-      vim.keymap.set('n', 'fm', vim.lsp.buf.format)
-    end
-  },
+  -- {
+  --   'neovim/nvim-lspconfig',
+  --   dependencies = {
+  --     { 'williamboman/mason.nvim', config = true },
+  --     'williamboman/mason-lspconfig.nvim',
+  --     'WhoIsSethDaniel/mason-tool-installer.nvim',
+  --   },
+  --   config = function()
+  --     local servers = {
+  --       pylsp = {},
+  --       rust_analyzer = {},
+  --       jsonls = {},
+  --       astro = {},
+  --       eslint = {},
+  --       lua_ls = {
+  --         settings = {
+  --           Lua = {
+  --             diagnostics = {
+  --               globals = {
+  --                 'vim'
+  --               }
+  --             }
+  --           }
+  --         }
+  --       },
+  --       ts_ls = {},
+  --       marksman = {},
+  --       tailwindcss = {},
+  --       yamlls = {},
+  --     }
+  --
+  --     require('mason').setup()
+  --
+  --     local ensure_installed = vim.tbl_keys(servers)
+  --     require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
+  --     require('mason-lspconfig').setup({
+  --       handlers = {
+  --         function(server_name)
+  --           local server = servers[server_name] or {}
+  --           require('lspconfig')[server_name].setup(server)
+  --         end
+  --       }
+  --     })
+  --
+  --     vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+  --     vim.keymap.set('n', 'fr', vim.lsp.buf.references)
+  --     vim.keymap.set('n', 'rn', vim.lsp.buf.rename)
+  --     vim.keymap.set('n', 'fm', vim.lsp.buf.format)
+  --   end
+  -- },
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
