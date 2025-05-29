@@ -50,14 +50,14 @@
   "format_on_save": "on",
   "formatter": "language_server",
   "tab_size": 2,
-  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_family": "Fira Code",
   "buffer_font_features": {
     "calt": false
   },
   "confirm_quit": true,
   "show_whitespaces": "all",
   "terminal": {
-    "font_family": "JetBrains Mono",
+    "font_family": "Fira Code",
     "font_size": 13
   },
   "lsp": {
