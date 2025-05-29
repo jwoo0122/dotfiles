@@ -32,7 +32,7 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["o"], function()
     return
   end
   local query_encoded = hs.http.encodeForQuery(query)
-  hs.execute("open " .. "https://duckduckgo.com/?q=" .. query_encoded)
+  hs.execute("open " .. "https://www.google.com/search?q=" .. query_encoded)
 end)
 
 -- Window management
