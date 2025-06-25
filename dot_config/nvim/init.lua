@@ -72,15 +72,13 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  {
-    "catppuccin/nvim",
-    lazy = false,
-    config = function()
-      require('catppuccin').setup {}
-      vim.cmd.colorscheme('catppuccin-mocha')
-    end,
-    priority = 1000
-  },
+  { "EdenEast/nightfox.nvim",
+
+  config = function()
+    require('nightfox').setup {}
+    vim.cmd('colorscheme carbonfox')
+  end
+},
   {
     'neovim/nvim-lspconfig',
     dependencies = {
