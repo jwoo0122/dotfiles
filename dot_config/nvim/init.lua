@@ -72,13 +72,13 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { "EdenEast/nightfox.nvim",
-
-  config = function()
-    require('nightfox').setup {}
-    vim.cmd('colorscheme carbonfox')
-  end
-},
+  {
+    "EdenEast/nightfox.nvim",
+    config = function()
+      require('nightfox').setup {}
+      vim.cmd('colorscheme carbonfox')
+    end
+  },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -277,7 +277,9 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>d', builtin.lsp_document_symbols, {})
       vim.keymap.set('n', '<leader>b', builtin.buffers, {})
       vim.keymap.set('n', '<leader>z', telescope.extensions.zoxide.list, {})
+      vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
       vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
+
     end
   },
   {
