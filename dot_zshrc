@@ -58,22 +58,10 @@ eval "$(mise activate zsh)"
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
 
 # theme for bat
 export BAT_THEME="TwoDark"
@@ -103,10 +91,7 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 alias "ls"="eza"
 alias "l"="eza -l --classify=auto --group-directories-first"
 
-alias "python"="python3"
 alias "gitbranch"="git branch --show-current"
 
-alias "cs348"="ssh student@172.10.9.152"
 alias "colortest"="~/.config/colortest"
-alias "pip"="pip3"
 alias claude="/Users/jeongjin-u/.claude/local/claude"
