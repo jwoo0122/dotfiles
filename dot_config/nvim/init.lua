@@ -164,7 +164,6 @@ require("lazy").setup({
           { name = 'nvim_lsp' },
           { name = 'vsnip' },
           { name = 'buffer' },
-          { name = 'emoji' }
         }),
       })
     end
@@ -307,6 +306,10 @@ require("lazy").setup({
         -- options, see Configuration section below
         -- there are no required options atm
       });
+
+      local grugfar = require('grug-far')
+
+      vim.keymap.set('n', '<leader>f', grugfar.open, {})
     end
   },
 })
