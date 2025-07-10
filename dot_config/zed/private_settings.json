@@ -34,7 +34,7 @@
     }
   ],
   "relative_line_numbers": true,
-  "icon_theme": "Catppuccin Mocha",
+  "icon_theme": "Material Icon Theme",
   "agent": {
     "default_profile": "write",
     "default_model": {
