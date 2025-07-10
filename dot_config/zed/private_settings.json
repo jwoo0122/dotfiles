@@ -72,5 +72,8 @@
   "ui_font_size": 14,
   "tabs": {
     "file_icons": true
+  },
+  "preview_tabs": {
+    "enabled": false
   }
 }
