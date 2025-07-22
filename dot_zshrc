@@ -95,3 +95,5 @@ alias "gitbranch"="git branch --show-current"
 
 alias "colortest"="~/.config/colortest"
 alias claude="/Users/jeongjin-u/.claude/local/claude"
+
+alias pm="pnpm"
