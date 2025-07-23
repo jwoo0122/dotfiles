@@ -44,7 +44,7 @@
     "model_parameters": [],
     "always_allow_tool_actions": true
   },
-  "theme": "macOS Classic Dark2",
+  "theme": "macOS Classic Dark",
   "buffer_font_size": 13,
   "format_on_save": "on",
   "formatter": "language_server",
