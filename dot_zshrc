@@ -72,6 +72,8 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 # llvm
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # mysql
 export PATH="/usr/local/mysql/bin:$PATH"
@@ -96,4 +98,4 @@ alias "gitbranch"="git branch --show-current"
 alias "colortest"="~/.config/colortest"
 alias claude="/Users/jeongjin-u/.claude/local/claude"
 
-alias pm="pnpm"
+alias pn="pnpm"
