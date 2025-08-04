@@ -19,6 +19,7 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["n"], open_app("Notes"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["m"], open_app("Mail"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["v"], open_app("zed"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["p"], open_app("Preview"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["l"], open_app("Linear"))
 
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["o"], function()
   local clicked, query = hs.dialog.textPrompt("Search on web", "", "", "Search", "Cancel")
