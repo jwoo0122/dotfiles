@@ -18,7 +18,7 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["c"], open_app("Calendar")
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["n"], open_app("Notes"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["m"], open_app("Mail"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["v"], open_app("Visual Studio Code"))
-hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["p"], open_app("Preview"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["p"], open_app("Perplexity"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["l"], open_app("Linear"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["u"], open_app("Sunsama"))
 
