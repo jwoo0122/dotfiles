@@ -70,7 +70,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "github/copilot.nvim"
+    "github/copilot.vim"
   },
   -- {
   --   "olimorris/codecompanion.nvim",
