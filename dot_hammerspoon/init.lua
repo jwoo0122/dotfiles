@@ -21,6 +21,8 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["v"], open_app("Visual Stu
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["p"], open_app("Perplexity"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["l"], open_app("Linear"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["u"], open_app("Sunsama"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["r"], open_app("Google Chrome"))
+
 
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["o"], function()
   local clicked, query = hs.dialog.textPrompt("Search on web", "", "", "Search", "Cancel")
