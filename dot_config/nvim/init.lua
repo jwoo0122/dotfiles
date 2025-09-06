@@ -73,10 +73,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "EdenEast/nightfox.nvim",
+    "catppuccin/nvim",
     config = function()
-      require('nightfox').setup {}
-      vim.cmd('colorscheme carbonfox')
+      require('catppuccin').setup {}
+      vim.cmd('colorscheme mocha')
     end
   },
   {
