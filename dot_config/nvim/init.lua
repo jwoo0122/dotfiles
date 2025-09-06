@@ -71,11 +71,20 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   {
     "olimorris/codecompanion.nvim",
-    opts = {},
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
+    config = function ()
+      require("codecompanion").setup {
+        strategies = {
+          chat = {
+            name = "copilot",
+            model = "gpt-5",
+          },
+        }
+      }
+    end
   },
   {
     "catppuccin/nvim",
