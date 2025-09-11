@@ -93,3 +93,5 @@ alias "l"="eza -l --classify=auto --group-directories-first"
 
 alias "colortest"="~/.config/colortest"
 alias claude="/Users/jeongjin-u/.claude/local/claude"
+
+alias fmb="fzf -m --preview 'bat --color=always --style=numbers --line-range :500 {}'"
