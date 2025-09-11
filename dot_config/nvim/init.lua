@@ -93,7 +93,7 @@ require("lazy").setup({
     "catppuccin/nvim",
     config = function()
       require('catppuccin').setup {
-        flavour = "mocha"
+        flavour = "frappe"
       }
       vim.cmd('colorscheme catppuccin')
     end
