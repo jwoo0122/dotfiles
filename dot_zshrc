@@ -64,9 +64,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# theme for bat
-export BAT_THEME="TwoDark"
-
 # deno
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
@@ -94,9 +91,5 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 alias "ls"="eza"
 alias "l"="eza -l --classify=auto --group-directories-first"
 
-alias "gitbranch"="git branch --show-current"
-
 alias "colortest"="~/.config/colortest"
 alias claude="/Users/jeongjin-u/.claude/local/claude"
-
-alias pn="pnpm"
