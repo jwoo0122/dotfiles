@@ -1,4 +1,10 @@
 [tools]
+bat = "latest"
+delta = "latest"
+fd = "latest"
+ripgrep = "latest"
+fzf = "latest"
+"cargo:eza" = "latest"
 biome = "latest"
 node = "latest"
 pnpm = "latest"
