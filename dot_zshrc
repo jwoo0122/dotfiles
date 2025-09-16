@@ -95,6 +95,6 @@ alias "colortest"="~/.config/colortest"
 alias claude="/Users/jeongjin-u/.claude/local/claude"
 
 alias fnvim="fzf --read0 --print0 -m --preview 'bat --color=always {}' | xargs -0 -r nvim"
-alias gadd="git diff --name-only | fzf --read0 --print0 -m --preview 'git diff {} | delta' | xargs -0 -r git add"
-alias gco="git branch | fzf --read0 --print0 --preview 'git log -n 10 --color=always {}' | xargs -0 -r git switch"
+alias gadd="git diff --name-only -z | fzf --read0 --print0 -m --preview 'git diff {} | delta' | xargs -0 -r git add"
+alias gco="git branch -z | fzf --read0 --print0 --preview 'git log -n 10 --color=always {}' | xargs -0 -r git switch"
 alias rgf="rg -S -l -0"
