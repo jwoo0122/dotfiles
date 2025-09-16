@@ -94,8 +94,8 @@ alias "l"="eza -l --classify=auto --group-directories-first"
 alias "colortest"="~/.config/colortest"
 alias claude="/Users/jeongjin-u/.claude/local/claude"
 
-alias fnvim="fzf -m --preview 'bat --color=alwasy {}' | xargs nvim"
-alias gadd="git diff --name-only | fzf -m --preview 'git diff {} | delta' | xargs git add"
-alias gco="git branch | fzf --preview 'git log -n 10 --color=always {}' | xargs git switch"
+alias fnvim="fzf --read0 --print0 -m --preview 'bat --color=always {}' | xargs -0 -r nvim"
+alias gadd="git diff --name-only | fzf --read0 --print0 -m --preview 'git diff {} | delta' | xargs -0 -r git add"
+alias gco="git branch | fzf --read0 --print0 --preview 'git log -n 10 --color=always {}' | xargs -0 -r git switch"
 
 
