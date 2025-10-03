@@ -1,50 +1,7 @@
 {
-  "ssh_connections": [
-    {
-      "host": "172.10.7.151",
-      "username": "root",
-      "projects": [
-        {
-          "paths": [
-            "/"
-          ]
-        },
-        {
-          "paths": [
-            "/root"
-          ]
-        }
-      ]
-    },
-    {
-      "host": "172.10.9.152",
-      "username": "student",
-      "projects": [
-        {
-          "paths": [
-            "/home/student"
-          ]
-        },
-        {
-          "paths": [
-            "/home/student/cs348-2025-spring-hw7-jwoo0122"
-          ]
-        }
-      ]
-    }
-  ],
   "relative_line_numbers": true,
-  "icon_theme": "Material Icon Theme",
-  "agent": {
-    "default_profile": "write",
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4-thinking-latest"
-    },
-    "model_parameters": [],
-    "always_allow_tool_actions": true
-  },
-  "theme": "macOS Classic Dark",
+  "icon_theme": "Catppuccin Icons",
+  "theme": "Catppuccin Mocha",
   "buffer_font_size": 13,
   "format_on_save": "on",
   "formatter": "language_server",
