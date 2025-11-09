@@ -88,6 +88,11 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Work-specific zshrc
 [ -f ~/.zshrc-work ] && source ~/.zshrc-work
 
+# WSL
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
 alias "ls"="eza"
 alias "l"="eza -l --classify=auto --group-directories-first"
 
