@@ -316,9 +316,10 @@ require("lazy").setup({
       require('neo-tree').setup({
         filesystem = {
           window = {
-            position = "current"
+            position = "left"
           }
-        }
+        },
+        reveal = true,
       })
     end
   }
