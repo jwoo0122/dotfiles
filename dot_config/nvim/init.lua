@@ -285,20 +285,6 @@ require("lazy").setup({
     end
   },
   {
-    'stevearc/oil.nvim',
-    ---@module 'oil'
-    ---@type oil.SetupOpts
-    opts = {
-      view_options = {
-        show_hidden = true
-      }
-    },
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-    lazy = false,
-  },
-  {
     "folke/flash.nvim",
     event = "VeryLazy",
     ---@type Flash.Config
@@ -326,5 +312,14 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons", -- optional, but recommended
     },
     lazy = false, -- neo-tree will lazily load itself
+    config = function()
+      require('neo-tree').setup({
+        filesystem = {
+          window = {
+            position = "current"
+          }
+        }
+      })
+    end
   }
 })
