@@ -1,7 +1,7 @@
 {
   "relative_line_numbers": true,
-  "icon_theme": "Catppuccin Mocha",
-  "theme": "Catppuccin Mocha",
+  "icon_theme": "One Dark",
+  "theme": "One Dark",
   "format_on_save": "on",
   "formatter": "language_server",
   "tab_size": 2,
