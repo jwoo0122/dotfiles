@@ -314,7 +314,8 @@ require("lazy").setup({
   },
   {
     "tpope/vim-fugitive",
-    opts = {}
+    config = function()
+    end
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
