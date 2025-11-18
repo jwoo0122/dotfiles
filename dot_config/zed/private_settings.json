@@ -1,5 +1,5 @@
 {
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "icon_theme": "One Dark",
   "theme": "One Dark",
   "format_on_save": "on",
