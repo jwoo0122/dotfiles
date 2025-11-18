@@ -48,7 +48,7 @@ TRAPALRM () {
 }
 
 # editor setting
-EDITOR="zed --wait"
+export EDITOR="zed --wait"
 
 # zoxide
 eval "$(zoxide init zsh)"
