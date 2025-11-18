@@ -48,7 +48,7 @@ TRAPALRM () {
 }
 
 # editor setting
-EDITOR="nvim"
+EDITOR="zed --wait"
 
 # zoxide
 eval "$(zoxide init zsh)"
