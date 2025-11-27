@@ -310,7 +310,11 @@ require("lazy").setup({
     lazy = false, -- neo-tree will lazily load itself
     config = function()
       require('neo-tree').setup({
-        position = 'current'
+        filesystem = {
+          window = {
+            position = 'current'
+          }
+        }
       })
     end
   }
