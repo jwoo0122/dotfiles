@@ -71,10 +71,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "EdenEast/nightfox.nvim",
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
     config = function()
-      require('nightfox').setup({})
-      vim.cmd('colorscheme carbonfox')
+      vim.cmd('colorscheme tokyonight-night')
     end
   },
   {
