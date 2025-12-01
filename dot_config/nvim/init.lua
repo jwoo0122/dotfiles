@@ -70,13 +70,20 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  -- {
+  --   "catppuccin/nvim",
+  --   config = function()
+  --     require('catppuccin').setup {
+  --       flavour = "mocha"
+  --     }
+  --     vim.cmd('colorscheme catppuccin')
+  --   end
+  -- },
   {
-    "catppuccin/nvim",
+    "EdenEast/nightfox.nvim",
     config = function()
-      require('catppuccin').setup {
-        flavour = "mocha"
-      }
-      vim.cmd('colorscheme catppuccin')
+      require('nightfox').setup({})
+      vim.cmd('colorscheme nightfox')
     end
   },
   {
