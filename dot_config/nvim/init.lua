@@ -173,17 +173,17 @@ require("lazy").setup({
     event = 'InsertEnter',
     config = true,
   },
-  -- {
-  --   'nvim-lualine/lualine.nvim',
-  --   config = function()
-  --     require('lualine').setup {
-  --       options = {
-  --         component_separators = { left = ' ', right = ' ' },
-  --         section_separators = { left = ' ', right = ' ' },
-  --       }
-  --     }
-  --   end
-  -- },
+  {
+    'nvim-lualine/lualine.nvim',
+    config = function()
+      require('lualine').setup {
+        options = {
+          component_separators = { left = ' ', right = ' ' },
+          section_separators = { left = ' ', right = ' ' },
+        }
+      }
+    end
+  },
   {
     'nvim-treesitter/nvim-treesitter',
     config = function()
@@ -319,26 +319,6 @@ require("lazy").setup({
       }
     end,
   },
-  -- {
-  --   "nvim-neo-tree/neo-tree.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-tree/nvim-web-devicons", -- optional, but recommended
-  --   },
-  --   lazy = false, -- neo-tree will lazily load itself
-  --   config = function()
-  --     require('neo-tree').setup({
-  --       filesystem = {
-  --         window = {
-  --           line_numbers = true,
-  --           relative_line_numbers = true,
-  --           position = 'current'
-  --         }
-  --       }
-  --     })
-  --   end
-  -- },
   {
     "jake-stewart/multicursor.nvim",
     branch = "1.0",
