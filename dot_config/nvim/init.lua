@@ -308,7 +308,15 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("nvim-tree").setup {}
+      require("nvim-tree").setup {
+        view = {
+          number = true,
+          relativenumber = true,
+          float = {
+            enable = true
+          }
+        }
+      }
     end,
   },
   -- {
