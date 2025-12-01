@@ -399,5 +399,12 @@ require("lazy").setup({
         hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
         hl(0, "MultiCursorDisabledSign", { link = "SignColumn"})
     end
-  }
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {},
+  },
 })
