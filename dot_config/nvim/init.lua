@@ -312,6 +312,8 @@ require("lazy").setup({
       require('neo-tree').setup({
         filesystem = {
           window = {
+            line_numbers = true,
+            relative_line_numbers = true,
             position = 'current'
           }
         }
