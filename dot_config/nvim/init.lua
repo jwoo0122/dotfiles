@@ -301,25 +301,36 @@ require("lazy").setup({
     end
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "nvim-tree/nvim-web-devicons", -- optional, but recommended
+      "nvim-tree/nvim-web-devicons",
     },
-    lazy = false, -- neo-tree will lazily load itself
     config = function()
-      require('neo-tree').setup({
-        filesystem = {
-          window = {
-            line_numbers = true,
-            relative_line_numbers = true,
-            position = 'current'
-          }
-        }
-      })
-    end
+      require("nvim-tree").setup {}
+    end,
   },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-tree/nvim-web-devicons", -- optional, but recommended
+  --   },
+  --   lazy = false, -- neo-tree will lazily load itself
+  --   config = function()
+  --     require('neo-tree').setup({
+  --       filesystem = {
+  --         window = {
+  --           line_numbers = true,
+  --           relative_line_numbers = true,
+  --           position = 'current'
+  --         }
+  --       }
+  --     })
+  --   end
+  -- },
   {
     "jake-stewart/multicursor.nvim",
     branch = "1.0",
