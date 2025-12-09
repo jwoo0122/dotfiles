@@ -186,17 +186,17 @@ require("lazy").setup({
     event = 'InsertEnter',
     config = true,
   },
-  {
-    'nvim-lualine/lualine.nvim',
-    config = function()
-      require('lualine').setup {
-        options = {
-          component_separators = { left = ' ', right = ' ' },
-          section_separators = { left = ' ', right = ' ' },
-        }
-      }
-    end
-  },
+  -- {
+  --   'nvim-lualine/lualine.nvim',
+  --   config = function()
+  --     require('lualine').setup {
+  --       options = {
+  --         component_separators = { left = ' ', right = ' ' },
+  --         section_separators = { left = ' ', right = ' ' },
+  --       }
+  --     }
+  --   end
+  -- },
   {
     'nvim-treesitter/nvim-treesitter',
     config = function()
@@ -313,25 +313,6 @@ require("lazy").setup({
     config = function()
     end
   },
-  -- {
-  --   "nvim-tree/nvim-tree.lua",
-  --   version = "*",
-  --   lazy = false,
-  --   dependencies = {
-  --     "nvim-tree/nvim-web-devicons",
-  --   },
-  --   config = function()
-  --     require("nvim-tree").setup {
-  --       view = {
-  --         number = true,
-  --         relativenumber = true,
-  --         float = {
-  --           enable = true
-  --         }
-  --       }
-  --     }
-  --   end,
-  -- },
   {
     "jake-stewart/multicursor.nvim",
     branch = "1.0",
@@ -400,4 +381,9 @@ require("lazy").setup({
     ---@type ibl.config
     opts = {},
   },
+  {
+    'mhinz/vim-grepper',
+    config = function()
+    end
+  }
 })
