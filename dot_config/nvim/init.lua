@@ -308,25 +308,25 @@ require("lazy").setup({
     config = function()
     end
   },
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup {
-        view = {
-          number = true,
-          relativenumber = true,
-          float = {
-            enable = true
-          }
-        }
-      }
-    end,
-  },
+  -- {
+  --   "nvim-tree/nvim-tree.lua",
+  --   version = "*",
+  --   lazy = false,
+  --   dependencies = {
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  --   config = function()
+  --     require("nvim-tree").setup {
+  --       view = {
+  --         number = true,
+  --         relativenumber = true,
+  --         float = {
+  --           enable = true
+  --         }
+  --       }
+  --     }
+  --   end,
+  -- },
   {
     "jake-stewart/multicursor.nvim",
     branch = "1.0",
