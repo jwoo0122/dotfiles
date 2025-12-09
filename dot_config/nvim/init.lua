@@ -380,10 +380,5 @@ require("lazy").setup({
     ---@module "ibl"
     ---@type ibl.config
     opts = {},
-  },
-  {
-    'mhinz/vim-grepper',
-    config = function()
-    end
   }
 })
