@@ -20,6 +20,11 @@ vim.opt.listchars:append {
   space = "·"
 }
 
+--- Search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.inccommand = "split"
+
 ---Split direction
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -31,6 +36,10 @@ vim.filetype.add({
     md = 'markdown',
   }
 })
+
+--- command mode
+vim.opt.wildmode = "list:longest,list:full"
+vim.opt.wildignore:append({"node_modules"})
 
 -- Terminal
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
