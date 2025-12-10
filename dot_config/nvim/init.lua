@@ -25,8 +25,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.inccommand = "split"
 
--- statusline
-vim.opt.laststatus = 3
+-- -- statusline
+-- vim.opt.laststatus = 3
 
 ---Split direction
 vim.opt.splitright = true
@@ -95,39 +95,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
+    "rose-pine/neovim",
     config = function()
-      vim.cmd('colorscheme tokyonight-moon')
-
-      local colors = require("tokyonight.colors").setup()
-      local tn_util = require("tokyonight.util")
-
-      local mode_colors = {
-        n = colors.blue,
-        i = colors.orange,
-        v = colors.purple,
-        V = colors.purple,
-        ["\22"] = colors.purple,
-        c = colors.red
-      }
-
-      local function setColor(mode)
-        local statusline_color = tn_util.darken(mode_colors[mode] or mode_colors["n"], 0.7)
-        vim.api.nvim_set_hl(0, "StatusLine", { bg = statusline_color, fg = "#111111", bold = true })
-      end
-
-      vim.api.nvim_create_autocmd("ModeChanged", {
-        pattern = "*",
-        callback = function()
-          local mode = vim.fn.mode()
-
-          setColor(mode)
-        end
-      })
-
-      setColor('n')
+      require('rose-pine').setup {}
+      vim.cmd('colorscheme rose-pine')
     end
   },
   {
@@ -342,11 +313,12 @@ require("lazy").setup({
         wilder.popupmenu_palette_theme({
           highlighter = wilder.basic_highlighter(),
           border = 'rounded',
-          max_width = '75%',
+          max_width = '50%',
+          max_height = '30%',
           reverse = 0,
           left = {' ', wilder.popupmenu_devicons()},
           right = {' ', wilder.popupmenu_scrollbar()},
-          prompt_position = 'bottom',
+          prompt_position = 'top',
         })
       ))
     end
@@ -395,4 +367,5 @@ require("lazy").setup({
     opts = {}
   },
   { "nvim-tree/nvim-web-devicons", opts = {} },
+  { 'nvim-mini/mini.statusline', version = '*', opts = {} },
 })
