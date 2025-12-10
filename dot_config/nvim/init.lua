@@ -66,9 +66,6 @@ vim.lsp.buf.hover = function()
   })
 end
 
---- netrw
-vim.g.netrw_liststyle = 3
-
 -- Window
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>')
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>')
@@ -77,6 +74,10 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
 
 -- Keymap
 vim.g.mapleader = " "
+---
+--- netrw
+vim.g.netrw_liststyle = 3
+vim.keymap.set('n', '<leader>e', ':Explore .<CR>')
 
 ---Folding
 vim.opt.foldmethod = 'indent'
