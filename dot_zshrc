@@ -94,6 +94,10 @@ if [ -d "$HOME/.local/bin" ]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
+brew-backup() {
+  brew bundle dump --force && mv Brewfile ~/.config/brew/Brewfile
+}
+
 alias "ls"="eza"
 alias "l"="eza -l --classify=auto --group-directories-first"
 
