@@ -103,9 +103,4 @@ alias "l"="eza -l --classify=auto --group-directories-first"
 
 alias "colortest"="~/.config/colortest"
 
-alias fzfnv="fzf --read0 --print0 -m --preview 'bat --color=always {}' | xargs -0 -r nvim"
-alias gadd="git diff --name-only -z | fzf --read0 --print0 -m --preview 'git diff {} | delta' | xargs -0 -r git add"
-alias gswitch="git branch -z | fzf --read0 --print0 --preview 'git log -n 10 --color=always {}' | xargs -0 -r git switch"
-alias rgg="rg -S -l -0"
-
 alias dotsync="chezmoi re-add"
