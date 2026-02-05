@@ -1,3 +1,6 @@
+# mise
+eval "$(mise activate zsh)"
+
 export GPG_TTY=$(tty)
 
 # git branch show
@@ -53,8 +56,6 @@ export EDITOR="zed --wait"
 # zoxide
 eval "$(zoxide init zsh)"
 
-# mise
-eval "$(mise activate zsh)"
 
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -97,7 +98,6 @@ alias "ls"="eza"
 alias "l"="eza -l --classify=auto --group-directories-first"
 
 alias "colortest"="~/.config/colortest"
-alias claude="/Users/jeongjin-u/.claude/local/claude"
 
 alias fzfnv="fzf --read0 --print0 -m --preview 'bat --color=always {}' | xargs -0 -r nvim"
 alias gadd="git diff --name-only -z | fzf --read0 --print0 -m --preview 'git diff {} | delta' | xargs -0 -r git add"
