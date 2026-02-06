@@ -1,6 +1,8 @@
+tap "antoniorodr/memo"
 brew "chezmoi"
 brew "mise"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
+brew "antoniorodr/memo/memo"
 cask "claude-code"
 cask "ghostty"
