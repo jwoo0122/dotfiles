@@ -1,5 +1,6 @@
 tap "antoniorodr/memo"
 brew "chezmoi"
+brew "flyctl"
 brew "mise"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
