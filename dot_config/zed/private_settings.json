@@ -2,7 +2,7 @@
   "show_edit_predictions": false,
   "relative_line_numbers": "enabled",
   "icon_theme": "One Dark",
-  "theme": "Rosé Pine",
+  "theme": "One Dark",
   "format_on_save": "on",
   "formatter": "language_server",
   "tab_size": 2,
