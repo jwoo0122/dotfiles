@@ -96,10 +96,13 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "rose-pine/neovim",
+    "navarasu/onedark.nvim",
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      require('rose-pine').setup {}
-      vim.cmd('colorscheme rose-pine-moon')
+      require('onedark').setup {
+        style = 'darker'
+      }
+      require('onedark').load()
     end
   },
   {
@@ -198,15 +201,20 @@ require("lazy").setup({
   },
   {
     'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    build = ":TSUpdate",
     config = function()
-      require('nvim-treesitter.configs').setup({
-        ensure_installed = { "javascript", "astro", "typescript", "dockerfile", "bash", "go", "json", "lua", "yaml", "ocaml", "fsharp", "python", "rust" },
-        sync_install = true,
-        auto_install = true,
-        highlight = {
-          enable = true
-        },
-      })
+      require('nvim-treesitter').install {
+        "javascript", "astro", "typescript", "dockerfile", "bash", "go", "json", "lua", "yaml", "ocaml", "fsharp", "python", "rust"
+      }
+      -- require('nvim-treesitter.config').setup({
+      --   ensure_installed = { "javascript", "astro", "typescript", "dockerfile", "bash", "go", "json", "lua", "yaml", "ocaml", "fsharp", "python", "rust" },
+      --   sync_install = true,
+      --   auto_install = true,
+      --   highlight = {
+      --     enable = true
+      --   },
+      -- })
     end
   },
   {
@@ -299,36 +307,36 @@ require("lazy").setup({
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
-  {
-    "tpope/vim-fugitive",
-    config = function()
-    end
-  },
-  {
-    "gelguy/wilder.nvim",
-    config = function()
-      local wilder = require('wilder')
-
-      wilder.setup({ modes = { ":", "/", "?" }})
-      wilder.set_option("renderer", wilder.popupmenu_renderer(
-        wilder.popupmenu_palette_theme({
-          highlighter = wilder.basic_highlighter(),
-          border = 'rounded',
-          max_width = '50%',
-          max_height = '30%',
-          reverse = 0,
-          left = {' ', wilder.popupmenu_devicons()},
-          right = {' ', wilder.popupmenu_scrollbar()},
-          prompt_position = 'top',
-        })
-      ))
-    end
-  },
-  {
-    'kevinhwang91/nvim-bqf',
-    config = function()
-    end
-  },
+  -- {
+  --   "tpope/vim-fugitive",
+  --   config = function()
+  --   end
+  -- },
+  -- {
+  --   "gelguy/wilder.nvim",
+  --   config = function()
+  --     local wilder = require('wilder')
+  --
+  --     wilder.setup({ modes = { ":", "/", "?" }})
+  --     wilder.set_option("renderer", wilder.popupmenu_renderer(
+  --       wilder.popupmenu_palette_theme({
+  --         highlighter = wilder.basic_highlighter(),
+  --         border = 'rounded',
+  --         max_width = '50%',
+  --         max_height = '30%',
+  --         reverse = 0,
+  --         left = {' ', wilder.popupmenu_devicons()},
+  --         right = {' ', wilder.popupmenu_scrollbar()},
+  --         prompt_position = 'top',
+  --       })
+  --     ))
+  --   end
+  -- },
+  -- {
+  --   'kevinhwang91/nvim-bqf',
+  --   config = function()
+  --   end
+  -- },
   {
     'akinsho/toggleterm.nvim',
     version = "*",
@@ -338,35 +346,46 @@ require("lazy").setup({
       }
     end
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    ---@module "ibl"
-    ---@type ibl.config
-    config = function()
-      local highlight = {
-            "CursorColumn",
-            "Whitespace",
-          }
-      require('ibl').setup {
-        indent = {
-          highlight = highlight,
-          char = ""
-        },
-        whitespace = {
-          highlight = highlight,
-          remove_blankline_trail = false,
-        },
-        scope = {
-          enabled = true
-        }
-      }
-    end
-  },
-  {
-    'prichrd/netrw.nvim',
-    opts = {}
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   main = "ibl",
+  --   ---@module "ibl"
+  --   ---@type ibl.config
+  --   config = function()
+  --     local highlight = {
+  --           "CursorColumn",
+  --           "Whitespace",
+  --         }
+  --     require('ibl').setup {
+  --       indent = {
+  --         highlight = highlight,
+  --         char = ""
+  --       },
+  --       whitespace = {
+  --         highlight = highlight,
+  --         remove_blankline_trail = false,
+  --       },
+  --       scope = {
+  --         enabled = true
+  --       }
+  --     }
+  --   end
+  -- },
+  -- {
+  --   'prichrd/netrw.nvim',
+  --   opts = {}
+  -- },
   { "nvim-tree/nvim-web-devicons", opts = {} },
   { 'nvim-mini/mini.statusline', version = '*', opts = {} },
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+  }
 })
