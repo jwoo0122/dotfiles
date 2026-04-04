@@ -96,15 +96,28 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "navarasu/onedark.nvim",
+    'projekt0n/github-nvim-theme',
+    name = 'github-theme',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      require('onedark').setup {
-        style = 'darker'
-      }
-      require('onedark').load()
-    end
+      require('github-theme').setup({
+        -- ...
+      })
+
+      vim.cmd('colorscheme github_dark_dimmed')
+    end,
   },
+  -- {
+  --   "navarasu/onedark.nvim",
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     require('onedark').setup {
+  --       style = 'darker'
+  --     }
+  --     require('onedark').load()
+  --   end
+  -- },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -118,7 +131,6 @@ require("lazy").setup({
         rust_analyzer = {},
         jsonls = {},
         astro = {},
-        eslint = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -207,14 +219,6 @@ require("lazy").setup({
       require('nvim-treesitter').install {
         "javascript", "astro", "typescript", "dockerfile", "bash", "go", "json", "lua", "yaml", "ocaml", "fsharp", "python", "rust"
       }
-      -- require('nvim-treesitter.config').setup({
-      --   ensure_installed = { "javascript", "astro", "typescript", "dockerfile", "bash", "go", "json", "lua", "yaml", "ocaml", "fsharp", "python", "rust" },
-      --   sync_install = true,
-      --   auto_install = true,
-      --   highlight = {
-      --     enable = true
-      --   },
-      -- })
     end
   },
   {
@@ -307,36 +311,6 @@ require("lazy").setup({
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
   },
-  -- {
-  --   "tpope/vim-fugitive",
-  --   config = function()
-  --   end
-  -- },
-  -- {
-  --   "gelguy/wilder.nvim",
-  --   config = function()
-  --     local wilder = require('wilder')
-  --
-  --     wilder.setup({ modes = { ":", "/", "?" }})
-  --     wilder.set_option("renderer", wilder.popupmenu_renderer(
-  --       wilder.popupmenu_palette_theme({
-  --         highlighter = wilder.basic_highlighter(),
-  --         border = 'rounded',
-  --         max_width = '50%',
-  --         max_height = '30%',
-  --         reverse = 0,
-  --         left = {' ', wilder.popupmenu_devicons()},
-  --         right = {' ', wilder.popupmenu_scrollbar()},
-  --         prompt_position = 'top',
-  --       })
-  --     ))
-  --   end
-  -- },
-  -- {
-  --   'kevinhwang91/nvim-bqf',
-  --   config = function()
-  --   end
-  -- },
   {
     'akinsho/toggleterm.nvim',
     version = "*",
@@ -346,35 +320,6 @@ require("lazy").setup({
       }
     end
   },
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   main = "ibl",
-  --   ---@module "ibl"
-  --   ---@type ibl.config
-  --   config = function()
-  --     local highlight = {
-  --           "CursorColumn",
-  --           "Whitespace",
-  --         }
-  --     require('ibl').setup {
-  --       indent = {
-  --         highlight = highlight,
-  --         char = ""
-  --       },
-  --       whitespace = {
-  --         highlight = highlight,
-  --         remove_blankline_trail = false,
-  --       },
-  --       scope = {
-  --         enabled = true
-  --       }
-  --     }
-  --   end
-  -- },
-  -- {
-  --   'prichrd/netrw.nvim',
-  --   opts = {}
-  -- },
   { "nvim-tree/nvim-web-devicons", opts = {} },
   { 'nvim-mini/mini.statusline', version = '*', opts = {} },
   {
@@ -387,5 +332,13 @@ require("lazy").setup({
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
+  },
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
   }
 })
