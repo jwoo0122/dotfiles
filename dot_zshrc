@@ -39,7 +39,6 @@ _vbe_vcs_precmd() {
 }
 
 add-zsh-hook precmd _vbe_vcs_precmd
-#
 
 # add-zsh-hook precmd vcs_info
 PROMPT=$'
@@ -104,3 +103,9 @@ alias "l"="eza -l --classify=auto --group-directories-first"
 alias "colortest"="~/.config/colortest"
 
 alias dotsync="chezmoi re-add"
+
+srchedit() {
+  rg $1 --null -l |
+    fzf --read0 --print0 --preview="bat --color=always {}" |
+    xargs nvim
+}

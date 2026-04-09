@@ -93,6 +93,20 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
+    'greggh/claude-code.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = function()
+      require('claude-code').setup {
+        window = {
+          split_ratio = 0.5,
+          position = "horizontal",
+        }
+      }
+    end
+  },
+  {
     'projekt0n/github-nvim-theme',
     name = 'github-theme',
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -114,9 +128,16 @@ require("lazy").setup({
     },
     config = function()
       local servers = {
+        -- Data
+        jsonls = {},
+        yamlls = {},
+        cssls = {},
+        html = {},
+        marksman = {},
+
+        -- Languages
         pylsp = {},
         rust_analyzer = {},
-        jsonls = {},
         astro = {},
         lua_ls = {
           settings = {
@@ -130,10 +151,6 @@ require("lazy").setup({
           }
         },
         ts_ls = {},
-        marksman = {},
-        tailwindcss = {},
-        yamlls = {},
-        cssls = {},
       }
 
       require('mason').setup()
@@ -230,11 +247,11 @@ require("lazy").setup({
       local telescope = require('telescope')
       telescope.setup({
         defaults = {
-          layout_strategy = 'horizontal',
+          layout_strategy = 'vertical',
           layout_config = {
-            horizontal = {
+            vertical = {
               prompt_position = "top",
-              width = { padding = 10 },
+              width = { padding = 30 },
               height = { padding = 5 },
               preview_width = 0.5
             }
