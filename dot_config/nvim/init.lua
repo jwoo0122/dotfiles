@@ -75,9 +75,6 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>')
 -- Keymap
 vim.g.mapleader = " "
 ---
---- netrw
-vim.g.netrw_liststyle = 3
-vim.keymap.set('n', '<leader>e', ':Explore .<CR>')
 
 ---Folding
 vim.opt.foldmethod = 'indent'
@@ -105,19 +102,9 @@ require("lazy").setup({
         -- ...
       })
 
-      vim.cmd('colorscheme github_dark_dimmed')
+      vim.cmd('colorscheme github_dark_default')
     end,
   },
-  -- {
-  --   "navarasu/onedark.nvim",
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   config = function()
-  --     require('onedark').setup {
-  --       style = 'darker'
-  --     }
-  --     require('onedark').load()
-  --   end
-  -- },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
