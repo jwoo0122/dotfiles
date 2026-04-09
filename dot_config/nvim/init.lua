@@ -146,6 +146,7 @@ require("lazy").setup({
         marksman = {},
         tailwindcss = {},
         yamlls = {},
+        cssls = {},
       }
 
       require('mason').setup()
@@ -246,8 +247,8 @@ require("lazy").setup({
           layout_config = {
             horizontal = {
               prompt_position = "top",
-              width = { padding = 0 },
-              height = { padding = 0 },
+              width = { padding = 10 },
+              height = { padding = 5 },
               preview_width = 0.5
             }
           },
@@ -335,10 +336,10 @@ require("lazy").setup({
   },
   {
     "folke/zen-mode.nvim",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
+    config = function()
+      local zenmode = require('zen-mode');
+      zenmode.setup({});
+      vim.keymap.set('n', '<leader>f', function() zenmode.toggle({ window = { width = 80 } }) end, {})
+    end
   }
 })
