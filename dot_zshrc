@@ -46,7 +46,7 @@ PROMPT=$'
 %F{magenta}\U27E9%f '
 
 # editor setting
-export EDITOR="zed --wait"
+export EDITOR="nvim"
 
 # zoxide
 eval "$(zoxide init zsh)"
@@ -86,11 +86,6 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Work-specific zshrc
 [ -f ~/.zshrc-work ] && source ~/.zshrc-work
 
-# WSL
-if [ -d "$HOME/.local/bin" ]; then
-  export PATH="$HOME/.local/bin:$PATH"
-fi
-
 brew-backup() {
   brew bundle dump --force && mv Brewfile ~/.config/brew/Brewfile
 }
@@ -100,7 +95,7 @@ alias "l"="eza -l --classify=auto --group-directories-first"
 
 alias "colortest"="~/.config/colortest"
 
-alias dotsync="chezmoi re-add"
+alias dotsync="brew-backup && chezmoi re-add"
 
 srchedit() {
   rg $1 --null -l |
