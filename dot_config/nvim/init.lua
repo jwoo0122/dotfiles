@@ -247,13 +247,13 @@ require("lazy").setup({
       local telescope = require('telescope')
       telescope.setup({
         defaults = {
-          layout_strategy = 'vertical',
+          layout_strategy = 'horizontal',
           layout_config = {
-            vertical = {
+            horizontal = {
               prompt_position = "top",
-              width = { padding = 30 },
-              height = { padding = 5 },
-              preview_width = 0.5
+              width = { padding = 0 },
+              height = { padding = 0 },
+              sorting_strategy = 'ascending'
             }
           },
           preview = true,
@@ -275,25 +275,9 @@ require("lazy").setup({
       })
       telescope.load_extension('zoxide');
 
-      local function project_files()
-        local is_inside_work_tree = {}
-        local opts = {} -- define here if you want to define something
-
-        local cwd = vim.fn.getcwd()
-        if is_inside_work_tree[cwd] == nil then
-          vim.fn.system("git rev-parse --is-inside-work-tree")
-          is_inside_work_tree[cwd] = vim.v.shell_error == 0
-        end
-
-        if is_inside_work_tree[cwd] then
-          require("telescope.builtin").git_files(opts)
-        else
-          require("telescope.builtin").find_files(opts)
-        end
-      end
 
       local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>p', project_files, {})
+      vim.keymap.set('n', '<leader>p', builtin.find_files, {})
       vim.keymap.set('n', '<leader>d', builtin.lsp_document_symbols, {})
       vim.keymap.set('n', '<leader>b', builtin.buffers, {})
       vim.keymap.set('n', '<leader>z', telescope.extensions.zoxide.list, {})
@@ -321,6 +305,7 @@ require("lazy").setup({
     version = "*",
     config = function()
       require('toggleterm').setup{
+        size = 25,
         open_mapping = [[<c-\>]]
       }
     end

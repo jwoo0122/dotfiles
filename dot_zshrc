@@ -107,3 +107,11 @@ srchedit() {
     fzf --read0 --print0 --preview="bat --color=always {}" |
     xargs nvim
 }
+
+proj() {
+  local dir
+  dir=$(zoxide query -l | fzf --preview 'eza -l --color=always {}') || return
+  pushd "$dir" > /dev/null
+  nvim .
+  popd > /dev/null
+}
