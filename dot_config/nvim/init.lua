@@ -330,5 +330,5 @@ require("lazy").setup({
       zenmode.setup({});
       vim.keymap.set('n', '<leader>f', function() zenmode.toggle({ window = { width = 80 } }) end, {})
     end
-  }
+  },
 })
