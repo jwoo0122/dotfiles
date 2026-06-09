@@ -1,23 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "mcp__acp__Bash",
-      "mcp__acp__Edit",
-      "Bash",
-      "Read",
-      "Edit",
-      "Write",
-      "WebFetch",
-      "Grep",
-      "Glob",
-      "LS",
-      "MultiEdit",
-      "NotebookRead",
-      "NotebookEdit",
-      "TodoRead",
-      "TodoWrite",
-      "WebSearch"
-    ],
     "defaultMode": "bypassPermissions"
   },
   "model": "opus[1m]",
@@ -31,9 +13,26 @@
             "command": "bunx -y ccstatusline@latest --hook"
           }
         ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bunx -y ccstatusline@latest --hook"
+          }
+        ]
       }
     ],
     "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bunx -y ccstatusline@latest --hook"
+          }
+        ]
+      },
       {
         "hooks": [
           {
@@ -53,7 +52,8 @@
     "cloudflare@cloudflare": true,
     "typescript-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "cc-harness@cc-harness": true
+    "cc-harness@cc-harness": true,
+    "codex@openai-codex": true
   },
   "extraKnownMarketplaces": {
     "cloudflare": {
@@ -67,9 +67,16 @@
         "source": "github",
         "repo": "jwoo0122/cc-harness"
       }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
     }
   },
-  "effortLevel": "high",
+  "effortLevel": "xhigh",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
-  "tui": "fullscreen"
+  "agentPushNotifEnabled": true
 }

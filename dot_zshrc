@@ -90,19 +90,25 @@ brew-backup() {
   brew bundle dump --force && mv Brewfile ~/.config/brew/Brewfile
 }
 
+# ALIAS
 alias "ls"="eza"
 alias "l"="eza -l --classify=auto --group-directories-first"
-
 alias "colortest"="~/.config/colortest"
-
 alias dotsync="brew-backup && chezmoi re-add"
 
-srchedit() {
-  rg $1 --null -l |
-    fzf --read0 --print0 --preview="bat --color=always {}" |
-    xargs nvim
-}
+alias gadd="
+git ls-files -m -o --exclude-standard |
+  fzf -m --preview 'git diff --color=always {} 2>/dev/null || cat {}' |
+  xargs git add
+"
 
+alias gunstage="
+git diff --cached --name-only |
+  fzf -m --preview 'git diff --cached --color=always {} 2>/dev/null || cat {}' |
+  xargs git restore --staged
+"
+
+# FUNCS
 proj() {
   local dir
   dir=$(zoxide query -l | fzf --preview 'eza -l --color=always {}') || return
@@ -110,3 +116,8 @@ proj() {
   nvim .
   popd > /dev/null
 }
+
+. "$HOME/.local/bin/env"
+
+# Hermes Agent — ensure ~/.local/bin is on PATH
+export PATH="$HOME/.local/bin:$PATH"

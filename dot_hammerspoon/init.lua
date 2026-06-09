@@ -22,7 +22,9 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["p"], open_app("Perplexity
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["l"], open_app("Linear"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["r"], open_app("Google Chrome"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["e"], open_app("Messages"))
-hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["d"], open_app("Claude"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["d"], open_app("Codex"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["g"], open_app("ChatGPT"))
+
 
 
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["o"], function()
