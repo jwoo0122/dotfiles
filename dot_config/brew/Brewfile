@@ -2,31 +2,47 @@ tap "anomalyco/tap"
 tap "antoniorodr/memo"
 tap "openclaw/tap"
 tap "steipete/tap"
+# Browser automation CLI for AI agents
 brew "agent-browser"
+# Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Command-line tools for fly.io services
 brew "flyctl"
+# GitHub command-line tool
 brew "gh"
+# Simple terminal UI for git commands
 brew "lazygit"
+# Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Deep clean and optimize your Mac
 brew "mole"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Multi-modal AI tool to extract and summarize content
 brew "summarize"
+# Terminal multiplexer
 brew "tmux"
+# Parser generator tool
 brew "tree-sitter-cli"
+# Command-line client for WebSockets
 brew "websocat"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# Programming language designed for robustness, optimality, and clarity
 brew "zig"
+# Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-brew "anomalyco/tap/opencode"
-brew "antoniorodr/memo/memo"
-brew "openclaw/tap/goplaces"
-brew "steipete/tap/peekaboo"
-brew "steipete/tap/remindctl"
+# OpenAI's coding agent that runs in your terminal
 cask "codex"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# 2D and 3D game engine
 cask "godot"
+# Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 go "cmd/go"
 go "cmd/gofmt"
