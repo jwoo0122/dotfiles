@@ -21,7 +21,9 @@ hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["v"], open_app("Zed"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["r"], open_app("Google Chrome"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["e"], open_app("Messages"))
 hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["d"], open_app("Codex"))
-hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["g"], open_app("ChatGPT"))
+hs.hotkey.bind({ "option", "shift" }, hs.keycodes.map["g"], function()
+  hs.execute("open https://chatgpt.com")
+end)
 
 
 

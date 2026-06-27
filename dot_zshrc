@@ -122,3 +122,5 @@ proj() {
 # Hermes Agent — ensure ~/.local/bin is on PATH
 export PATH="$HOME/.local/bin:$PATH"
 
+alias codx="codex --yolo"
+alias clawd="claude --dangerously-skip-permissions --worktree"
