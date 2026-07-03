@@ -93,20 +93,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    'greggh/claude-code.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    config = function()
-      require('claude-code').setup {
-        window = {
-          split_ratio = 0.5,
-          position = "horizontal",
-        }
-      }
-    end
-  },
-  {
     'projekt0n/github-nvim-theme',
     name = 'github-theme',
     lazy = false, -- make sure we load this during startup if it is your main colorscheme

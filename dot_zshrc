@@ -124,3 +124,11 @@ export PATH="$HOME/.local/bin:$PATH"
 
 alias codx="codex --yolo"
 alias clawd="claude --dangerously-skip-permissions --worktree"
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
