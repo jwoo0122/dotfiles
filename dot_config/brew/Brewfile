@@ -10,26 +10,16 @@ brew "chezmoi"
 brew "cmake"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
-# Command-line tools for fly.io services
-brew "flyctl"
 # GitHub command-line tool
 brew "gh"
-# Simple terminal UI for git commands
-brew "lazygit"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Deep clean and optimize your Mac
 brew "mole"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Multi-modal AI tool to extract and summarize content
-brew "summarize"
-# Terminal multiplexer
-brew "tmux"
 # Parser generator tool
 brew "tree-sitter-cli"
-# Command-line client for WebSockets
-brew "websocat"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Programming language designed for robustness, optimality, and clarity
@@ -38,26 +28,15 @@ brew "zig"
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# Modern Go client + CLI for the Google Places API (New)
-brew "openclaw/tap/goplaces", link: false
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# 2D and 3D game engine
-cask "godot"
-# Modern Go client + CLI for the Google Places API (New).
-cask "openclaw/tap/goplaces", trusted: true
 # Minimal installer for conda
 cask "miniconda"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 go "cmd/go"
 go "cmd/gofmt"
-go "github.com/bluesky-social/indigo/cmd/tap"
 cargo "wasm-bindgen-cli"
-npm "@google/gemini-cli"
-npm "@mariozechner/pi-coding-agent"
-npm "dmux"
-npm "openclaw"
 npm "vercel"
