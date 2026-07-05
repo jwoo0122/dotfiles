@@ -36,12 +36,18 @@ brew "zig"
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Modern Go client + CLI for the Google Places API (New)
+brew "openclaw/tap/goplaces", link: false
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # 2D and 3D game engine
 cask "godot"
+# Modern Go client + CLI for the Google Places API (New).
+cask "openclaw/tap/goplaces", trusted: true
+# Minimal installer for conda
+cask "miniconda"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 go "cmd/go"
