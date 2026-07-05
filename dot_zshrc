@@ -90,6 +90,7 @@ brew-backup() {
   brew bundle dump --force --file="$HOME/.config/brew/Brewfile"
 }
 
+unalias dotsync 2>/dev/null
 dotsync() {
   brew-backup &&
     chezmoi re-add &&
