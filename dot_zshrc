@@ -87,7 +87,23 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 [ -f ~/.zshrc-work ] && source ~/.zshrc-work
 
 brew-backup() {
-  brew bundle dump --force --file="$HOME/.config/brew/Brewfile"
+  command brew bundle dump --force --file="$HOME/.config/brew/Brewfile"
+}
+
+brewfile-sync() {
+  brew-backup &&
+    chezmoi re-add "$HOME/.config/brew/Brewfile"
+}
+
+brew() {
+  command brew "$@"
+  local brew_status=$?
+
+  if [ $brew_status -eq 0 ] && [ "$1" = "install" ]; then
+    brewfile-sync || return $?
+  fi
+
+  return $brew_status
 }
 
 unalias dotsync 2>/dev/null
