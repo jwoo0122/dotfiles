@@ -90,18 +90,17 @@ brew-backup() {
   command brew bundle dump --force --file="$HOME/.config/brew/Brewfile"
 }
 
-brewfile-sync() {
-  brew-backup &&
-    chezmoi re-add "$HOME/.config/brew/Brewfile"
-}
-
 brew() {
   command brew "$@"
   local brew_status=$?
 
-  if [ $brew_status -eq 0 ] && [ "$1" = "install" ]; then
-    brewfile-sync || return $?
-  fi
+  case "$1" in
+    install|remove|uninstall)
+      if [ $brew_status -eq 0 ]; then
+        brew-backup || return $?
+      fi
+      ;;
+  esac
 
   return $brew_status
 }
