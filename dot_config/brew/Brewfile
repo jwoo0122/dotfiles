@@ -50,8 +50,6 @@ cask "codex"
 cask "ghostty"
 # Minimal installer for conda
 cask "miniconda"
-# Reverse proxy, secure introspectable tunnels to localhost
-cask "ngrok"
 cargo "wasm-bindgen-cli"
 npm "clawhub"
 npm "corepack"
