@@ -1,17 +1,7 @@
 [tools]
-bat = "latest"
-delta = "latest"
-fd = "latest"
-ripgrep = "latest"
-fzf = "latest"
-"cargo:eza" = "latest"
-biome = "latest"
-node = "latest"
+node = "24"
 pnpm = "latest"
 yarn = "latest"
-rust = "latest"
-zoxide = "latest"
-go = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []

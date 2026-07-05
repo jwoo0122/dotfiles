@@ -54,8 +54,6 @@ eval "$(zoxide init zsh)"
 # fzf
 source <(fzf --zsh)
 
-# Cargo
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
@@ -170,3 +168,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# cargo
+. "$HOME/.cargo/env"
+export PATH="$HOME/.cargo/bin:$PATH"
