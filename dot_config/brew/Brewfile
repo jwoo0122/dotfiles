@@ -1,5 +1,7 @@
 tap "anomalyco/tap"
 tap "antoniorodr/memo"
+tap "can1357/tap"
+tap "jwoo0122/tap", trusted: true
 tap "openclaw/tap"
 tap "steipete/tap"
 # Browser automation CLI for AI agents
@@ -30,6 +32,8 @@ brew "mise"
 brew "mole"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# AI agent toolkit
+brew "pi-coding-agent"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Parser generator tool
@@ -44,6 +48,8 @@ brew "zoxide"
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Coding agent with the IDE wired in
+brew "can1357/tap/omp", trusted: true
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Terminal emulator that uses platform-native UI and GPU acceleration
@@ -51,6 +57,7 @@ cask "ghostty"
 # Minimal installer for conda
 cask "miniconda"
 cargo "wasm-bindgen-cli"
+npm "@jwoo0122/harness"
 npm "clawhub"
 npm "corepack"
 npm "openclaw"
