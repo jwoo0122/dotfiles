@@ -26,6 +26,8 @@ brew "gh"
 brew "git-delta"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Linux virtual machines
+brew "lima"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Deep clean and optimize your Mac
@@ -48,6 +50,8 @@ brew "zoxide"
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# The AI coding agent built for the terminal.
+brew "anomalyco/tap/opencode", trusted: true
 # Coding agent with the IDE wired in
 brew "can1357/tap/omp", trusted: true
 # OpenAI's coding agent that runs in your terminal
