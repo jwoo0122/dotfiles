@@ -4,10 +4,14 @@ tap "can1357/tap"
 tap "jwoo0122/tap", trusted: true
 tap "openclaw/tap"
 tap "steipete/tap"
+# Static checker for GitHub Actions workflow files
+brew "actionlint"
 # Browser automation CLI for AI agents
 brew "agent-browser"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Tool for building final distributable artifacts and uploading them to an archive
+brew "cargo-dist"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
 # Cross-platform make
@@ -38,6 +42,8 @@ brew "neovim"
 brew "pi-coding-agent"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Terminal multiplexer
+brew "tmux"
 # Parser generator tool
 brew "tree-sitter-cli"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
@@ -54,6 +60,8 @@ brew "zsh-syntax-highlighting"
 brew "anomalyco/tap/opencode", trusted: true
 # Coding agent with the IDE wired in
 brew "can1357/tap/omp", trusted: true
+# Manage Git worktrees and attachable agent sessions
+brew "jwoo0122/tap/tony"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Terminal emulator that uses platform-native UI and GPU acceleration
