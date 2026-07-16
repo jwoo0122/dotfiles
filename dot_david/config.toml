@@ -1,0 +1,11 @@
+[agents.claude]
+command = "claude"
+args = ["--dangerously-skip-permissions"]
+
+[agents.codex]
+command = "codex"
+args = ["--yolo"]
+
+[agents.pi]
+command = "pi"
+args = []
