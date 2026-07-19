@@ -6,6 +6,10 @@ args = ["--dangerously-skip-permissions"]
 command = "codex"
 args = ["--yolo"]
 
+[agents.lucy]
+command = "lucy"
+args = []
+
 [agents.pi]
 command = "pi"
 args = []
