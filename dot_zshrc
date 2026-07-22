@@ -172,3 +172,9 @@ unset __conda_setup
 # cargo
 . "$HOME/.cargo/env"
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# secrets
+source ~/.config/zsh/secrets.zsh
+
+# Lucy
+export LUCY_GREETING_IMAGE=true

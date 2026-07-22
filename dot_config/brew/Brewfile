@@ -48,6 +48,8 @@ brew "ripgrep"
 brew "tmux"
 # Parser generator tool
 brew "tree-sitter-cli"
+# Generate your Xcode project from a spec file and your folder structure
+brew "xcodegen"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # Programming language designed for robustness, optimality, and clarity
