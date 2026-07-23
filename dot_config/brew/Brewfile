@@ -74,6 +74,8 @@ cask "codex"
 cask "ghostty"
 # Minimal installer for conda
 cask "miniconda"
+# macOS GUI automation tool for AI agents
+cask "jwoo0122/tap/rebecca", trusted: true
 cargo "wasm-bindgen-cli"
 npm "@jwoo0122/harness"
 npm "clawhub"
