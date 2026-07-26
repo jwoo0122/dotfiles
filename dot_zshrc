@@ -177,4 +177,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 source ~/.config/zsh/secrets.zsh
 
 # Lucy
-export LUCY_GREETING_IMAGE=true
+export LUCY_GREETING_IMAGE=false
+
+# David
+source <(COMPLETE=zsh david)

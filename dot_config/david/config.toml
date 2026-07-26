@@ -10,6 +10,3 @@ args = ["--yolo"]
 command = "lucy"
 args = []
 
-[agents.pi]
-command = "pi"
-args = []
