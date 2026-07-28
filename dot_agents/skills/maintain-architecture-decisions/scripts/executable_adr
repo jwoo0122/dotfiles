@@ -1,0 +1,95 @@
+#!/bin/sh
+set -eu
+
+SKILL_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+ADR_TOOL="$SKILL_ROOT/scripts/adr.py"
+repository_root=${PWD}
+selected_executable=
+selected_version=
+selected_yaml_file=
+
+previous_argument=
+for argument in "$@"; do
+    if [ "$previous_argument" = '--root' ]; then
+        repository_root=$argument
+        previous_argument=
+        continue
+    fi
+    case "$argument" in
+        --root=*) repository_root=${argument#--root=} ;;
+        --root) previous_argument=--root ;;
+        *) previous_argument= ;;
+    esac
+done
+if [ -d "$repository_root" ]; then
+    repository_root=$(CDPATH= cd -- "$repository_root" && pwd)
+fi
+
+probe_candidate() {
+    candidate=$1
+    case "$candidate" in
+        */*) executable=$candidate ;;
+        *) executable=$(command -v "$candidate" 2>/dev/null || true) ;;
+    esac
+    [ -n "$executable" ] && [ -x "$executable" ] || return 1
+
+    probe=$(
+        "$executable" -c '
+import sys
+import yaml
+print(sys.executable)
+print(yaml.__version__)
+print(yaml.__file__)
+' 2>/dev/null
+    ) || return 1
+
+    selected_executable=$(printf '%s\n' "$probe" | sed -n '1p')
+    selected_version=$(printf '%s\n' "$probe" | sed -n '2p')
+    selected_yaml_file=$(printf '%s\n' "$probe" | sed -n '3p')
+    [ -n "$selected_executable" ] && [ -n "$selected_yaml_file" ]
+}
+
+if [ "${ADR_PYTHON+x}" = x ]; then
+    if ! probe_candidate "$ADR_PYTHON"; then
+        printf '%s\n' "adr: ADR_PYTHON cannot import PyYAML: ${ADR_PYTHON:-<empty>}" >&2
+        printf '%s\n' 'adr: set ADR_PYTHON to a Python executable that can import yaml.' >&2
+        exit 2
+    fi
+else
+    if [ -n "${VIRTUAL_ENV:-}" ]; then
+        probe_candidate "$VIRTUAL_ENV/bin/python" || probe_candidate "$VIRTUAL_ENV/Scripts/python.exe" || true
+    fi
+    if [ -z "$selected_executable" ]; then
+        probe_candidate "$repository_root/.venv/bin/python" || probe_candidate "$repository_root/.venv/Scripts/python.exe" || true
+    fi
+    if [ -z "$selected_executable" ]; then
+        probe_candidate python3 || true
+    fi
+    if [ -z "$selected_executable" ]; then
+        probe_candidate python || true
+    fi
+fi
+
+if [ -z "$selected_executable" ]; then
+    printf '%s\n' 'adr: no Python interpreter that can import PyYAML was found.' >&2
+    printf '%s\n' 'adr: set ADR_PYTHON to a suitable Python executable.' >&2
+    exit 2
+fi
+
+if [ "${1:-}" = '--print-python' ]; then
+    case "$#:${2:-}" in
+        1:*) ;;
+        3:--root) ;;
+        2:--root=*) ;;
+        *)
+            printf '%s\n' 'adr: --print-python accepts only an optional --root argument.' >&2
+            exit 2
+            ;;
+    esac
+    printf '%s\n' "$selected_executable"
+    exit 0
+fi
+
+printf 'adr: using %s (PyYAML %s: %s)\n' \
+    "$selected_executable" "$selected_version" "$selected_yaml_file" >&2
+exec "$selected_executable" "$ADR_TOOL" "$@"
