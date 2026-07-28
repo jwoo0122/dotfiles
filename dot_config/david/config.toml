@@ -1,3 +1,5 @@
+default_agent = "lucy"
+
 [agents.claude]
 command = "claude"
 args = ["--dangerously-skip-permissions"]
