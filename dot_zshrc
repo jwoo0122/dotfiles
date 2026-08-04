@@ -181,3 +181,26 @@ export LUCY_GREETING_IMAGE=false
 
 # gwq
 source <(gwq completion zsh)
+
+# gwq shorcut
+gwa() {
+  if (( $# < 2)); then
+    print -u2 "usage: gwa <ticket> <command> [args...]"
+    return 2
+  fi
+
+  local ticket="$1"
+  shift
+
+  if ! command git worktree list --porcelain |
+    command grep -Fqx "branch refs/heads/$ticket"; then
+
+    if command git show-ref --verify --quiet "refs/heads/$ticket"; then
+      command gwq add -- "$ticket" || return
+    else 
+      command gwq add -b -- "$ticket" || return
+    fi
+  fi
+
+  command gwq exec "$ticket" -- "$@"
+}
