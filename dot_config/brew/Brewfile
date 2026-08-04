@@ -1,7 +1,9 @@
 tap "anomalyco/tap"
 tap "antoniorodr/memo"
 tap "can1357/tap"
+tap "d-kuro/tap"
 tap "jwoo0122/tap", trusted: true
+tap "manaflow-ai/cmux"
 tap "openclaw/tap"
 tap "steipete/tap"
 # Static checker for GitHub Actions workflow files
@@ -62,12 +64,16 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 # The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode", trusted: true
+# Git Worktree Manager for efficient worktree operations
+brew "d-kuro/tap/gwq", trusted: true
 # Manage Git worktrees and attachable agent sessions
 brew "jwoo0122/tap/david", trusted: true
 # A small local JSONL agent harness
 brew "jwoo0122/tap/lucy", trusted: true
 # Manage Git worktrees and attachable agent sessions
 brew "jwoo0122/tap/tony"
+# Ghostty-based terminal with vertical tabs and notifications for AI coding agents
+cask "cmux"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Terminal emulator that uses platform-native UI and GPU acceleration
