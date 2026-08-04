@@ -179,5 +179,5 @@ source ~/.config/zsh/secrets.zsh
 # Lucy
 export LUCY_GREETING_IMAGE=false
 
-# David
-source <(COMPLETE=zsh david)
+# gwq
+source <(gwq completion zsh)
