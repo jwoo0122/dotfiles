@@ -4,6 +4,7 @@ tap "can1357/tap"
 tap "d-kuro/tap"
 tap "jwoo0122/tap", trusted: true
 tap "manaflow-ai/cmux"
+tap "raine/workmux"
 tap "steipete/tap"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
@@ -69,6 +70,8 @@ brew "d-kuro/tap/gwq", trusted: true
 brew "jwoo0122/tap/david", trusted: true
 # A small local JSONL agent harness
 brew "jwoo0122/tap/lucy", trusted: true
+# Opinionated workflow tool that orchestrates git worktrees and tmux
+brew "raine/workmux/workmux", trusted: true
 # Ghostty-based terminal with vertical tabs and notifications for AI coding agents
 cask "cmux"
 # OpenAI's coding agent that runs in your terminal
