@@ -1,5 +1,6 @@
 [tools]
 node = "24"
+"npm:agent-browser" = "0.33.2"
 pnpm = "latest"
 yarn = "latest"
 

@@ -9,10 +9,6 @@ tap "raine/workmux"
 tap "steipete/tap"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
-# Browser automation CLI for AI agents
-brew "agent-browser"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
 # Tool for building final distributable artifacts and uploading them to an archive
 brew "cargo-dist"
 # Manage your dotfiles across multiple diverse machines, securely
@@ -31,8 +27,6 @@ brew "fzf"
 brew "gh"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
 # Self-improving AI agent that creates skills from experience
 brew "hermes-agent"
 # Linux virtual machines
