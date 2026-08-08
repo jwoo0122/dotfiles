@@ -1,4 +1,7 @@
 [tools]
+"cargo:tree-sitter-cli" = "latest"
+go = "latest"
+"go:github.com/d-kuro/gwq/cmd/gwq" = "latest"
 node = "24"
 "npm:agent-browser" = "0.33.2"
 pnpm = "latest"
