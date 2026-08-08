@@ -15,16 +15,10 @@ brew "cargo-dist"
 brew "chezmoi"
 # Cross-platform make
 brew "cmake"
-# Modern, maintained replacement for ls
-brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
-# Command-line fuzzy finder written in Go
-brew "fzf"
-# GitHub command-line tool
-brew "gh"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # Self-improving AI agent that creates skills from experience
@@ -35,8 +29,6 @@ brew "lima"
 brew "mise"
 # Deep clean and optimize your Mac
 brew "mole"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # AI agent toolkit
 brew "pi-coding-agent"
 # Search tool like grep and The Silver Searcher
@@ -77,6 +69,8 @@ cask "ghostty"
 cask "miniconda"
 # macOS GUI automation tool for AI agents
 cask "jwoo0122/tap/rebecca", trusted: true
+go "cmd/go"
+go "cmd/gofmt"
 cargo "wasm-bindgen-cli"
 npm "@jwoo0122/harness"
 npm "clawhub"
