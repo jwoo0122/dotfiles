@@ -1,5 +1,12 @@
+# Core user binaries must be available before any tool initialization.
+export PATH="$HOME/.local/bin:$PATH"
+
 # mise
-eval "$(~/.local/bin/mise activate zsh)"
+if [[ -x "$HOME/.local/bin/mise" ]]; then
+  eval "$("$HOME/.local/bin/mise" activate zsh)"
+elif (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
+fi
 
 export GPG_TTY=$(tty)
 
@@ -49,10 +56,12 @@ PROMPT=$'
 export EDITOR="nvim"
 
 # zoxide
-eval "$(zoxide init zsh)"
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
 # fzf
-source <(fzf --zsh)
+if (( $+commands[fzf] )) && [[ -t 0 || -t 1 ]]; then
+  source <(fzf --zsh)
+fi
 
 
 # bun completions
@@ -64,53 +73,34 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-# llvm
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+if [[ "$OSTYPE" == darwin* ]]; then
+  # llvm
+  export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
-# mysql
-export PATH="/usr/local/mysql/bin:$PATH"
+  # mysql
+  export PATH="/usr/local/mysql/bin:$PATH"
+fi
 
-# zsh-autosuggestions
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# zsh plugins use their native package-manager paths.
+if [[ "$OSTYPE" == darwin* ]] && (( $+commands[brew] )); then
+  zsh_autosuggestions="$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  zsh_syntax_highlighting="$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+else
+  zsh_autosuggestions="/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  zsh_syntax_highlighting="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
 
-# zsh-syntax-highlighting
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -r "$zsh_autosuggestions" ]] && source "$zsh_autosuggestions"
+[[ -r "$zsh_syntax_highlighting" ]] && source "$zsh_syntax_highlighting"
+unset zsh_autosuggestions zsh_syntax_highlighting
 
 # Private env
 [ -f ~/.env ] && source ~/.env
 
 # Work-specific zshrc
 [ -f ~/.zshrc-work ] && source ~/.zshrc-work
-
-brew-backup() {
-  command brew bundle dump --force --file="$HOME/.config/brew/Brewfile"
-}
-
-brew() {
-  command brew "$@"
-  local brew_status=$?
-
-  case "$1" in
-    install|remove|uninstall)
-      if [ $brew_status -eq 0 ]; then
-        brew-backup || return $?
-      fi
-      ;;
-  esac
-
-  return $brew_status
-}
-
-unalias dotsync 2>/dev/null
-dotsync() {
-  brew-backup &&
-    chezmoi re-add &&
-    chezmoi update &&
-    mise install &&
-    brew bundle install --file="$HOME/.config/brew/Brewfile"
-}
 
 # ALIAS
 alias "ls"="eza"
@@ -138,21 +128,20 @@ proj() {
   popd > /dev/null
 }
 
-. "$HOME/.local/bin/env"
-
-# Hermes Agent — ensure ~/.local/bin is on PATH
-export PATH="$HOME/.local/bin:$PATH"
+[[ -r "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
 
 alias codx="codex --yolo"
 alias clawd="claude --dangerously-skip-permissions --worktree"
 
-# pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+if [[ "$OSTYPE" == darwin* ]]; then
+  # pnpm
+  export PNPM_HOME="$HOME/Library/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+  # pnpm end
+fi
 
 # # >>> conda initialize >>>
 # # !! Contents within this block are managed by 'conda init' !!
@@ -170,17 +159,17 @@ esac
 # # <<< conda initialize <<<
 
 # cargo
-. "$HOME/.cargo/env"
+[[ -r "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # secrets
-source ~/.config/zsh/secrets.zsh
+[[ -r "$HOME/.config/zsh/secrets.zsh" ]] && source "$HOME/.config/zsh/secrets.zsh"
 
 # Lucy
 export LUCY_GREETING_IMAGE=false
 
 # gwq
-source <(gwq completion zsh)
+(( $+commands[gwq] )) && source <(gwq completion zsh)
 
 # gwq shorcut
 gwa() {
