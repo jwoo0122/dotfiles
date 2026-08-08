@@ -15,22 +15,14 @@ brew "cargo-dist"
 brew "chezmoi"
 # Cross-platform make
 brew "cmake"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
-# Syntax-highlighting pager for git and diff output
-brew "git-delta"
 # Self-improving AI agent that creates skills from experience
 brew "hermes-agent"
 # Linux virtual machines
 brew "lima"
-# Polyglot runtime manager (asdf rust clone)
-brew "mise"
 # Deep clean and optimize your Mac
 brew "mole"
-# AI agent toolkit
-brew "pi-coding-agent"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Parser generator tool
@@ -59,4 +51,3 @@ cask "miniconda"
 cask "jwoo0122/tap/rebecca", trusted: true
 go "cmd/go"
 go "cmd/gofmt"
-cargo "wasm-bindgen-cli"
