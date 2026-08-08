@@ -33,26 +33,14 @@ brew "mole"
 brew "pi-coding-agent"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Terminal multiplexer
-brew "tmux"
 # Parser generator tool
 brew "tree-sitter-cli"
 # Generate your Xcode project from a spec file and your folder structure
 brew "xcodegen"
-# Process YAML, JSON, XML, CSV and properties documents from the CLI
-brew "yq"
-# Programming language designed for robustness, optimality, and clarity
-brew "zig"
-# Shell extension to navigate your filesystem faster
-brew "zoxide"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# The AI coding agent built for the terminal.
-brew "anomalyco/tap/opencode", trusted: true
-# Git Worktree Manager for efficient worktree operations
-brew "d-kuro/tap/gwq", trusted: true
 # Manage Git worktrees and attachable agent sessions
 brew "jwoo0122/tap/david", trusted: true
 # A small local JSONL agent harness
@@ -72,7 +60,3 @@ cask "jwoo0122/tap/rebecca", trusted: true
 go "cmd/go"
 go "cmd/gofmt"
 cargo "wasm-bindgen-cli"
-npm "@jwoo0122/harness"
-npm "clawhub"
-npm "corepack"
-npm "openclaw"

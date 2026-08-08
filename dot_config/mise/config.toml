@@ -1,15 +1,19 @@
 [tools]
 "cargo:eza" = "latest"
+"cargo:ripgrep" = "latest"
 "cargo:tree-sitter-cli" = "latest"
 fzf = "latest"
 gh = "latest"
 go = "latest"
 "go:github.com/d-kuro/gwq/cmd/gwq" = "latest"
+jq = "latest"
 neovim = "latest"
 node = "24"
 "npm:agent-browser" = "0.33.2"
 pnpm = "latest"
+tmux = "latest"
 yarn = "latest"
+zoxide = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
