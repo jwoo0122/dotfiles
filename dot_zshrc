@@ -1,14 +1,7 @@
-# User-installed commands must be available before initializing mise and other tools.
-export PATH="$HOME/.local/bin:$PATH"
-
 # mise
-if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate zsh)"
-fi
+eval "$(mise activate zsh)"
 
-if [[ -t 0 ]]; then
-  export GPG_TTY=$(tty)
-fi
+export GPG_TTY=$(tty)
 
 # git branch show
 autoload -Uz vcs_info add-zsh-hook
@@ -29,12 +22,10 @@ _vbe_vcs_info() {
   print ${vcs_info_msg_0_}
 }
 
-if [[ -r "$HOME/.config/async.zsh" ]]; then
-  source "$HOME/.config/async.zsh"
-  async_init
-  async_start_worker vcs_info
-  async_register_callback vcs_info _vbe_vcs_info_done
-fi
+source ~/.config/async.zsh
+async_init
+async_start_worker vcs_info
+async_register_callback vcs_info _vbe_vcs_info_done
 
 _vbe_vcs_info_done() {
   local stdout=$3
@@ -43,7 +34,6 @@ _vbe_vcs_info_done() {
 }
 
 _vbe_vcs_precmd() {
-  (( $+functions[async_job] )) || return
   async_flush_jobs vcs_info
   async_job vcs_info _vbe_vcs_info $PWD
 }
@@ -59,14 +49,10 @@ PROMPT=$'
 export EDITOR="nvim"
 
 # zoxide
-if command -v zoxide >/dev/null 2>&1; then
-  eval "$(zoxide init zsh)"
-fi
+eval "$(zoxide init zsh)"
 
 # fzf
-if command -v fzf >/dev/null 2>&1 && fzf --help 2>&1 | grep -q -- '--zsh'; then
-  source <(fzf --zsh)
-fi
+source <(fzf --zsh)
 
 
 # bun completions
@@ -78,32 +64,19 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-if [[ "$(uname -s)" == Darwin ]]; then
-  # llvm
-  if command -v brew >/dev/null 2>&1 && brew --prefix llvm >/dev/null 2>&1; then
-    llvm_prefix="$(brew --prefix llvm)"
-    export PATH="$llvm_prefix/bin:$PATH"
-    export LDFLAGS="-L$llvm_prefix/lib"
-    export CPPFLAGS="-I$llvm_prefix/include"
-  fi
+# llvm
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
-  # mysql
-  [[ -d /usr/local/mysql/bin ]] && export PATH="/usr/local/mysql/bin:$PATH"
-fi
+# mysql
+export PATH="/usr/local/mysql/bin:$PATH"
 
 # zsh-autosuggestions
-if command -v brew >/dev/null 2>&1; then
-  zsh_share="$(brew --prefix)/share"
-else
-  zsh_share="/usr/share"
-fi
-[[ -r "$zsh_share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
-  source "$zsh_share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-syntax-highlighting
-[[ -r "$zsh_share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
-  source "$zsh_share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-unset zsh_share
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Private env
 [ -f ~/.env ] && source ~/.env
@@ -111,30 +84,37 @@ unset zsh_share
 # Work-specific zshrc
 [ -f ~/.zshrc-work ] && source ~/.zshrc-work
 
-if command -v brew >/dev/null 2>&1; then
-  brew-backup() {
-    command brew bundle dump --force --file="$HOME/.config/brew/Brewfile"
-  }
+brew-backup() {
+  command brew bundle dump --force --file="$HOME/.config/brew/Brewfile"
+}
 
-  brew() {
-    command brew "$@"
-    local brew_status=$?
+brew() {
+  command brew "$@"
+  local brew_status=$?
 
-    case "$1" in
-      install|remove|uninstall)
-        (( brew_status == 0 )) && brew-backup
-        ;;
-    esac
+  case "$1" in
+    install|remove|uninstall)
+      if [ $brew_status -eq 0 ]; then
+        brew-backup || return $?
+      fi
+      ;;
+  esac
 
-    return $brew_status
-  }
-fi
+  return $brew_status
+}
+
+unalias dotsync 2>/dev/null
+dotsync() {
+  brew-backup &&
+    chezmoi re-add &&
+    chezmoi update &&
+    mise install &&
+    brew bundle install --file="$HOME/.config/brew/Brewfile"
+}
 
 # ALIAS
-if command -v eza >/dev/null 2>&1; then
-  alias "ls"="eza"
-  alias "l"="eza -l --classify=auto --group-directories-first"
-fi
+alias "ls"="eza"
+alias "l"="eza -l --classify=auto --group-directories-first"
 alias "colortest"="~/.config/colortest"
 
 alias gadd="
@@ -151,28 +131,23 @@ git diff --cached --name-only |
 
 # FUNCS
 proj() {
-  command -v zoxide >/dev/null 2>&1 || return 1
-  command -v fzf >/dev/null 2>&1 || return 1
   local dir
-  local preview='ls -la {}'
-  command -v eza >/dev/null 2>&1 && preview='eza -l --color=always {}'
-  dir=$(zoxide query -l | fzf --preview "$preview") || return
+  dir=$(zoxide query -l | fzf --preview 'eza -l --color=always {}') || return
   pushd "$dir" > /dev/null
   nvim .
   popd > /dev/null
 }
 
-[[ -r "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
+. "$HOME/.local/bin/env"
+
+# Hermes Agent — ensure ~/.local/bin is on PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 alias codx="codex --yolo"
 alias clawd="claude --dangerously-skip-permissions --worktree"
 
 # pnpm
-if [[ "$(uname -s)" == Darwin ]]; then
-  export PNPM_HOME="$HOME/Library/pnpm"
-else
-  export PNPM_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/pnpm"
-fi
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -195,26 +170,20 @@ esac
 # # <<< conda initialize <<<
 
 # cargo
-[[ -r "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # secrets
-[[ -r "$HOME/.config/zsh/secrets.zsh" ]] && source "$HOME/.config/zsh/secrets.zsh"
+source ~/.config/zsh/secrets.zsh
 
 # Lucy
 export LUCY_GREETING_IMAGE=false
 
 # gwq
-if command -v gwq >/dev/null 2>&1; then
-  source <(gwq completion zsh)
-fi
+source <(gwq completion zsh)
 
 # gwq shorcut
 gwa() {
-  command -v gwq >/dev/null 2>&1 || {
-    print -u2 "gwa: gwq is not installed"
-    return 127
-  }
   if (( $# < 2)); then
     print -u2 "usage: gwa <ticket> <command> [args...]"
     return 2
