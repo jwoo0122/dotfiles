@@ -47,3 +47,5 @@ cask "ghostty"
 cask "miniconda"
 # macOS GUI automation tool for AI agents
 cask "jwoo0122/tap/rebecca", trusted: true
+go "cmd/go"
+go "cmd/gofmt"
