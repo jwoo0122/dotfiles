@@ -1,0 +1,36 @@
+{{- $isWSL := and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease)) -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+{{ if eq .chezmoi.os "darwin" -}}
+# Brewfile: {{ include "dot_config/brew/Brewfile" | sha256sum }}
+if command -v brew >/dev/null 2>&1; then
+  brew bundle install --file="$HOME/.config/brew/Brewfile"
+else
+  echo "dotsync: Homebrew is required; see README.md" >&2
+  exit 1
+fi
+{{ else if $isWSL -}}
+# apt packages: {{ include "dot_config/apt/wsl.txt" | sha256sum }}
+package_file="$HOME/.config/apt/wsl.txt"
+{{ else -}}
+# apt packages: {{ include "dot_config/apt/ubuntu-desktop.txt" | sha256sum }}
+package_file="$HOME/.config/apt/ubuntu-desktop.txt"
+{{ end -}}
+{{ if eq .chezmoi.os "linux" }}
+mapfile -t packages < <(sed -e 's/#.*$//' -e '/^[[:space:]]*$/d' "$package_file")
+if (( ${#packages[@]} > 0 )); then
+  sudo apt-get update
+  sudo apt-get install -y -- "${packages[@]}"
+fi
+
+if ! command -v mise >/dev/null 2>&1 && [[ ! -x "$HOME/.local/bin/mise" ]]; then
+  curl -fsSL https://mise.run | sh
+fi
+
+zsh_path="$(command -v zsh)"
+login_shell="$(getent passwd "$USER" | cut -d: -f7)"
+if [[ -n "$zsh_path" && "$login_shell" != "$zsh_path" ]]; then
+  sudo chsh -s "$zsh_path" "$USER"
+fi
+{{ end }}

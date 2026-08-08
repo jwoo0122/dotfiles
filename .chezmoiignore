@@ -1,0 +1,17 @@
+{{- $isWSL := and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease)) -}}
+README.md
+{{- if ne .chezmoi.os "darwin" }}
+.hammerspoon
+.config/brew
+{{- end }}
+{{- if eq .chezmoi.os "darwin" }}
+.config/apt
+{{- else if $isWSL }}
+.config/apt/ubuntu-desktop.txt
+.cua-driver
+.agents/skills/cua-driver
+.config/ghostty
+.config/zed
+{{- else }}
+.config/apt/wsl.txt
+{{- end }}

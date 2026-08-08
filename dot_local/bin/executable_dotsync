@@ -1,0 +1,206 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage: dotsync [--continue|--abort|--dry-run|--offline|--no-push]
+
+Synchronize managed dotfiles, native package manifests, and the remote repo.
+EOF
+}
+
+mode=sync
+push_enabled=true
+case "${1:-}" in
+  "") ;;
+  --continue) mode=continue ;;
+  --abort) mode=abort ;;
+  --dry-run) mode=dry-run ;;
+  --offline) mode=offline ;;
+  --no-push) push_enabled=false ;;
+  -h|--help) usage; exit 0 ;;
+  *) usage >&2; exit 2 ;;
+esac
+
+for command_name in chezmoi git; do
+  if ! command -v "$command_name" >/dev/null 2>&1; then
+    echo "dotsync: required command not found: $command_name" >&2
+    exit 1
+  fi
+done
+
+state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/dotsync"
+lock_dir="${TMPDIR:-/tmp}/dotsync-${UID}.lock"
+mkdir -p "$state_dir"
+if ! mkdir "$lock_dir" 2>/dev/null; then
+  echo "dotsync: another sync is already running ($lock_dir)" >&2
+  exit 1
+fi
+trap 'rmdir "$lock_dir" 2>/dev/null || true' EXIT
+
+source_dir="$(chezmoi source-path)"
+if ! git -C "$source_dir" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "dotsync: chezmoi source is not a Git worktree: $source_dir" >&2
+  exit 1
+fi
+
+profile() {
+  case "$(uname -s)" in
+    Darwin) printf '%s\n' darwin ;;
+    Linux)
+      if grep -Eqi '(microsoft|wsl)' /proc/sys/kernel/osrelease 2>/dev/null; then
+        printf '%s\n' wsl
+      elif [[ -r /etc/os-release ]] && grep -Eq '^ID=ubuntu$' /etc/os-release; then
+        printf '%s\n' ubuntu-desktop
+      else
+        echo "dotsync: unsupported Linux environment" >&2
+        return 1
+      fi
+      ;;
+    *) echo "dotsync: unsupported operating system" >&2; return 1 ;;
+  esac
+}
+
+current_profile="$(profile)"
+last_applied_file="$state_dir/last-applied-commit"
+
+validate_source() {
+  git -C "$source_dir" diff --check
+  zsh -n "$source_dir/dot_zshrc"
+  bash -n "$source_dir/dot_local/bin/executable_dotsync"
+  chezmoi execute-template < "$source_dir/run_onchange_before_install-packages.sh.tmpl" |
+    bash -n
+}
+
+if [[ "$mode" == abort ]]; then
+  git -C "$source_dir" rebase --abort
+  exit 0
+fi
+
+git_path="$(git -C "$source_dir" rev-parse --git-path rebase-merge)"
+git_apply_path="$(git -C "$source_dir" rev-parse --git-path rebase-apply)"
+
+if [[ "$mode" == continue ]]; then
+  GIT_EDITOR=true git -C "$source_dir" rebase --continue
+else
+  if [[ -d "$git_path" || -d "$git_apply_path" ]]; then
+    echo "dotsync: a rebase is in progress; use --continue or --abort" >&2
+    exit 1
+  fi
+
+  upstream="$(git -C "$source_dir" rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null || true)"
+  if [[ "$mode" != offline ]]; then
+    if [[ -z "$upstream" ]]; then
+      echo "dotsync: the current branch has no upstream" >&2
+      exit 1
+    fi
+    git -C "$source_dir" fetch "${upstream%%/*}"
+  fi
+
+  if [[ "$mode" == dry-run ]]; then
+    printf 'profile: %s\nsource: %s\n\n' "$current_profile" "$source_dir"
+    git -C "$source_dir" status --short --branch
+    chezmoi diff || true
+    exit 0
+  fi
+
+  case "$current_profile" in
+    darwin)
+      if command -v brew >/dev/null 2>&1; then
+        mkdir -p "$HOME/.config/brew"
+        brew bundle dump --force --file="$HOME/.config/brew/Brewfile"
+      fi
+      ;;
+    ubuntu-desktop|wsl)
+      package_dir="$HOME/.config/apt"
+      package_file="$package_dir/$current_profile.txt"
+      mkdir -p "$package_dir"
+      package_tmp="$(mktemp "${TMPDIR:-/tmp}/dotsync-packages.XXXXXX")"
+      apt-mark showmanual | LC_ALL=C sort -u > "$package_tmp"
+      install -m 0644 "$package_tmp" "$package_file"
+      rm -f "$package_tmp"
+      ;;
+  esac
+
+  chezmoi re-add
+
+  git -C "$source_dir" add -A
+  if ! git -C "$source_dir" diff --cached --quiet; then
+    git -C "$source_dir" diff --cached --check
+    validate_source
+    git -C "$source_dir" commit -m "sync($current_profile): update environment"
+  fi
+
+  if [[ "$mode" != offline ]]; then
+    git -C "$source_dir" rebase "$upstream"
+  fi
+fi
+
+validate_source
+new_head="$(git -C "$source_dir" rev-parse HEAD)"
+old_head=""
+if [[ -r "$last_applied_file" ]]; then
+  old_head="$(<"$last_applied_file")"
+  if ! git -C "$source_dir" cat-file -e "$old_head^{commit}" 2>/dev/null; then
+    old_head=""
+  fi
+fi
+
+chezmoi apply
+
+if command -v mise >/dev/null 2>&1; then
+  mise install
+elif [[ -x "$HOME/.local/bin/mise" ]]; then
+  "$HOME/.local/bin/mise" install
+fi
+
+if [[ -n "$old_head" && "$old_head" != "$new_head" ]]; then
+  case "$current_profile" in
+    ubuntu-desktop|wsl)
+      manifest="dot_config/apt/$current_profile.txt"
+      old_packages="$(mktemp "${TMPDIR:-/tmp}/dotsync-old.XXXXXX")"
+      new_packages="$(mktemp "${TMPDIR:-/tmp}/dotsync-new.XXXXXX")"
+      git -C "$source_dir" show "$old_head:$manifest" 2>/dev/null | LC_ALL=C sort -u > "$old_packages" || :
+      LC_ALL=C sort -u "$source_dir/$manifest" > "$new_packages"
+      mapfile -t removed < <(comm -23 "$old_packages" "$new_packages")
+      rm -f "$old_packages" "$new_packages"
+      if (( ${#removed[@]} > 0 )); then
+        sudo apt-get remove -y -- "${removed[@]}"
+      fi
+      ;;
+  esac
+fi
+
+if [[ -n "$old_head" && "$old_head" != "$new_head" && "$current_profile" == darwin ]] &&
+   command -v brew >/dev/null 2>&1; then
+  old_brew="$(mktemp "${TMPDIR:-/tmp}/dotsync-old-brew.XXXXXX")"
+  new_brew="$(mktemp "${TMPDIR:-/tmp}/dotsync-new-brew.XXXXXX")"
+  git -C "$source_dir" show "$old_head:dot_config/brew/Brewfile" 2>/dev/null |
+    sed -nE 's/^(brew|cask) "([^"]+)".*/\1\t\2/p' | LC_ALL=C sort -u > "$old_brew" || :
+  sed -nE 's/^(brew|cask) "([^"]+)".*/\1\t\2/p' "$source_dir/dot_config/brew/Brewfile" |
+    LC_ALL=C sort -u > "$new_brew"
+  while IFS=$'\t' read -r package_kind package_name; do
+    [[ -n "$package_name" ]] || continue
+    if [[ "$package_kind" == cask ]]; then
+      brew uninstall --cask -- "$package_name"
+    else
+      brew uninstall -- "$package_name"
+    fi
+  done < <(comm -23 "$old_brew" "$new_brew")
+  rm -f "$old_brew" "$new_brew"
+fi
+
+if [[ "$mode" != offline && "$push_enabled" == true ]]; then
+  upstream="$(git -C "$source_dir" rev-parse --abbrev-ref --symbolic-full-name '@{upstream}')"
+  read -r behind ahead < <(git -C "$source_dir" rev-list --left-right --count "$upstream...HEAD")
+  if (( behind > 0 )); then
+    echo "dotsync: upstream changed during sync; run dotsync again" >&2
+    exit 1
+  fi
+  if (( ahead > 0 )); then
+    git -C "$source_dir" push "${upstream%%/*}" "HEAD:${upstream#*/}"
+  fi
+fi
+
+printf '%s\n' "$new_head" > "$last_applied_file"
+printf 'dotsync: %s is synchronized at %s\n' "$current_profile" "${new_head:0:12}"

@@ -1,1 +1,1 @@
-/Users/jinwoo/.codex/AGENTS.md
+../.codex/AGENTS.md
