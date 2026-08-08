@@ -1,4 +1,5 @@
 [tools]
+"cargo:cargo-dist" = "latest"
 "cargo:eza" = "latest"
 "cargo:ripgrep" = "latest"
 "cargo:tree-sitter-cli" = "latest"
