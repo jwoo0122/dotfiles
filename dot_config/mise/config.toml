@@ -1,7 +1,7 @@
 [tools]
 "cargo:eza" = "latest"
 "cargo:ripgrep" = "latest"
-"cargo:tree-sitter-cli" = "latest"
+tree-sitter = "latest"
 fzf = "latest"
 gh = "latest"
 go = "latest"
