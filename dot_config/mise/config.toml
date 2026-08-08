@@ -1,5 +1,4 @@
 [tools]
-"cargo:cargo-dist" = "latest"
 "cargo:eza" = "latest"
 "cargo:ripgrep" = "latest"
 "cargo:tree-sitter-cli" = "latest"
@@ -12,7 +11,6 @@ neovim = "latest"
 node = "24"
 "npm:agent-browser" = "0.33.2"
 pnpm = "latest"
-rust = "latest"
 tmux = "latest"
 yarn = "latest"
 zoxide = "latest"
