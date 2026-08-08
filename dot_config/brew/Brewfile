@@ -9,8 +9,6 @@ tap "raine/workmux"
 tap "steipete/tap"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
-# Tool for building final distributable artifacts and uploading them to an archive
-brew "cargo-dist"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
 # Cross-platform make
