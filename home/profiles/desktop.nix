@@ -15,4 +15,21 @@
       cursor-style = "block";
     };
   };
+
+  programs.zed-editor = {
+    enable = true;
+
+    mutableUserSettings = false;
+    mutableUserKeymaps = false;
+
+    userSettings = builtins.fromJSON (
+      builtins.readFile ../../dot_config/zed/private_settings.json
+    );
+    
+    userKeymaps = [
+      {
+        bindings = { };
+      }
+    ];
+  };
 }
