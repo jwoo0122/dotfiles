@@ -14,7 +14,6 @@
     eza
     ffmpeg
     ripgrep
-    gh
     jq
     nodejs_24
     pnpm
@@ -113,6 +112,11 @@
     extraPackages = [
       pkgs.nodejs_24
     ];
+  };
+
+  # GitHub CLI
+  programs.gh = {
+    enable = true;
   };
 
   programs.home-manager.enable = true;
