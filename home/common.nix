@@ -11,7 +11,6 @@
   home.packages = with pkgs; [
     actionlint
     cmake
-    eza
     ffmpeg
     ripgrep
     jq
@@ -139,6 +138,23 @@
       };
     };
   };
+
+  # eza
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  # ripgrep
+  programs.ripgrep = {
+    enable = true;
+  };
+
+  # Agent skills
+  home.file.".agents/skills".source = ../dot_agents/skills;
+
+  # Lucy
+  xdg.configFile."lucy".source = ../dot_config/private_lucy;
 
   programs.home-manager.enable = true;
 }

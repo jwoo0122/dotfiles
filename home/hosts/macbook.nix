@@ -22,4 +22,6 @@
       "Apple SD Gothic Neo"
     ];
   };
+
+  home.file.".hammerspoon".source = ../../dot_hammerspoon;
 }
