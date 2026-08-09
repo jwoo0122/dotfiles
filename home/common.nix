@@ -1,6 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "claude-code"
+    ];
+
   home.stateVersion = "26.05";
 
   home.packages = with pkgs; [
@@ -59,6 +64,17 @@
     context = ../dot_codex/AGENTS.md;
   };
   home.file."AGENTS.md".source = ../dot_codex/AGENTS.md;
+
+  # Claude Code
+  programs.claude-code = {
+    enable = true;
+
+    settings = builtins.fromJSON (
+      builtins.readFile ../dot_claude/private_settings.json
+    );
+  };
+  home.file.".claude/CLAUDE.md".source = ../dot_codex/AGENTS.md;
+
 
   # Async zsh configuration
   xdg.configFile."async.zsh".source = ../dot_config/async.zsh;
