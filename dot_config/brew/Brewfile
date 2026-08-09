@@ -7,24 +7,14 @@ tap "manaflow-ai/cmux"
 tap "openclaw/tap"
 tap "raine/workmux"
 tap "steipete/tap"
-# Static checker for GitHub Actions workflow files
-brew "actionlint"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
-# Cross-platform make
-brew "cmake"
-# Play, record, convert, and stream select audio and video codecs
-brew "ffmpeg"
 # Self-improving AI agent that creates skills from experience
 brew "hermes-agent"
 # Linux virtual machines
 brew "lima"
 # Deep clean and optimize your Mac
 brew "mole"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# Parser generator tool
-brew "tree-sitter-cli"
 # Generate your Xcode project from a spec file and your folder structure
 brew "xcodegen"
 # Manage Git worktrees and attachable agent sessions
