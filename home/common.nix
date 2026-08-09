@@ -120,5 +120,25 @@
     enable = true;
   };
 
+  # Hermes Agent
+  home.file.".hermes/SOUL.md".source = ../private_dot_hermes/private_SOUL.md;
+
+  # mise
+  programs.mise = {
+    enable = true;
+    enableZshIntegration = true;
+
+    globalConfig = {
+      tools = {
+        "go:github.com/d-kuro/gwq/cmd/gwq" = "latest";
+        "npm:agent-browser" = "0.33.2";
+      };
+
+      settings = {
+        idiomatic_version_file_enable_tools = [ ];
+      };
+    };
+  };
+
   programs.home-manager.enable = true;
 }

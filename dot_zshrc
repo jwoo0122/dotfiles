@@ -1,13 +1,6 @@
 # Core user binaries must be available before any tool initialization.
 export PATH="$HOME/.local/bin:$PATH"
 
-# mise
-if [[ -x "$HOME/.local/bin/mise" ]]; then
-  eval "$("$HOME/.local/bin/mise" activate zsh)"
-elif (( $+commands[mise] )); then
-  eval "$(mise activate zsh)"
-fi
-
 export GPG_TTY=$(tty)
 
 # git branch show
