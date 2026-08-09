@@ -12,13 +12,15 @@
     let
       system = "aarch64-darwin";
     in {
-      homeConfigurations.jinwoo =
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+      homeConfigurations = {
+        macbook = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
 
           modules = [
             ./home/common.nix
+            ./home/hosts/macbook.nix 
           ];
         };
+      };
     };
 }

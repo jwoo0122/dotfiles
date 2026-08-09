@@ -1,4 +1,4 @@
-{ pkgs, ... };
+{ pkgs, ... }:
 
 {
   home.stateVersion = "26.05";
@@ -12,6 +12,8 @@
     tmux
     zoxide
   ];
+
+  home.file.".tmux.conf".source = ../tmux.conf;
 
   programs.home-manager.enable = true;
 }
