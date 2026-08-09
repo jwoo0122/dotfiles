@@ -9,14 +9,11 @@
     eza
     ffmpeg
     ripgrep
-    # fzf
     gh
     go
     jq
-    neovim
     nodejs_24
     tmux
-    # zoxide
     pnpm
     tree-sitter
     yarn
@@ -50,6 +47,12 @@
     enable = true;
     enableZshIntegration = true;
   };
+
+  programs.neovim = {
+    enable = true;
+  };
+
+  xdg.configFile."nvim".source = ../dot_config/nvim;
 
   home.file.".tmux.conf".source = ../tmux.conf;
 
