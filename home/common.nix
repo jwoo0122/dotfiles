@@ -98,5 +98,22 @@
     enable = true;
   };
 
+  # pi-coding-agent
+  programs.pi-coding-agent = {
+    enable = true;
+
+    context = ../dot_codex/AGENTS.md;
+
+    settings = {
+      packages = [
+        "npm:pi-sub-agent@0.1.5"
+      ];
+    };
+
+    extraPackages = [
+      pkgs.nodejs_24
+    ];
+  };
+
   programs.home-manager.enable = true;
 }
