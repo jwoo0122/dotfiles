@@ -56,12 +56,12 @@ PROMPT=$'
 export EDITOR="nvim"
 
 # zoxide
-(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
+# (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
 # fzf
-if (( $+commands[fzf] )) && [[ -t 0 || -t 1 ]]; then
-  source <(fzf --zsh)
-fi
+# if (( $+commands[fzf] )) && [[ -t 0 || -t 1 ]]; then
+#   source <(fzf --zsh)
+# fi
 
 
 # bun completions
@@ -83,18 +83,18 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export PATH="/usr/local/mysql/bin:$PATH"
 fi
 
-# zsh plugins use their native package-manager paths.
-if [[ "$OSTYPE" == darwin* ]] && (( $+commands[brew] )); then
-  zsh_autosuggestions="$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-  zsh_syntax_highlighting="$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-else
-  zsh_autosuggestions="/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-  zsh_syntax_highlighting="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-fi
-
-[[ -r "$zsh_autosuggestions" ]] && source "$zsh_autosuggestions"
-[[ -r "$zsh_syntax_highlighting" ]] && source "$zsh_syntax_highlighting"
-unset zsh_autosuggestions zsh_syntax_highlighting
+# # zsh plugins use their native package-manager paths.
+# if [[ "$OSTYPE" == darwin* ]] && (( $+commands[brew] )); then
+#   zsh_autosuggestions="$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+#   zsh_syntax_highlighting="$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# else
+#   zsh_autosuggestions="/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+#   zsh_syntax_highlighting="/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# fi
+#
+# [[ -r "$zsh_autosuggestions" ]] && source "$zsh_autosuggestions"
+# [[ -r "$zsh_syntax_highlighting" ]] && source "$zsh_syntax_highlighting"
+# unset zsh_autosuggestions zsh_syntax_highlighting
 
 # Private env
 [ -f ~/.env ] && source ~/.env
