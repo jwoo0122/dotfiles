@@ -53,6 +53,7 @@
   };
 
   xdg.configFile."nvim".source = ../dot_config/nvim;
+  xdg.configFile."async.zsh".source = ../dot_config/async.zsh;
 
   home.file.".tmux.conf".source = ../tmux.conf;
 
