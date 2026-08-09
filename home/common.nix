@@ -48,11 +48,20 @@
     enableZshIntegration = true;
   };
 
+  # Neovim
   programs.neovim = {
     enable = true;
   };
-
   xdg.configFile."nvim".source = ../dot_config/nvim;
+
+  # Codex
+  programs.codex = {
+    enable = true;
+    context = ../dot_codex/AGENTS.md;
+  };
+  home.file."AGENTS.md".source = ../dot_codex/AGENTS.md;
+
+  # Async zsh configuration
   xdg.configFile."async.zsh".source = ../dot_config/async.zsh;
 
   home.file.".tmux.conf".source = ../tmux.conf;
