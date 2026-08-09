@@ -27,10 +27,6 @@ brew "ripgrep"
 brew "tree-sitter-cli"
 # Generate your Xcode project from a spec file and your folder structure
 brew "xcodegen"
-# Fish-like fast/unobtrusive autosuggestions for zsh
-brew "zsh-autosuggestions"
-# Fish shell like syntax highlighting for zsh
-brew "zsh-syntax-highlighting"
 # Manage Git worktrees and attachable agent sessions
 brew "jwoo0122/tap/david", trusted: true
 # A small local JSONL agent harness
