@@ -1,13 +1,6 @@
 [tools]
-"cargo:ripgrep" = "latest"
-tree-sitter = "latest"
-go = "latest"
 "go:github.com/d-kuro/gwq/cmd/gwq" = "latest"
-neovim = "latest"
-node = "24"
 "npm:agent-browser" = "0.33.2"
-pnpm = "latest"
-yarn = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
