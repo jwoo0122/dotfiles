@@ -8,19 +8,25 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
-    let
-      system = "aarch64-darwin";
-    in {
-      homeConfigurations = {
-        macbook = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+  outputs = { nixpkgs, home-manager, ... }: {
+    homeConfigurations = {
+      macbook = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
 
-          modules = [
-            ./home/common.nix
-            ./home/hosts/macbook.nix 
-          ];
-        };
+        modules = [
+          ./home/common.nix
+          ./home/hosts/macbook.nix 
+        ];
+      };
+
+      wsl = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+        modules = [
+          ./home/common.nix
+          ./home/hosts/wsl.nix
+        ];
       };
     };
+  };
 }
