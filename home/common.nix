@@ -69,5 +69,14 @@
     extraConfig = builtins.readFile ../tmux.conf;
   };
 
+  # git
+  programs.git = {
+    enable = true;
+    
+    settings = {
+      user.name = "Jinwoo Jeong";
+    };
+  };
+
   programs.home-manager.enable = true;
 }
