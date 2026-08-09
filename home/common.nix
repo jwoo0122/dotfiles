@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, hermes-agent, ... }:
 
 {
   nixpkgs.config.allowUnfreePredicate = pkg:
@@ -19,6 +19,7 @@
     pnpm
     tree-sitter
     yarn
+    hermes-agent.packages.${pkgs.system}.default
   ];
 
   programs.zsh = {
