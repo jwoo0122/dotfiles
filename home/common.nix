@@ -13,7 +13,6 @@
     go
     jq
     nodejs_24
-    tmux
     pnpm
     tree-sitter
     yarn
@@ -64,7 +63,11 @@
   # Async zsh configuration
   xdg.configFile."async.zsh".source = ../dot_config/async.zsh;
 
-  home.file.".tmux.conf".source = ../tmux.conf;
+  # tmux
+  programs.tmux = {
+    enable = true;
+    extraConfig = builtins.readFile ../tmux.conf;
+  };
 
   programs.home-manager.enable = true;
 }
