@@ -15,7 +15,6 @@
     ffmpeg
     ripgrep
     gh
-    go
     jq
     nodejs_24
     pnpm
@@ -92,6 +91,11 @@
     settings = {
       user.name = "Jinwoo Jeong";
     };
+  };
+  
+  # go
+  programs.go = {
+    enable = true;
   };
 
   programs.home-manager.enable = true;
