@@ -11,4 +11,13 @@
     commit.gpgSign = true;
     tag.gpgSign = true;
   };
+
+  programs.ghostty = {
+    package = null;
+
+    settings.font-family = lib.mkForce [
+      "Hack"
+      "Apple SD Gothic Neo"
+    ]
+  }
 }

@@ -15,6 +15,7 @@
 
         modules = [
           ./home/common.nix
+          ./home/profiles/desktop.nix
           ./home/hosts/macbook.nix 
         ];
       };
