@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 {
   home.username = "jinwoo";
   home.homeDirectory = "/Users/jinwoo";
@@ -18,6 +20,6 @@
     settings.font-family = lib.mkForce [
       "Hack"
       "Apple SD Gothic Neo"
-    ]
-  }
+    ];
+  };
 }
