@@ -11,7 +11,7 @@
 
   outputs = { nixpkgs, home-manager, hermes-agent, ... }: {
     homeConfigurations = {
-      macbook = home-manager.lib.homeManagerConfiguration {
+      personal_mac = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
 
         extraSpecialArgs = {
@@ -25,7 +25,7 @@
         ];
       };
 
-      wsl = home-manager.lib.homeManagerConfiguration {
+      personal_wsl = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
         extraSpecialArgs = {
