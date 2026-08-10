@@ -44,5 +44,5 @@
     };
   };
 
-  home.file.".hammerspoon/init.lua".source = ../../dot_hammerspoon/init.lua;
+  home.file.".hammerspoon/init.lua".source = ../../config/hammerspoon/init.lua;
 }

@@ -36,7 +36,7 @@
       }
     ];
 
-    initContent = builtins.readFile ../dot_zshrc;
+    initContent = builtins.readFile ../config/zshrc;
   };
 
   programs.fzf = {
@@ -53,28 +53,28 @@
   programs.neovim = {
     enable = true;
   };
-  xdg.configFile."nvim".source = ../dot_config/nvim;
+  xdg.configFile."nvim".source = ../config/nvim;
 
   # Codex
   programs.codex = {
     enable = true;
-    context = ../dot_codex/AGENTS.md;
+    context = ../config/codex/AGENTS.md;
   };
-  home.file."AGENTS.md".source = ../dot_codex/AGENTS.md;
+  home.file."AGENTS.md".source = ../config/codex/AGENTS.md;
 
   # Claude Code
   programs.claude-code = {
     enable = true;
 
     settings = builtins.fromJSON (
-      builtins.readFile ../dot_claude/private_settings.json
+      builtins.readFile ../config/claude/private_settings.json
     );
   };
-  home.file.".claude/CLAUDE.md".source = ../dot_codex/AGENTS.md;
+  home.file.".claude/CLAUDE.md".source = ../config/codex/AGENTS.md;
 
 
   # Async zsh configuration
-  xdg.configFile."async.zsh".source = ../dot_config/async.zsh;
+  xdg.configFile."async.zsh".source = ../config/async.zsh;
 
   # tmux
   programs.tmux = {
@@ -100,7 +100,7 @@
   programs.pi-coding-agent = {
     enable = true;
 
-    context = ../dot_codex/AGENTS.md;
+    context = ../config/codex/AGENTS.md;
 
     settings = {
       packages = [
@@ -119,7 +119,7 @@
   };
 
   # Hermes Agent
-  home.file.".hermes/SOUL.md".source = ../private_dot_hermes/private_SOUL.md;
+  home.file.".hermes/SOUL.md".source = ../config/hermes/private_SOUL.md;
 
   # mise
   programs.mise = {
@@ -150,14 +150,14 @@
   };
 
   # Agent skills
-  home.file.".agents/skills".source = ../dot_agents/skills;
+  home.file.".agents/skills".source = ../config/agents/skills;
 
   # Lucy
-  xdg.configFile."lucy/AGENTS.md".source = ../dot_codex/AGENTS.md;
+  xdg.configFile."lucy/AGENTS.md".source = ../config/codex/AGENTS.md;
 
   # colortest
   home.file.".local/bin/colortest" = {
-    source = ../dot_config/executable_colortest;
+    source = ../config/colortest;
     executable = true;
   };
 
