@@ -153,7 +153,13 @@
   home.file.".agents/skills".source = ../dot_agents/skills;
 
   # Lucy
-  xdg.configFile."lucy".source = ../dot_config/private_lucy;
+  xdg.configFile."lucy/AGENTS.md".source = ../dot_codex/AGENTS.md;
+
+  # colortest
+  home.file.".local/bin/colortest" = {
+    source = ../dot_config/executable_colortest;
+    executable = true;
+  };
 
   programs.home-manager.enable = true;
 }

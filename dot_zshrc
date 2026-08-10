@@ -98,7 +98,6 @@ fi
 # ALIAS
 alias "ls"="eza"
 alias "l"="eza -l --classify=auto --group-directories-first"
-alias "colortest"="~/.config/colortest"
 
 alias gadd="
 git ls-files -m -o --exclude-standard |
