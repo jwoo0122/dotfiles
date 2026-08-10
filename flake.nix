@@ -29,6 +29,12 @@
         ./home/hosts/macos.nix
       ];
 
+      work-macos = mkHome "aarch64-darwin" [
+        ./home/common.nix
+        ./home/profiles/desktop.nix
+        ./home/hosts/work-macos.nix
+      ]
+
       wsl = mkHome "x86_64-linux" [
         ./home/common.nix
         ./home/hosts/wsl.nix
