@@ -2,31 +2,17 @@ tap "antoniorodr/memo"
 tap "jwoo0122/tap", trusted: true
 tap "manaflow-ai/cmux"
 tap "steipete/tap"
-# Manage your dotfiles across multiple diverse machines, securely
-brew "chezmoi"
-# Self-improving AI agent that creates skills from experience
-brew "hermes-agent"
 # Linux virtual machines
 brew "lima"
 # Deep clean and optimize your Mac
 brew "mole"
 # Generate your Xcode project from a spec file and your folder structure
 brew "xcodegen"
-# Manage Git worktrees and attachable agent sessions
-brew "jwoo0122/tap/david", trusted: true
 # A small local JSONL agent harness
 brew "jwoo0122/tap/lucy", trusted: true
-# Manage Git worktrees and attachable agent sessions
-brew "jwoo0122/tap/tony"
 # Ghostty-based terminal with vertical tabs and notifications for AI coding agents
 cask "cmux"
-# OpenAI's coding agent that runs in your terminal
-cask "codex"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Minimal installer for conda
 cask "miniconda"
-# macOS GUI automation tool for AI agents
-cask "jwoo0122/tap/rebecca", trusted: true
-go "cmd/go"
-go "cmd/gofmt"

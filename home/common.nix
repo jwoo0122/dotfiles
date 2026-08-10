@@ -12,7 +12,6 @@
     actionlint
     cmake
     ffmpeg
-    ripgrep
     jq
     nodejs_24
     pnpm
