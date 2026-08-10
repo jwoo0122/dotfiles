@@ -18,6 +18,13 @@
     ];
 
     initContent = builtins.readFile ../../config/zshrc;
+
+    shellAliases = {
+      ls = "eza";
+      l = "eza -l --classify=auto --group-directories-first";
+      codx = "codex --yolo";
+      clawd = "claude --dangerously-skip-permissions";
+    };
   };
 
   programs.fzf = {

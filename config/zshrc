@@ -42,67 +42,14 @@ PROMPT=$'
 %(?..%F{red}%?%f )%~ ${vcs_info_msg_0_}
 %F{magenta}\U27E9%f '
 
-# Private env
-[ -f ~/.env ] && source ~/.env
-
 # Work-specific zshrc
 [ -f ~/.zshrc-work ] && source ~/.zshrc-work
 
-# ALIAS
-alias "ls"="eza"
-alias "l"="eza -l --classify=auto --group-directories-first"
-
-alias gadd="
-git ls-files -m -o --exclude-standard |
-  fzf -m --preview 'git diff --color=always {} 2>/dev/null || cat {}' |
-  xargs git add
-"
-
-alias gunstage="
-git diff --cached --name-only |
-  fzf -m --preview 'git diff --cached --color=always {} 2>/dev/null || cat {}' |
-  xargs git restore --staged
-"
-
-# FUNCS
-proj() {
-  local dir
-  dir=$(zoxide query -l | fzf --preview 'eza -l --color=always {}') || return
-  pushd "$dir" > /dev/null
-  nvim .
-  popd > /dev/null
-}
-
-[[ -r "$HOME/.local/bin/env" ]] && source "$HOME/.local/bin/env"
-
-alias codx="codex --yolo"
-alias clawd="claude --dangerously-skip-permissions --worktree"
-
 # secrets
-[[ -r "$HOME/.config/zsh/secrets.zsh" ]] && source "$HOME/.config/zsh/secrets.zsh"
+if [[ -f "$HOME/.config/zsh/secrets.zsh" ]]; then
+  source "$HOME/.config/zsh/secrets.zsh"
+fi
 
 # gwq
 (( $+commands[gwq] )) && source <(gwq completion zsh)
 
-# gwq shorcut
-gwa() {
-  if (( $# < 2)); then
-    print -u2 "usage: gwa <ticket> <command> [args...]"
-    return 2
-  fi
-
-  local ticket="$1"
-  shift
-
-  if ! command git worktree list --porcelain |
-    command grep -Fqx "branch refs/heads/$ticket"; then
-
-    if command git show-ref --verify --quiet "refs/heads/$ticket"; then
-      command gwq add -- "$ticket" || return
-    else 
-      command gwq add -b -- "$ticket" || return
-    fi
-  fi
-
-  command gwq exec "$ticket" -- "$@"
-}
