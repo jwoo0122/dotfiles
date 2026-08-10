@@ -3,7 +3,7 @@
 {
 
   home.packages = [
-    hermes-agent.packages.${pkgs.system}.default
+    hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   programs.codex = {
