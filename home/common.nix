@@ -21,6 +21,7 @@
 
   home.sessionPath = [
     "$HOME/.local/bin"
+    "$HOME/.cargo/bin"
   ];
 
   programs.home-manager.enable = true;

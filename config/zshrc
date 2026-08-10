@@ -88,10 +88,6 @@ proj() {
 alias codx="codex --yolo"
 alias clawd="claude --dangerously-skip-permissions --worktree"
 
-# cargo
-[[ -r "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # secrets
 [[ -r "$HOME/.config/zsh/secrets.zsh" ]] && source "$HOME/.config/zsh/secrets.zsh"
 
