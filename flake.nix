@@ -33,7 +33,7 @@
         ./home/common.nix
         ./home/profiles/desktop.nix
         ./home/hosts/work-macos.nix
-      ]
+      ];
 
       wsl = mkHome "x86_64-linux" [
         ./home/common.nix
