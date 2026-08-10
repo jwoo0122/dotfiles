@@ -42,16 +42,6 @@ PROMPT=$'
 %(?..%F{red}%?%f )%~ ${vcs_info_msg_0_}
 %F{magenta}\U27E9%f '
 
-if [[ "$OSTYPE" == darwin* ]]; then
-  # llvm
-  export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
-  # mysql
-  export PATH="/usr/local/mysql/bin:$PATH"
-fi
-
 # Private env
 [ -f ~/.env ] && source ~/.env
 
