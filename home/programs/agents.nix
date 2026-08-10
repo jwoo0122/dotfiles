@@ -16,7 +16,7 @@
     enable = true;
 
     settings = builtins.fromJSON (
-      builtins.readFile ../../config/claude/private_settings.json
+      builtins.readFile ../../config/claude/settings.json
     );
   };
   home.file.".claude/CLAUDE.md".source = ../../config/codex/AGENTS.md;
@@ -37,7 +37,7 @@
     ];
   };
 
-  home.file.".hermes/SOUL.md".source = ../../config/hermes/private_SOUL.md;
+  home.file.".hermes/SOUL.md".source = ../../config/hermes/SOUL.md;
 
   home.file.".agents/skills".source = ../../config/agents/skills;
 

@@ -23,7 +23,7 @@
     mutableUserKeymaps = false;
 
     userSettings = builtins.fromJSON (
-      builtins.readFile ../../config/zed/private_settings.json
+      builtins.readFile ../../config/zed/settings.json
     );
     
     userKeymaps = [
