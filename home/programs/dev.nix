@@ -27,7 +27,7 @@
 
   programs.tmux = {
     enable = true;
-    extraConfig = builtins.readFile ../../tmux.conf;
+    extraConfig = builtins.readFile ../../config/tmux.conf;
   };
 
   home.file.".local/bin/colortest" = {
