@@ -9,34 +9,30 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, hermes-agent, ... }: {
+  outputs = { nixpkgs, home-manager, hermes-agent, ... }:
+  let
+    mkHome = system: modules:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        
+        extraSpecialArgs = {
+          inherit hermes-agent;
+        };
+
+        inherit modules;
+      };
+  in {
     homeConfigurations = {
-      macos = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+      macos = mkHome "aarch64-darwin" [
+        ./home/common.nix
+        ./home/profiles/desktop.nix
+        ./home/hosts/macos.nix
+      ];
 
-        extraSpecialArgs = {
-          inherit hermes-agent;
-        };
-
-        modules = [
-          ./home/common.nix
-          ./home/profiles/desktop.nix
-          ./home/hosts/macos.nix 
-        ];
-      };
-
-      wsl = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-
-        extraSpecialArgs = {
-          inherit hermes-agent;
-        };
-
-        modules = [
-          ./home/common.nix
-          ./home/hosts/wsl.nix
-        ];
-      };
+      wsl = mkHome "x86_64-linux" [
+        ./home/common.nix
+        ./home/hosts/wsl.nix
+      ];
     };
   };
 }
