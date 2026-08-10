@@ -17,7 +17,12 @@
       }
     ];
 
-    initContent = builtins.readFile ../../config/zshrc;
+    initContent = ''
+      ${builtins.readFile ../../config/zshrc}
+
+      [[ -r "$HOME/.config/zsh/local.zsh" ]] &&
+        source "$HOME/.config/zsh/local.zsh"
+    '';
 
     shellAliases = {
       ls = "eza";

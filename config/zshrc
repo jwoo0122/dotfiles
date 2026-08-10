@@ -42,14 +42,6 @@ PROMPT=$'
 %(?..%F{red}%?%f )%~ ${vcs_info_msg_0_}
 %F{magenta}\U27E9%f '
 
-# Work-specific zshrc
-[ -f ~/.zshrc-work ] && source ~/.zshrc-work
-
-# secrets
-if [[ -f "$HOME/.config/zsh/secrets.zsh" ]]; then
-  source "$HOME/.config/zsh/secrets.zsh"
-fi
-
 # gwq
 (( $+commands[gwq] )) && source <(gwq completion zsh)
 
