@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 {
   home.username = "jinwoo";
@@ -21,6 +21,27 @@
       "Hack"
       "Apple SD Gothic Neo"
     ];
+  };
+
+  launchd.agents.hermes-gateway = {
+    enable = true;
+
+    config = {
+      Label = "ai.hermes.gateway";
+
+      ProgramArguments = [
+        "${config.home.profileDirectory}/bin/hermes"
+        "gateway"
+        "run"
+        "--replace"
+      ];
+
+      RunAtLoad = true;
+      KeepAlive = true;
+
+      StandardOutPath = "/tmp/hermes-gateway.out.log";
+      StandardErrorPath = "/tmp/hermes-gateway.err.log";
+    };
   };
 
   home.file.".hammerspoon".source = ../../dot_hammerspoon;
