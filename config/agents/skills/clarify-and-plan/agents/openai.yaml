@@ -1,4 +1,0 @@
-interface:
-  display_name: "Clarify and Plan"
-  short_description: "Resolve material choices and reconcile ADRs"
-  default_prompt: "Use $clarify-and-plan to inspect repository and ADR context, resolve material decisions, reconcile durable intent, and continue internally to the requested delivery boundary."
